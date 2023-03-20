@@ -20,18 +20,19 @@ const SignUp = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    fetch(apiUrl, {
+    const res = await fetch(apiUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(formData),
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data))
-      .catch((error) => console.error(error));
+    });
+    console.log(res);
+    // .then((res) => res.json.string())
+    // .then((data) => console.log(data))
+    // .catch((error) => console.error(error));
   };
 
   return (
