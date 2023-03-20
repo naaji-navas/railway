@@ -11,7 +11,7 @@ const SignUp = () => {
     pref_loc: "",
   });
 
-  const apiUrl = process.env.REACT_APP_API_URL;
+  const apiUrl = "https://ima-msn.up.railway.app/register/";
 
   const handleChange = (e) => {
     setFormData((prevData) => ({
@@ -30,7 +30,6 @@ const SignUp = () => {
         },
         body: JSON.stringify(formData),
       });
-      console.log(res);
       const data = await res.json();
       console.log(data);
     } catch (error) {
