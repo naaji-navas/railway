@@ -1,5 +1,7 @@
-import { useState } from "react";
-
+import { useRouter } from "next/router";
+import { useContext, useEffect, useState } from "react";
+import { Message_data } from "../../../../context/context";
+import signIn from "../SignIn";
 const SignUp = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -10,7 +12,8 @@ const SignUp = () => {
     alt_email_id: "",
     pref_loc: "",
   });
-
+  const router = useRouter();
+  const { message, setMessage } = useContext(Message_data);
   const apiUrl = "https://ima-msn.up.railway.app/register/";
 
   const handleChange = (e) => {
@@ -32,6 +35,9 @@ const SignUp = () => {
       });
       const data = await res.json();
       console.log(data);
+      setMessage(data.tokenId);
+      router.push("/signIn");
+      console.log("tokenid", tokenid);
     } catch (error) {
       console.error(error);
     }
