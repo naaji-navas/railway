@@ -4,12 +4,10 @@ import { Message_data } from "../../../../context/context";
 
 const UserDetails = () => {
   const [user, setUser] = useState({});
-
-  const apiUrl = "https://ima-msn.up.railway.app/current_user/";
   const [message, setMessage] = useState(localStorage.getItem("token"));
+  const apiUrl = "https://ima-msn.up.railway.app/current_user/";
+  const router = useRouter();
 
-  var router = useRouter();
-  
   useEffect(() => {
     const fetchUserDetails = async () => {
       try {
@@ -17,32 +15,37 @@ const UserDetails = () => {
           headers: {
             Authorization: `Bearer ${message}`,
           },
-          
         });
-        console.log("sigintoken", message);
         const data = await res.json();
         setUser(data);
-
       } catch (error) {
         console.error(error);
       }
     };
-
     fetchUserDetails();
   }, [apiUrl, message]);
 
   return (
-    <div>
-      <h1>User Details</h1>
-      <ul>
-        <li>Name: {user.name}</li>
-        <li>Place: {user.place}</li>
-        <li>Phone Number: {user.phone_no}</li>
-        <li>Alternate Phone Number: {user.alt_phone_no}</li>
-        <li>Email: {user.email_id}</li>
-        <li>Alternate Email: {user.alt_email_id}</li>
-        <li>Preferred Location: {user.pref_loc}</li>
-      </ul>
+    <div className="bg-white rounded-lg shadow-lg p-6 max-w-[50%] mx-auto text-ellipsis overflow-hidden">
+      <h1 className="text-ellipsis overflow-hidden text-2xl font-bold mb-4">
+        User Details
+      </h1>
+      <div className="grid grid-cols-2 gap-4">
+        <div className="font-semibold">Name:</div>
+        <div>{user.name}</div>
+        <div className="font-semibold">Place:</div>
+        <div>{user.place}</div>
+        <div className="font-semibold">Phone Number:</div>
+        <div>{user.phone_no}</div>
+        <div className="font-semibold">Alternate Phone Number:</div>
+        <div>{user.alt_phone_no}</div>
+        <div className="font-semibold">Email:</div>
+        <div>{user.email_id}</div>
+        <div className="font-semibold">Alternate Email:</div>
+        <div>{user.alt_email_id}</div>
+        <div className="font-semibold">Preferred Location:</div>
+        <div>{user.pref_loc}</div>
+      </div>
     </div>
   );
 };
