@@ -1,7 +1,8 @@
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 import { Message_data } from "../../../../context/context";
-import signIn from "../SignIn";
+import UserDetails from "../UserDetails";
+
 const SignUp = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -34,10 +35,11 @@ const SignUp = () => {
         body: JSON.stringify(formData),
       });
       const data = await res.json();
-      console.log(data);
-      setMessage(data.tokenId);
-      router.push("/signIn");
-      console.log("tokenid", tokenid);
+
+      if (!data.tokenId) return alert("Invalid Credentials");
+
+      localStorage.setItem("token", data.tokenId);
+      router.push("/userdetails");
     } catch (error) {
       console.error(error);
     }

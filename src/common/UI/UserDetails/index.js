@@ -2,12 +2,14 @@ import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 import { Message_data } from "../../../../context/context";
 
-const UserDetails = ({ token }) => {
+const UserDetails = () => {
   const [user, setUser] = useState({});
 
   const apiUrl = "https://ima-msn.up.railway.app/current_user/";
-  const { message } = useContext(Message_data);
+  const [message, setMessage] = useState(localStorage.getItem("token"));
+
   var router = useRouter();
+  
   useEffect(() => {
     const fetchUserDetails = async () => {
       try {
@@ -17,16 +19,17 @@ const UserDetails = ({ token }) => {
           },
           
         });
-        console.log('sigintoken', message)
+        console.log("sigintoken", message);
         const data = await res.json();
         setUser(data);
+
       } catch (error) {
         console.error(error);
       }
     };
 
     fetchUserDetails();
-  }, [apiUrl, token]);
+  }, [apiUrl, message]);
 
   return (
     <div>
