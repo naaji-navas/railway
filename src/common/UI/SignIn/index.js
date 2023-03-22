@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
-import { Message_data } from "../../../../context/context";
+
 import UserDetails from "../UserDetails";
 
 const SignIn = () => {
@@ -18,27 +18,54 @@ const SignIn = () => {
       [e.target.name]: e.target.value,
     }));
   };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     try {
-      const res = await fetch(apiUrl, {
+       const params = new URLSearchParams();
+    params.append('username', formData.username);
+    params.append('password', formData.password);
+      const response = await fetch("https://ima-msn.up.railway.app/login/", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
+          accept: "application/json",
         },
-        body: JSON.stringify(formData),
+        body: params.toString()
       });
-      const data = await res.json();
-      console.log(data);
-      // if (!data.tokenId) return alert("Invalid Credentials");
 
-      localStorage.setItem("token", data.tokenId);
-      // router.push("/userdetails");
+      const responseData = await response.json();
+      localStorage.setItem("token", responseData.access_token);
+      console.log(responseData);
+        if (responseData.access_token) {
+      router.push("/userdetails");
+    } else {
+      alert("Invalid credentials");
+    }
     } catch (error) {
       console.error(error);
     }
   };
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     console.log('formData', formData)
+  //     const res = await fetch(apiUrl, {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/x-www-form-urlencoded",
+  //       },
+  //       body: JSON.stringify(formData),
+  //     });
+  //     const data = await res.json();
+  //     console.log(data);
+  //     // if (!data.tokenId) return alert("Invalid Credentials");
+
+  //     localStorage.setItem("token", data.tokenId);
+  //     // router.push("/userdetails");
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
   return (
     <div className="lg:flex">
