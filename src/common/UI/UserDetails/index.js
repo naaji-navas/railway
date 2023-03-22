@@ -1,14 +1,120 @@
 import { Button } from "@mui/material";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 import { Message_data } from "../../../../context/context";
 
 const UserDetails = () => {
-  const [paid, setPaid] = useState(true);
+  const [paid, setPaid] = useState(false);
   const [user, setUser] = useState({});
   const [message, setMessage] = useState(localStorage.getItem("token"));
   const apiUrl = "https://ima-msn.up.railway.app/current_user/";
+
   const router = useRouter();
+
+  const initializeRazorpay = () => {
+    return new Promise((resolve) => {
+      const script = document.createElement("script");
+      script.src = "https://checkout.razorpay.com/v1/checkout.js";
+
+      script.onload = () => {
+        resolve(true);
+      };
+      script.onerror = () => {
+        resolve(false);
+      };
+
+      document.body.appendChild(script);
+    });
+  };
+
+  const makePayment = async () => {
+    const res = await initializeRazorpay();
+
+    if (!res) {
+      alert("Razorpay SDK Failed to load");
+      return;
+    }
+
+    // Make API call to the serverless API
+    const response = await fetch(
+      "https://ima-msn.up.railway.app/payment/initiate/",
+      {
+        method: "GET",
+        headers: {
+          accept: "application/json",
+          Authorization: `Bearer ${message}`,
+        },
+      }
+    );
+    const data = await response.json();
+
+    console.log(data);
+
+    var options = {
+      key: process.env.RAZORPAY_KEY, // Enter the Key ID generated from the Dashboard
+      name: "Manu Arora Pvt Ltd",
+      currency: data.currency,
+      amount: data.amount,
+      order_id: data.id,
+      description: "Thankyou for your test donation",
+      image: "https://manuarora.in/logo.png",
+      handler: function (response) {
+        // Validate payment at server - using webhooks is a better idea.
+        alert(response.razorpay_payment_id);
+        alert(response.razorpay_order_id);
+        alert(response.razorpay_signature);
+      },
+      prefill: {
+        name: "Manu Arora",
+        email: "manuarorawork@gmail.com",
+        contact: "9999999999",
+      },
+    };
+
+    const paymentObject = new window.Razorpay(options);
+    paymentObject.on("payment.failed", function (response) {
+      alert(response.error.code);
+      alert(response.error.description);
+      alert(response.error.source);
+      alert(response.error.step);
+      alert(response.error.reason);
+      alert(response.error.metadata.order_id);
+      alert(response.error.metadata.payment_id);
+    });
+    paymentObject.open();
+  };
+
+  const handleDownloadPDF = async () => {
+    try {
+      const response = await fetch(
+        "https://ima-msn.up.railway.app/pdf/generate/",
+        {
+          method: "GET",
+          headers: {
+            accept: "application/json",
+            Authorization: `Bearer ${message}`,
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to generate PDF");
+      }
+
+      const blob = await response.blob();
+
+      const url = window.URL.createObjectURL(new Blob([blob]));
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", "file.pdf");
+      document.body.appendChild(link);
+      link.click();
+      link.parentNode.removeChild(link);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     const fetchUserDetails = async () => {
@@ -20,6 +126,9 @@ const UserDetails = () => {
         });
         const data = await res.json();
         setUser(data);
+        console.log(data)
+
+        data.transac.status==0?setPaid(false):setPaid(true)
       } catch (error) {
         console.error(error);
       }
@@ -47,12 +156,16 @@ const UserDetails = () => {
         <div>{user.alt_email_id}</div>
         <div className="font-semibold">Preferred Location:</div>
         <div>{user.pref_loc}</div>
-        {paid ? (
-          <Button id="rzp-button1" variant="contained">
+        {!paid ? (
+          <Button id="rzp-button1" onClick={makePayment} variant="contained">
             Pay with Razorpay
           </Button>
         ) : (
-          <Button id="rzp-button1" variant="contained">
+          <Button
+            id="rzp-button1"
+            onClick={handleDownloadPDF}
+            variant="contained"
+          >
             Download PDF
           </Button>
         )}

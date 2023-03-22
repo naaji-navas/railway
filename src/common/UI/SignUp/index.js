@@ -12,22 +12,21 @@ const SignUp = () => {
     alt_phone_no: "",
     email_id: "",
     alt_email_id: "",
-    pref_loc: "",
+    pref_loc: "Kochi",
   });
   const [selectedLocation, setSelectedLocation] = useState("");
   const router = useRouter();
   const { message, setMessage } = useContext(Message_data);
-  const apiUrl = "https://ima-msn.up.railway.app/register/";
+  const apiUrl = process.env.REACT_APP_API_URL_REGISTER;
 
   const handleChange = (e) => {
     setFormData((prevData) => ({
       ...prevData,
       [e.target.name]: e.target.value,
     }));
+    console.log(e.target.value);
   };
-  const handlerazorpay = () => {
-  
-}
+  const handlerazorpay = () => {};
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -167,11 +166,11 @@ const SignUp = () => {
                   <select
                     id="city-select"
                     name="pref_loc"
-                    onChange={handleChange}
                     value={formData.pref_loc}
+                    onChange={handleChange}
                   >
-                    <option value="kochi">Kochi</option>
-                    <option value="kozhikode">Kozhikode</option>
+                    <option value="Kochi">Kochi</option>
+                    <option value="Trivandrum">Thiruvananthapuram</option>
                   </select>
                 </div>
               </div>

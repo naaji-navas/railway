@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
+import Link from "next/link";
 
 import UserDetails from "../UserDetails";
 
@@ -10,7 +11,7 @@ const SignIn = () => {
   });
   const router = useRouter();
 
-  const apiUrl = "https://ima-msn.up.railway.app/login/";
+  // const apiUrl = process.env.REACT_APP_API_URL + "login/";
 
   const handleChange = (e) => {
     setFormData((prevData) => ({
@@ -19,28 +20,30 @@ const SignIn = () => {
     }));
   };
   const handleSubmit = async (event) => {
+    const apiUrl="https://ima-msn.up.railway.app/login/";
+
     event.preventDefault();
     try {
-       const params = new URLSearchParams();
-    params.append('username', formData.username);
-    params.append('password', formData.password);
-      const response = await fetch("https://ima-msn.up.railway.app/login/", {
+      const params = new URLSearchParams();
+      params.append("username", formData.username);
+      params.append("password", formData.password);
+      const response = await fetch(apiUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
           accept: "application/json",
         },
-        body: params.toString()
+        body: params.toString(),
       });
 
       const responseData = await response.json();
       localStorage.setItem("token", responseData.access_token);
       console.log(responseData);
-        if (responseData.access_token) {
-      router.push("/userdetails");
-    } else {
-      alert("Invalid credentials");
-    }
+      if (responseData.access_token) {
+        router.push("/userdetails");
+      } else {
+        alert("Invalid credentials");
+      }
     } catch (error) {
       console.error(error);
     }
@@ -135,9 +138,11 @@ const SignIn = () => {
             </form>
             <div className="mt-12 text-sm font-display font-semibold text-gray-700 text-center">
               Dont have an account ?{" "}
-              <a className="cursor-pointer text-indigo-600 hover:text-indigo-800">
+              <Link href="/signup">
+              <div className="cursor-pointer text-indigo-600 hover:text-indigo-800">
                 Sign up
-              </a>
+              </div>
+              </Link>
             </div>
           </div>
         </div>
