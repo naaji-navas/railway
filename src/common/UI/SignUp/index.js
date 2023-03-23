@@ -122,17 +122,17 @@ localStorage.setItem("token", data.tokenId);
     }
   };
   return (
-    <div className="lg:flex">
+    <div className="lg:flex mb-10">
       <div className="lg:w-1/2 xl:max-w-screen-sm">
         <div className="py-12 bg-indigo-100 lg:bg-white flex justify-center lg:justify-start lg:px-12">
           <div className="cursor-pointer flex items-center">
             <div></div>
-            <div className="text-2xl text-indigo-800 tracking-wide ml-2 font-semibold">
-              ji app
+           <div className="text-5xl text-indigo-800 tracking-wide ml-2 font-bold">
+              IMA MSN
             </div>
           </div>
         </div>
-        <div className="mt-10 px-12 sm:px-24 md:px-48 lg:px-12 lg:mt-16 xl:px-24 xl:max-w-2xl">
+        <div className="mt-5 px-12 sm:px-24 md:px-48 lg:px-12 lg:mt-16 xl:px-24 xl:max-w-2xl">
           <h2
             className="text-center text-4xl text-indigo-900 font-display font-semibold lg:text-left xl:text-5xl
               xl:text-bold"

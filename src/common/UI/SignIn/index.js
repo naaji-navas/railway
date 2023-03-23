@@ -80,8 +80,8 @@ console.log(apiUrl)
         <div className="py-12 bg-indigo-100 lg:bg-white flex justify-center lg:justify-start lg:px-12">
           <div className="cursor-pointer flex items-center">
             <div></div>
-            <div className="text-2xl text-indigo-800 tracking-wide ml-2 font-semibold">
-              ji app
+            <div className="text-5xl text-indigo-800 tracking-wide ml-2 font-bold">
+              IMA MSN
             </div>
           </div>
         </div>

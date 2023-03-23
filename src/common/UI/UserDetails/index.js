@@ -62,9 +62,17 @@ const UserDetails = () => {
       image: "https://manuarora.in/logo.png",
       handler: function (response) {
         // Validate payment at server - using webhooks is a better idea.
-        alert(response.razorpay_payment_id);
-        alert(response.razorpay_order_id);
-        alert(response.razorpay_signature);
+        if (response.razorpay_payment_id) {
+          alert("Payment Successful");
+        setPaid(true);
+
+        } else {
+          alert("Payment Failed");
+        }
+
+        // alert(response.razorpay_payment_id);
+        // alert(response.razorpay_order_id);
+        // alert(response.razorpay_signature);
       },
       prefill: {
         name: "Manu Arora",
@@ -138,7 +146,7 @@ const UserDetails = () => {
   }, [apiUrl, message]);
 
   return (
-    <div className="bg-white rounded-lg shadow-lg p-6 max-w-[80%] align-middle justify-center mt-[20%] mx-auto text-ellipsis overflow-hidden">
+    <div className="bg-white rounded-lg shadow-lg p-6 max-w-[80%] align-middle justify-center mt-[10%] mx-auto text-ellipsis overflow-hidden">
       <h1 className="text-ellipsis overflow-hidden text-2xl font-bold mb-4">
         User Details
       </h1>
@@ -157,6 +165,8 @@ const UserDetails = () => {
         <div>{user.alt_email_id}</div>
         <div className="font-semibold">Preferred Location:</div>
         <div>{user.pref_loc}</div>
+         <div className="font-semibold">Payment Status:</div>
+         <div>{!paid ? "Not Paid" : "Paid"}</div>
         {!paid ? (
           <Button id="rzp-button1" onClick={makePayment} variant="contained">
             Pay with Razorpay
