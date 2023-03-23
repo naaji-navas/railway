@@ -6,7 +6,7 @@ import { Message_data } from "../../../../context/context";
 import process from "next/dist/build/webpack/loaders/resolve-url-loader/lib/postcss";
 
 const UserDetails = () => {
-  const [paid, setPaid] = useState(false);
+  const [paid, setPaid] = useState(0);
   const [user, setUser] = useState({});
   const [message, setMessage] = useState(localStorage.getItem("token"));
   const apiUrl = "https://ima-msn.up.railway.app/current_user/";
@@ -61,16 +61,17 @@ const UserDetails = () => {
       description: "Thankyou for your test donation",
       image: "https://manuarora.in/logo.png",
       handler: function (response) {
-        // Validate payment at server - using webhooks is a better idea.
         if (response.razorpay_payment_id) {
           alert("Payment Successful");
-        setPaid(true);
 
+         
+          getPaymentStatus(response.razorpay_payment_id,response.razorpay_signature)
+          setPaid(true);
         } else {
           alert("Payment Failed");
         }
-      const paymentId = response.razorpay_payment_id;
-        const signature = response.razorpay_signature;
+    
+       
         // alert(response.razorpay_payment_id);
         // alert(response.razorpay_order_id);
         // alert(response.razorpay_signature);
@@ -126,12 +127,13 @@ const UserDetails = () => {
     }
   };
 
-   const getPaymentStatus = async () => {
+   const getPaymentStatus = async (paymentId,signature) => {
   try {
     const res = await fetch("https://ima-msn.up.railway.app/payment/verify/", {
-      method: "GET",
+      method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${message}`,
       },
       body: JSON.stringify({
         razorpay_payment_id:paymentId ,
@@ -148,13 +150,7 @@ const UserDetails = () => {
   }
 };
 
-  // a useEffect to call the function getPaymentStatus
-
-  useEffect(() => {
-    getPaymentStatus();
-
-
-  }, []);
+ 
 
 
 
@@ -172,6 +168,7 @@ const UserDetails = () => {
         });
         const data = await res.json();
         setUser(data);
+        setPaid(data.transac.status)
         console.log(data.transac.status);
 
         data.transac.status == 0 ? setPaid(false) : setPaid(true);
@@ -182,11 +179,6 @@ const UserDetails = () => {
     fetchUserDetails();
     //  a function to check if the user has paid or not with the api call "https://ima-msn.up.railway.app/pdf/generate/" and set the state of paid to true or false, the request body is {"razorpay_payment_id": "string","razorpay_signature": "string"
       // }
-
-
-getPaymentStatus();
-
-
 
   }, [apiUrl, message]);
 
@@ -212,7 +204,7 @@ getPaymentStatus();
         <div>{user.pref_loc}</div>
          <div className="font-semibold">Payment Status:</div>
          <div>{!paid ? "Not Paid" : "Paid"}</div>
-        {!paid ? (
+        {paid==0 ? (
           <Button id="rzp-button1" onClick={makePayment} variant="contained">
             Pay with Razorpay
           </Button>

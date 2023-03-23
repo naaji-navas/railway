@@ -70,7 +70,7 @@ const SignUp = () => {
       return false;
     }
     // check if the centre count Kochi is greater than 500 if so then alert the user
-    if (centreCount.kochi > 1 && formData.pref_loc == "Kochi") {
+    if (centreCount.kochi > 300 && formData.pref_loc == "Kochi") {
       alert("Kochi centre is full");
       return false;
     }
@@ -267,7 +267,7 @@ localStorage.setItem("token", data.tokenId);
                           font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-indigo-600
                           shadow-lg"
                 >
-                  Log In
+                Register
                 </button>
               </div>
             </form>
