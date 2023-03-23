@@ -69,7 +69,8 @@ const UserDetails = () => {
         } else {
           alert("Payment Failed");
         }
-
+      const paymentId = response.razorpay_payment_id;
+        const signature = response.razorpay_signature;
         // alert(response.razorpay_payment_id);
         // alert(response.razorpay_order_id);
         // alert(response.razorpay_signature);
@@ -125,7 +126,43 @@ const UserDetails = () => {
     }
   };
 
+   const getPaymentStatus = async () => {
+  try {
+    const res = await fetch("https://ima-msn.up.railway.app/payment/verify/", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        razorpay_payment_id:paymentId ,
+        razorpay_signature: signature,
+      })
+
+
+    });
+    const data = await res.json();
+    console.log(apiUrl, data);
+
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+  // a useEffect to call the function getPaymentStatus
+
   useEffect(() => {
+    getPaymentStatus();
+
+
+  }, []);
+
+
+
+
+
+
+  useEffect(() => {
+
     const fetchUserDetails = async () => {
       try {
         const res = await fetch(apiUrl, {
@@ -135,7 +172,7 @@ const UserDetails = () => {
         });
         const data = await res.json();
         setUser(data);
-        console.log(data);
+        console.log(data.transac.status);
 
         data.transac.status == 0 ? setPaid(false) : setPaid(true);
       } catch (error) {
@@ -143,6 +180,14 @@ const UserDetails = () => {
       }
     };
     fetchUserDetails();
+    //  a function to check if the user has paid or not with the api call "https://ima-msn.up.railway.app/pdf/generate/" and set the state of paid to true or false, the request body is {"razorpay_payment_id": "string","razorpay_signature": "string"
+      // }
+
+
+getPaymentStatus();
+
+
+
   }, [apiUrl, message]);
 
   return (
