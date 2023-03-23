@@ -66,7 +66,7 @@ const UserDetails = () => {
 
          
           getPaymentStatus(response.razorpay_payment_id,response.razorpay_signature)
-          setPaid(true);
+          setPaid(1);
         } else {
           alert("Payment Failed");
         }
