@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 import { Message_data } from "../../../../context/context";
+import process from "next/dist/build/webpack/loaders/resolve-url-loader/lib/postcss";
 
 const UserDetails = () => {
   const [paid, setPaid] = useState(false);
@@ -52,7 +53,7 @@ const UserDetails = () => {
     console.log(data);
 
     var options = {
-      key: process.env.RAZORPAY_KEY, // Enter the Key ID generated from the Dashboard
+      key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID, // Enter the Key ID generated from the Dashboard
       name: "Manu Arora Pvt Ltd",
       currency: data.currency,
       amount: data.amount,
@@ -126,9 +127,9 @@ const UserDetails = () => {
         });
         const data = await res.json();
         setUser(data);
-        console.log(data)
+        console.log(data);
 
-        data.transac.status==0?setPaid(false):setPaid(true)
+        data.transac.status == 0 ? setPaid(false) : setPaid(true);
       } catch (error) {
         console.error(error);
       }

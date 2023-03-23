@@ -1,10 +1,23 @@
+import { Button, message, Space } from "antd";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
-import { Message_data } from "../../../../context/context";
-import UserDetails from "../UserDetails";
+import process from "next/dist/build/webpack/loaders/resolve-url-loader/lib/postcss";
+
+const apiUrl = process.env.NEXT_PUBLIC_API_URL + "register/";
+
 
 const SignUp = () => {
+ const [messageApi, contextHolder] = message.useMessage();
+  const success = () => {
+    messageApi.open({
+      type: 'loading',
+      content: 'Action in progress..',
+      duration: 0,
+    });
+    // Dismiss manually and asynchronously
+    setTimeout(messageApi.destroy, 2500);
+  };
   const [formData, setFormData] = useState({
     name: "",
     place: "",
@@ -16,8 +29,15 @@ const SignUp = () => {
   });
   const [selectedLocation, setSelectedLocation] = useState("");
   const router = useRouter();
-  const { message, setMessage } = useContext(Message_data);
-  const apiUrl = process.env.REACT_APP_API_URL_REGISTER;
+
+
+  const handleError=()=>{
+    if(formData.phone_no!=10){
+      alert("Phone Number should be of 10 digits","error")
+    }
+
+
+  }
 
   const handleChange = (e) => {
     setFormData((prevData) => ({
@@ -25,11 +45,15 @@ const SignUp = () => {
       [e.target.name]: e.target.value,
     }));
     console.log(e.target.value);
+    success()
+
   };
   const handlerazorpay = () => {};
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
+
     try {
+
       const res = await fetch(apiUrl, {
         method: "POST",
         headers: {
@@ -39,12 +63,14 @@ const SignUp = () => {
       });
       const data = await res.json();
 
-      if (!data.tokenId) return alert("Invalid Credentials");
+
+      // if (!data.tokenId) return anterror("Invalid Credentials","error");
 
       localStorage.setItem("token", data.tokenId);
       router.push("/userdetails");
     } catch (error) {
-      console.error(error);
+      console.log(error)
+
     }
   };
 
@@ -75,12 +101,14 @@ const SignUp = () => {
                 <input
                   className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
                   name="name"
+                  required
                   type="text"
                   placeholder="Enter your Name"
                   value={formData.name}
                   onChange={handleChange}
                 />
               </div>
+
               <div className="mt-8">
                 <div className="flex justify-between items-center">
                   <div className="text-sm font-bold text-gray-700 tracking-wide">
@@ -88,6 +116,7 @@ const SignUp = () => {
                   </div>
                 </div>
                 <input
+                required
                   className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
                   name="place"
                   value={formData.place}
@@ -105,6 +134,7 @@ const SignUp = () => {
                 <input
                   className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
                   name="phone_no"
+                  required
                   value={formData.phone_no}
                   onChange={handleChange}
                   placeholder="Enter your Mobile Number"
@@ -120,6 +150,7 @@ const SignUp = () => {
                   className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
                   value={formData.alt_phone_no}
                   name="alt_phone_no"
+                  required
                   onChange={handleChange}
                   type
                   placeholder="Enter your place"
@@ -137,6 +168,7 @@ const SignUp = () => {
                   name="email_id"
                   onChange={handleChange}
                   type="email"
+                  required
                   placeholder="Enter your email id"
                 />
               </div>
@@ -152,6 +184,7 @@ const SignUp = () => {
                   name="alt_email_id"
                   onChange={handleChange}
                   type="email"
+                  required
                   placeholder="Enter your alternate email id"
                 />
               </div>
@@ -166,6 +199,7 @@ const SignUp = () => {
                   <select
                     id="city-select"
                     name="pref_loc"
+                    required
                     value={formData.pref_loc}
                     onChange={handleChange}
                   >
@@ -176,6 +210,11 @@ const SignUp = () => {
               </div>
               <div className="mt-10">
                 <button
+                  onClick={()=>{
+                  handleSubmit();
+                  handleError()
+                  }
+                  }
                   className="bg-indigo-500 text-gray-100 p-4 w-full rounded-full tracking-wide
                           font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-indigo-600
                           shadow-lg"
@@ -357,77 +396,6 @@ const SignUp = () => {
         </div>
       </div>
     </div>
-    // <div className="bg-grey-lighter min-h-screen flex flex-col">
-    //   <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
-    //     <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
-    //       <h1 className="mb-8 text-3xl text-center">Sign up</h1>
-    //       <form onSubmit={handleSubmit}>
-    //         <input
-    //           type="text"
-    //           className="block border border-grey-light w-full p-3 rounded mb-4"
-    //           name="name"
-    //           placeholder="Full Name"
-    //           value={formData.name}
-    //           onChange={handleChange}
-    //         />
-    //         <input
-    //           type="text"
-    //           className="block border border-grey-light w-full p-3 rounded mb-4"
-    //           name="place"
-    //           placeholder="Place"
-    //           value={formData.place}
-    //           onChange={handleChange}
-    //         />
-    //         <input
-    //           type="text"
-    //           className="block border border-grey-light w-full p-3 rounded mb-4"
-    //           name="phone_no"
-    //           placeholder="Phone Number"
-    //           value={formData.phone_no}
-    //           onChange={handleChange}
-    //         />
-    //         <input
-    //           type="text"
-    //           className="block border border-grey-light w-full p-3 rounded mb-4"
-    //           name="alt_phone_no"
-    //           placeholder="Alternate Phone Number"
-    //           value={formData.alt_phone_no}
-    //           onChange={handleChange}
-    //         />
-    //         <input
-    //           type="text"
-    //           className="block border border-grey-light w-full p-3 rounded mb-4"
-    //           name="email_id"
-    //           placeholder="Email"
-    //           value={formData.email_id}
-    //           onChange={handleChange}
-    //         />
-    //         <input
-    //           type="text"
-    //           className="block border border-grey-light w-full p-3 rounded mb-4"
-    //           name="alt_email_id"
-    //           placeholder="Alternate Email"
-    //           value={formData.alt_email_id}
-    //           onChange={handleChange}
-    //         />
-    //         <input
-    //           type="text"
-    //           className="block border border-grey-light w-full p-3 rounded mb-4"
-    //           name="pref_loc"
-    //           placeholder="Preferred Location"
-    //           value={formData.pref_loc}
-    //           onChange={handleChange}
-    //         />
-    //         <button
-    //           type="submit"
-    //           className="w-full text-center py-3 rounded bg-blue-600 text-white hover:bg-green-dark focus:outline-none my-1"
-    //         >
-    //           Create Account
-    //         </button>
-    //       </form>
-    //     </div>
-    //   </div>
-    // </div>
   );
 };
 export default SignUp;

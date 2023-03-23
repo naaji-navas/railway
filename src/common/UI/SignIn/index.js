@@ -11,7 +11,9 @@ const SignIn = () => {
   });
   const router = useRouter();
 
-  // const apiUrl = process.env.REACT_APP_API_URL + "login/";
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL + "login/";
+
+console.log(apiUrl)
 
   const handleChange = (e) => {
     setFormData((prevData) => ({
@@ -20,7 +22,7 @@ const SignIn = () => {
     }));
   };
   const handleSubmit = async (event) => {
-    const apiUrl="https://ima-msn.up.railway.app/login/";
+
 
     event.preventDefault();
     try {
@@ -42,10 +44,12 @@ const SignIn = () => {
       if (responseData.access_token) {
         router.push("/userdetails");
       } else {
-        alert("Invalid credentials");
+
+        alert("username or password is incorrect");
       }
     } catch (error) {
-      console.error(error);
+
+      console.log(error);
     }
   };
   // const handleSubmit = async (e) => {
