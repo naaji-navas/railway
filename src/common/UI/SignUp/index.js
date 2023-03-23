@@ -18,18 +18,64 @@ const SignUp = () => {
     alt_email_id: "",
     pref_loc: "Kochi",
   });
+  const [centreCount, setCentreCount] = useState({
+    Kochi: 0,
+    Trivandrum: 0,
+  });
   const [selectedLocation, setSelectedLocation] = useState("");
   const router = useRouter();
 
+// useEffect to get the centre count
+  useEffect(() => {
+    getCentreCount();
+  },
+  [centreCount]);
+
+
+  const getCentreCount = async () => {
+    const res = await fetch("https://ima-msn.up.railway.app/centre_count/", {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+      },
+    });
+    const data = await res.json();
+
+    setCentreCount(data);
+
+
+  };
 
 // a funciton to check the alternate and primary phone number and email are different
   const check = () => {
+    console.log(centreCount.kochi);
+    // check if all the fields are not filled
+    if (
+      formData.name == "" ||
+      formData.place == "" ||
+      formData.phone_no == "" ||
+      formData.alt_phone_no == "" ||
+      formData.email_id == "" ||
+      formData.alt_email_id == ""
+    ) {
+      alert("please fill all the fields");
+      return false;
+    }
     if (formData.phone_no == formData.alt_phone_no) {
       alert("primary and alternate phone number cannot be same");
       return false;
     }
     if (formData.email_id == formData.alt_email_id) {
       alert("primary and alternate email cannot be same");
+      return false;
+    }
+    // check if the centre count Kochi is greater than 500 if so then alert the user
+    if (centreCount.kochi > 1 && formData.pref_loc == "Kochi") {
+      alert("Kochi centre is full");
+      return false;
+    }
+    if ( centreCount.tvm > 700 && formData.pref_loc == "Trivandrum") {
+      alert("Trivandrum centre is full");
       return false;
     }
     return true;
@@ -41,16 +87,17 @@ const SignUp = () => {
       ...prevData,
       [e.target.name]: e.target.value,
     }));
-    console.log(e.target.value);
 
 
   };
-  const handlerazorpay = () => {};
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-
+if (check() == false) {
+        return;
+      }
       const res = await fetch(apiUrl, {
+
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -59,7 +106,7 @@ const SignUp = () => {
       });
       const data = await res.json();
 localStorage.setItem("token", data.tokenId);
-  if(check()) {
+   {
     if (!data.tokenId) {
       alert("User Already Exists, Try Logging In");
     } else {
@@ -74,7 +121,6 @@ localStorage.setItem("token", data.tokenId);
 
     }
   };
-
   return (
     <div className="lg:flex">
       <div className="lg:w-1/2 xl:max-w-screen-sm">
