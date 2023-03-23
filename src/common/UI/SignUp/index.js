@@ -25,12 +25,6 @@ const SignUp = () => {
   const [selectedLocation, setSelectedLocation] = useState("");
   const router = useRouter();
 
-// useEffect to get the centre count
-  useEffect(() => {
-    getCentreCount();
-  },
-  [centreCount]);
-
 
   const getCentreCount = async () => {
     const res = await fetch("https://ima-msn.up.railway.app/centre_count/", {
@@ -50,13 +44,13 @@ const SignUp = () => {
   const check = () => {
     console.log(centreCount.kochi);
     // check if all the fields are not filled
+    getCentreCount();
+
     if (
       formData.name == "" ||
       formData.place == "" ||
       formData.phone_no == "" ||
-      formData.alt_phone_no == "" ||
-      formData.email_id == "" ||
-      formData.alt_email_id == ""
+      formData.email_id == ""
     ) {
       alert("please fill all the fields");
       return false;
@@ -70,7 +64,7 @@ const SignUp = () => {
       return false;
     }
     // check if the centre count Kochi is greater than 500 if so then alert the user
-    if (centreCount.kochi > 1 && formData.pref_loc == "Kochi") {
+    if (centreCount.kochi > 300 && formData.pref_loc == "Kochi") {
       alert("Kochi centre is full");
       return false;
     }
@@ -105,9 +99,9 @@ if (check() == false) {
         body: JSON.stringify(formData),
       });
       const data = await res.json();
-localStorage.setItem("token", data.tokenId);
+localStorage.setItem("token", data.access_token);
    {
-    if (!data.tokenId) {
+    if (!data.access_token) {
       alert("User Already Exists, Try Logging In");
     } else {
 
@@ -267,7 +261,7 @@ localStorage.setItem("token", data.tokenId);
                           font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-indigo-600
                           shadow-lg"
                 >
-                  Log In
+                Register
                 </button>
               </div>
             </form>
