@@ -8,17 +8,8 @@ const apiUrl = process.env.NEXT_PUBLIC_API_URL + "register/";
 
 
 const SignUp = () => {
- const [messageApi, contextHolder] = message.useMessage();
-  const success = () => {
-    messageApi.open({
-      type: 'loading',
-      content: 'Action in progress..',
-      duration: 0,
-    });
-    // Dismiss manually and asynchronously
-    setTimeout(messageApi.destroy, 2500);
-  };
   const [formData, setFormData] = useState({
+
     name: "",
     place: "",
     phone_no: "",
@@ -31,13 +22,19 @@ const SignUp = () => {
   const router = useRouter();
 
 
-  const handleError=()=>{
-    if(formData.phone_no!=10){
-      alert("Phone Number should be of 10 digits","error")
+// a funciton to check the alternate and primary phone number and email are different
+  const check = () => {
+    if (formData.phone_no == formData.alt_phone_no) {
+      alert("primary and alternate phone number cannot be same");
+      return false;
     }
-
-
+    if (formData.email_id == formData.alt_email_id) {
+      alert("primary and alternate email cannot be same");
+      return false;
+    }
+    return true;
   }
+
 
   const handleChange = (e) => {
     setFormData((prevData) => ({
@@ -45,13 +42,12 @@ const SignUp = () => {
       [e.target.name]: e.target.value,
     }));
     console.log(e.target.value);
-    success()
+
 
   };
   const handlerazorpay = () => {};
   const handleSubmit = async (e) => {
-    // e.preventDefault();
-
+    e.preventDefault();
     try {
 
       const res = await fetch(apiUrl, {
@@ -62,12 +58,17 @@ const SignUp = () => {
         body: JSON.stringify(formData),
       });
       const data = await res.json();
+localStorage.setItem("token", data.tokenId);
+  if(check()) {
+    if (!data.tokenId) {
+      alert("User Already Exists, Try Logging In");
+    } else {
 
-
-      // if (!data.tokenId) return anterror("Invalid Credentials","error");
-
-      localStorage.setItem("token", data.tokenId);
       router.push("/userdetails");
+    }
+  }
+
+
     } catch (error) {
       console.log(error)
 
@@ -135,6 +136,8 @@ const SignUp = () => {
                   className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
                   name="phone_no"
                   required
+                  minLength={10}
+                  maxLength={10}
                   value={formData.phone_no}
                   onChange={handleChange}
                   placeholder="Enter your Mobile Number"
@@ -151,9 +154,11 @@ const SignUp = () => {
                   value={formData.alt_phone_no}
                   name="alt_phone_no"
                   required
+                  minLength={10}
+                  maxLength={10}
                   onChange={handleChange}
                   type
-                  placeholder="Enter your place"
+                  placeholder="Enter your alternate phone number"
                 />
               </div>
               <div className="mt-8">
@@ -210,11 +215,8 @@ const SignUp = () => {
               </div>
               <div className="mt-10">
                 <button
-                  onClick={()=>{
-                  handleSubmit();
-                  handleError()
-                  }
-                  }
+
+                  onClick={handleSubmit}
                   className="bg-indigo-500 text-gray-100 p-4 w-full rounded-full tracking-wide
                           font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-indigo-600
                           shadow-lg"
