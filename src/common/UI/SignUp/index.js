@@ -8,6 +8,7 @@ const apiUrl = process.env.NEXT_PUBLIC_API_URL + "register/";
 
 const SignUp = () => {
 
+    const [token, setToken] = useState("");
   // use effect snippet
   useEffect(() => {
     if (typeof window !== "undefined"){
@@ -15,7 +16,6 @@ const SignUp = () => {
     }
   }, [token]);
 
-    const [token, setToken] = useState("");
   const [formData, setFormData] = useState({
 
     name: "",
@@ -107,7 +107,10 @@ if (check() == false) {
         body: JSON.stringify(formData),
       });
       const data = await res.json();
-      setToken(data.access_token);
+      if(data.access_token){
+
+        setToken(data.access_token);
+      }
 
    {
     if (!data.access_token) {
