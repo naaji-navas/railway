@@ -1,8 +1,6 @@
 import { useRouter } from "next/router";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
-
-import UserDetails from "../UserDetails";
 
 const SignIn = () => {
   const [token, setToken] = useState("");
@@ -13,13 +11,12 @@ const SignIn = () => {
   });
   const router = useRouter();
 
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL + "login/";
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 // use effect
   useEffect(() => {
     if (token) {
       if (typeof window !== "undefined"){
-
-      localStorage.setItem("token", token);
+      localStorage.setItem("tokenid", token);
       }
     }
   }, [token]);
@@ -39,7 +36,7 @@ console.log(apiUrl)
       const params = new URLSearchParams();
       params.append("username", formData.username);
       params.append("password", formData.password);
-      const response = await fetch(apiUrl, {
+      const response = await fetch(apiUrl+ "login/", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
@@ -52,7 +49,7 @@ console.log(apiUrl)
       setToken(responseData.access_token)
       console.log(responseData);
       if (responseData.access_token) {
-        router.push("/userdetails");
+        await router.push("/userdetails");
       } else {
 
         alert("username or password is incorrect");
@@ -62,27 +59,7 @@ console.log(apiUrl)
       console.log(error);
     }
   };
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     console.log('formData', formData)
-  //     const res = await fetch(apiUrl, {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/x-www-form-urlencoded",
-  //       },
-  //       body: JSON.stringify(formData),
-  //     });
-  //     const data = await res.json();
-  //     console.log(data);
-  //     // if (!data.tokenId) return alert("Invalid Credentials");
 
-  //     localStorage.setItem("token", data.tokenId);
-  //     // router.push("/userdetails");
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
 
   return (
     <div className="lg:flex">

@@ -3,19 +3,22 @@ import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 import process from "next/dist/build/webpack/loaders/resolve-url-loader/lib/postcss";
 
-const apiUrl = process.env.NEXT_PUBLIC_API_URL + "register/";
+const apiUrl = process.env.NEXT_PUBLIC_API_URL ;
 
 
 const SignUp = () => {
 
+    const [token, setToken] = useState("");
   // use effect snippet
   useEffect(() => {
-    if (typeof window !== "undefined"){
-      localStorage.setItem("token", token);
+    if(token){
+       if (typeof window !== "undefined"){
+      localStorage.setItem("tokenid", token);
     }
+    }
+
   }, [token]);
 
-    const [token, setToken] = useState("");
   const [formData, setFormData] = useState({
 
     name: "",
@@ -35,7 +38,7 @@ const SignUp = () => {
 
 
   const getCentreCount = async () => {
-    const res = await fetch("https://ima-msn.up.railway.app/centre_count/", {
+    const res = await fetch(apiUrl+"centre_count/", {
       method: "GET",
       headers: {
         accept: "application/json",
@@ -52,7 +55,7 @@ const SignUp = () => {
   const check = () => {
     console.log(centreCount.kochi);
     // check if all the fields are not filled
-    getCentreCount();
+    getCentreCount().then(r => console.log(r));
 
     if (
       formData.name == "" ||
@@ -95,10 +98,10 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-if (check() == false) {
+if (check() === false) {
         return;
       }
-      const res = await fetch(apiUrl, {
+      const res = await fetch(apiUrl+"register/", {
 
         method: "POST",
         headers: {
@@ -107,17 +110,19 @@ if (check() == false) {
         body: JSON.stringify(formData),
       });
       const data = await res.json();
-      setToken(data.access_token);
+      if(data.access_token){
+
+        setToken(data.access_token);
+      }
 
    {
     if (!data.access_token) {
       alert("User Already Exists, Try Logging In");
     } else {
 
-      router.push("/userdetails");
+      await router.push("/userdetails");
     }
   }
-
 
     } catch (error) {
       console.log(error)

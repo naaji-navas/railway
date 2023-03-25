@@ -4,13 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8bfd8f6d-b51c-4ff5-a5cd-e82f8e7489e2" name="Changes" comment="">
+<<<<<<< HEAD
+    <list default="true" id="abc9ebff-d32e-4956-aa71-3a03e40e0ed4" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/UI/SignIn/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/UI/SignIn/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/UI/SignUp/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/UI/SignUp/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/common/UI/UserDetails/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/UI/UserDetails/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.js" afterDir="false" />
+=======
+    <list default="true" id="8bfd8f6d-b51c-4ff5-a5cd-e82f8e7489e2" name="Changes" comment="">
+
+>>>>>>> 0997d9b1d6055ed2f1c90b3dbd0fcd78519e18fd
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="resolve-builderror" />
+      </map>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -58,5 +74,16 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

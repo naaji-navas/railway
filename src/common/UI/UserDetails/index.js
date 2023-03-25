@@ -1,18 +1,22 @@
 import { Button } from "@mui/material";
-import Link from "next/link";
 import { useRouter } from "next/router";
-import { useContext, useEffect, useState } from "react";
-import { Message_data } from "../../../../context/context";
+import { useEffect, useState } from "react";
 import process from "next/dist/build/webpack/loaders/resolve-url-loader/lib/postcss";
+
 
 const UserDetails = () => {
   const [paid, setPaid] = useState(0);
   const [user, setUser] = useState({});
   const [message, setMessage] = useState("");
-  const apiUrl = "https://ima-msn.up.railway.app/current_user/";
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
   const router = useRouter();
 
+
+    useEffect(() => {
+    const message = localStorage.getItem("tokenid");
+    setMessage(message);
+  }, [message]);
 
 
   const initializeRazorpay = () => {
@@ -41,7 +45,7 @@ const UserDetails = () => {
 
     // Make API call to the serverless API
     const response = await fetch(
-      "https://ima-msn.up.railway.app/payment/initiate/",
+      apiUrl+"payment/initiate/",
       {
         method: "GET",
         headers: {
@@ -87,13 +91,13 @@ const UserDetails = () => {
 
     const paymentObject = new window.Razorpay(options);
     paymentObject.on("payment.failed", function (response) {
-      alert(response.error.code);
+      // alert(response.error.code);
       alert(response.error.description);
-      alert(response.error.source);
-      alert(response.error.step);
+      // alert(response.error.source);
+      // alert(response.error.step);
       alert(response.error.reason);
-      alert(response.error.metadata.order_id);
-      alert(response.error.metadata.payment_id);
+      // alert(response.error.metadata.order_id);
+      // alert(response.error.metadata.payment_id);
     });
     paymentObject.open();
   };
@@ -101,7 +105,7 @@ const UserDetails = () => {
   const handleDownloadPDF = async () => {
     try {
       const response = await fetch(
-        "https://ima-msn.up.railway.app/pdf/generate/",
+        apiUrl+"pdf/generate/",
         {
           method: "GET",
           headers: {
@@ -112,9 +116,8 @@ const UserDetails = () => {
       );
 
       if (!response.ok) {
-        throw new Error("Failed to generate PDF");
+        throw new Error('Failed to generate PDF');
       }
-
       const blob = await response.blob();
 
       const url = window.URL.createObjectURL(new Blob([blob]));
@@ -131,7 +134,7 @@ const UserDetails = () => {
 
    const getPaymentStatus = async (paymentId,signature) => {
   try {
-    const res = await fetch("https://ima-msn.up.railway.app/payment/verify/", {
+    const res = await fetch(apiUrl+"payment/verify/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -152,18 +155,11 @@ const UserDetails = () => {
   }
 };
 
- 
-
-
-
-
-
-
   useEffect(() => {
 
     const fetchUserDetails = async () => {
       try {
-        const res = await fetch(apiUrl, {
+        const res = await fetch(apiUrl+"current_user/", {
           headers: {
             Authorization: `Bearer ${message}`,
           },
@@ -173,17 +169,15 @@ const UserDetails = () => {
         setPaid(data.transac.status)
         console.log(data.transac.status);
 
-        data.transac.status == 0 ? setPaid(false) : setPaid(true);
+        data.transac.status === 0 ? setPaid(false) : setPaid(true);
       } catch (error) {
         console.error(error);
       }
-    };if (typeof window !== 'undefined') {
-    const message = localStorage.getItem("token");
-    setMessage(message);
-}
-    fetchUserDetails();
-    //  a function to check if the user has paid or not with the api call "https://ima-msn.up.railway.app/pdf/generate/" and set the state of paid to true or false, the request body is {"razorpay_payment_id": "string","razorpay_signature": "string"
-      // }
+
+    };
+    fetchUserDetails().then(r => console.log(r));
+
+
 
   }, [apiUrl, message]);
 
@@ -209,7 +203,7 @@ const UserDetails = () => {
         <div>{user.pref_loc}</div>
          <div className="font-semibold">Payment Status:</div>
          <div>{!paid ? "Not Paid" : "Paid"}</div>
-        {paid==0 ? (
+        {!paid? (
           <Button id="rzp-button1" onClick={makePayment} variant="contained">
             Pay with Razorpay
           </Button>
