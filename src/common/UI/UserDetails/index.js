@@ -6,15 +6,50 @@ import { Message_data } from "../../../../context/context";
 import process from "next/dist/build/webpack/loaders/resolve-url-loader/lib/postcss";
 
 const UserDetails = () => {
+
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   const [paid, setPaid] = useState(0);
   const [user, setUser] = useState({});
   const [message, setMessage] = useState("");
-  const apiUrl = "https://ima-msn.up.railway.app/current_user/";
+
 
   const router = useRouter();
 
+useEffect(() => {
+   if (typeof window !== 'undefined') {
+    setMessage(localStorage.getItem("tokenid"));
+
+}
+
+  
+}, [])
+
+  useEffect(() => {
+
+    console.log("message",message)
+    const fetchUserDetails = async () => {
+      try {
+        const res = await fetch(apiUrl, {
+          headers: {
+            Authorization: `Bearer ${message}`,
+          },
+        });
+        const data = await res.json();
+
+        console.log("data",data)
+        setUser(data);
+        setPaid(data.transac.status !== 0);
+        console.log(data.transac.status);
+
+        data.transac.status == 0 ? setPaid(false) : setPaid(true);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchUserDetails();
 
 
+  }, [apiUrl, message]);
   const initializeRazorpay = () => {
     return new Promise((resolve) => {
       const script = document.createElement("script");
@@ -41,7 +76,7 @@ const UserDetails = () => {
 
     // Make API call to the serverless API
     const response = await fetch(
-      "https://ima-msn.up.railway.app/payment/initiate/",
+      apiUrl+"payment/initiate/",
       {
         method: "GET",
         headers: {
@@ -87,13 +122,13 @@ const UserDetails = () => {
 
     const paymentObject = new window.Razorpay(options);
     paymentObject.on("payment.failed", function (response) {
-      alert(response.error.code);
+      // alert(response.error.code);
       alert(response.error.description);
-      alert(response.error.source);
-      alert(response.error.step);
+      // alert(response.error.source);
+      // alert(response.error.step);
       alert(response.error.reason);
-      alert(response.error.metadata.order_id);
-      alert(response.error.metadata.payment_id);
+      // alert(response.error.metadata.order_id);
+      // alert(response.error.metadata.payment_id);
     });
     paymentObject.open();
   };
@@ -101,7 +136,7 @@ const UserDetails = () => {
   const handleDownloadPDF = async () => {
     try {
       const response = await fetch(
-        "https://ima-msn.up.railway.app/pdf/generate/",
+        apiUrl+"pdf/generate/",
         {
           method: "GET",
           headers: {
@@ -131,7 +166,7 @@ const UserDetails = () => {
 
    const getPaymentStatus = async (paymentId,signature) => {
   try {
-    const res = await fetch("https://ima-msn.up.railway.app/payment/verify/", {
+    const res = await fetch(apiUrl+"payment/verify/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -159,33 +194,7 @@ const UserDetails = () => {
 
 
 
-  useEffect(() => {
 
-    const fetchUserDetails = async () => {
-      try {
-        const res = await fetch(apiUrl, {
-          headers: {
-            Authorization: `Bearer ${message}`,
-          },
-        });
-        const data = await res.json();
-        setUser(data);
-        setPaid(data.transac.status)
-        console.log(data.transac.status);
-
-        data.transac.status == 0 ? setPaid(false) : setPaid(true);
-      } catch (error) {
-        console.error(error);
-      }
-    };if (typeof window !== 'undefined') {
-    const message = localStorage.getItem("token");
-    setMessage(message);
-}
-    fetchUserDetails();
-    //  a function to check if the user has paid or not with the api call "https://ima-msn.up.railway.app/pdf/generate/" and set the state of paid to true or false, the request body is {"razorpay_payment_id": "string","razorpay_signature": "string"
-      // }
-
-  }, [apiUrl, message]);
 
   return (
     <div className="bg-white rounded-lg shadow-lg p-6 max-w-[80%] align-middle justify-center mt-[10%] mx-auto text-ellipsis overflow-hidden">

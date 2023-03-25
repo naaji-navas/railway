@@ -1,8 +1,8 @@
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
-import Link from "next/link";
 
-import UserDetails from "../UserDetails";
+
 
 const SignIn = () => {
   const [token, setToken] = useState("");
@@ -13,17 +13,14 @@ const SignIn = () => {
   });
   const router = useRouter();
 
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL + "login/";
-// use effect
-  useEffect(() => {
-    if (token) {
-      if (typeof window !== "undefined"){
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL ;
 
-      localStorage.setItem("token", token);
-      }
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("tokenid", token);
     }
   }, [token]);
-console.log(apiUrl)
+  console.log(apiUrl);
 
   const handleChange = (e) => {
     setFormData((prevData) => ({
@@ -32,14 +29,12 @@ console.log(apiUrl)
     }));
   };
   const handleSubmit = async (event) => {
-
-
     event.preventDefault();
     try {
       const params = new URLSearchParams();
       params.append("username", formData.username);
       params.append("password", formData.password);
-      const response = await fetch(apiUrl, {
+      const response = await fetch(apiUrl+ "login/", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
@@ -49,40 +44,17 @@ console.log(apiUrl)
       });
 
       const responseData = await response.json();
-      setToken(responseData.access_token)
+      setToken(responseData.access_token);
       console.log(responseData);
       if (responseData.access_token) {
         router.push("/userdetails");
       } else {
-
         alert("username or password is incorrect");
       }
     } catch (error) {
-
       console.log(error);
     }
   };
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     console.log('formData', formData)
-  //     const res = await fetch(apiUrl, {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/x-www-form-urlencoded",
-  //       },
-  //       body: JSON.stringify(formData),
-  //     });
-  //     const data = await res.json();
-  //     console.log(data);
-  //     // if (!data.tokenId) return alert("Invalid Credentials");
-
-  //     localStorage.setItem("token", data.tokenId);
-  //     // router.push("/userdetails");
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
 
   return (
     <div className="lg:flex">
@@ -153,9 +125,9 @@ console.log(apiUrl)
             <div className="mt-12 text-sm font-display font-semibold text-gray-700 text-center">
               Dont have an account ?{" "}
               <Link href="/signup">
-              <div className="cursor-pointer text-indigo-600 hover:text-indigo-800">
-                Sign up
-              </div>
+                <div className="cursor-pointer text-indigo-600 hover:text-indigo-800">
+                  Sign up
+                </div>
               </Link>
             </div>
           </div>

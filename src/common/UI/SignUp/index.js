@@ -3,19 +3,18 @@ import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 import process from "next/dist/build/webpack/loaders/resolve-url-loader/lib/postcss";
 
-const apiUrl = process.env.NEXT_PUBLIC_API_URL + "register/";
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 
 const SignUp = () => {
-
-  // use effect snippet
+ const [token, setToken] = useState("");
   useEffect(() => {
     if (typeof window !== "undefined"){
-      localStorage.setItem("token", token);
+      localStorage.setItem("tokenid", token);
     }
   }, [token]);
 
-    const [token, setToken] = useState("");
+
   const [formData, setFormData] = useState({
 
     name: "",
@@ -30,12 +29,11 @@ const SignUp = () => {
     Kochi: 0,
     Trivandrum: 0,
   });
-  const [selectedLocation, setSelectedLocation] = useState("");
   const router = useRouter();
 
 
   const getCentreCount = async () => {
-    const res = await fetch("https://ima-msn.up.railway.app/centre_count/", {
+    const res = await fetch( apiUrl + "centre_count/" , {
       method: "GET",
       headers: {
         accept: "application/json",
@@ -48,7 +46,7 @@ const SignUp = () => {
 
   };
 
-// a funciton to check the alternate and primary phone number and email are different
+
   const check = () => {
     console.log(centreCount.kochi);
     // check if all the fields are not filled
@@ -98,7 +96,7 @@ const SignUp = () => {
 if (check() == false) {
         return;
       }
-      const res = await fetch(apiUrl, {
+      const res = await fetch(apiUrl + "register/", {
 
         method: "POST",
         headers: {
