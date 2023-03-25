@@ -13,14 +13,8 @@ const UserDetails = () => {
 
   const router = useRouter();
 
-    useEffect(() => {
-    const message = localStorage.getItem("token");
-    setMessage(message);
-  }, [message]);
-// if (typeof window !== 'undefined') {
-//     const message = localStorage.getItem("message");
-//     setMessage(message);
-// }
+
+
   const initializeRazorpay = () => {
     return new Promise((resolve) => {
       const script = document.createElement("script");
@@ -183,7 +177,10 @@ const UserDetails = () => {
       } catch (error) {
         console.error(error);
       }
-    };
+    };if (typeof window !== 'undefined') {
+    const message = localStorage.getItem("token");
+    setMessage(message);
+}
     fetchUserDetails();
     //  a function to check if the user has paid or not with the api call "https://ima-msn.up.railway.app/pdf/generate/" and set the state of paid to true or false, the request body is {"razorpay_payment_id": "string","razorpay_signature": "string"
       // }
