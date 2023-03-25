@@ -12,10 +12,12 @@ const UserDetails = () => {
 
   const router = useRouter();
 
+
     useEffect(() => {
     const message = localStorage.getItem("tokenid");
     setMessage(message);
   }, [message]);
+
 
   const initializeRazorpay = () => {
     return new Promise((resolve) => {
@@ -171,8 +173,10 @@ const UserDetails = () => {
       } catch (error) {
         console.error(error);
       }
+
     };
     fetchUserDetails().then(r => console.log(r));
+
 
 
   }, [apiUrl, message]);
