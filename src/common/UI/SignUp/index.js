@@ -8,6 +8,15 @@ const apiUrl = process.env.NEXT_PUBLIC_API_URL + "register/";
 
 
 const SignUp = () => {
+
+  // use effect snippet
+  useEffect(() => {
+    if (typeof window !== "undefined"){
+      localStorage.setItem("token", token);
+    }
+  }, [token]);
+
+    const [token, setToken] = useState("");
   const [formData, setFormData] = useState({
 
     name: "",
@@ -99,7 +108,8 @@ if (check() == false) {
         body: JSON.stringify(formData),
       });
       const data = await res.json();
-localStorage.setItem("token", data.access_token);
+      setToken(data.access_token);
+
    {
     if (!data.access_token) {
       alert("User Already Exists, Try Logging In");

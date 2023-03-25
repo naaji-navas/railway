@@ -5,6 +5,8 @@ import Link from "next/link";
 import UserDetails from "../UserDetails";
 
 const SignIn = () => {
+  const [token, setToken] = useState("");
+
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -12,7 +14,15 @@ const SignIn = () => {
   const router = useRouter();
 
   const apiUrl = process.env.NEXT_PUBLIC_API_URL + "login/";
+// use effect
+  useEffect(() => {
+    if (token) {
+      if (typeof window !== "undefined"){
 
+      localStorage.setItem("token", token);
+      }
+    }
+  }, [token]);
 console.log(apiUrl)
 
   const handleChange = (e) => {
@@ -39,7 +49,7 @@ console.log(apiUrl)
       });
 
       const responseData = await response.json();
-      localStorage.setItem("token", responseData.access_token);
+      setToken(responseData.access_token)
       console.log(responseData);
       if (responseData.access_token) {
         router.push("/userdetails");
