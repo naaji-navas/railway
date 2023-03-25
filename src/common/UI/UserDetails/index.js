@@ -8,11 +8,19 @@ import process from "next/dist/build/webpack/loaders/resolve-url-loader/lib/post
 const UserDetails = () => {
   const [paid, setPaid] = useState(0);
   const [user, setUser] = useState({});
-  const [message, setMessage] = useState(localStorage.getItem("token"));
+  const [message, setMessage] = useState("");
   const apiUrl = "https://ima-msn.up.railway.app/current_user/";
 
   const router = useRouter();
 
+    useEffect(() => {
+    const message = localStorage.getItem("token");
+    setMessage(message);
+  }, [message]);
+// if (typeof window !== 'undefined') {
+//     const message = localStorage.getItem("message");
+//     setMessage(message);
+// }
   const initializeRazorpay = () => {
     return new Promise((resolve) => {
       const script = document.createElement("script");
