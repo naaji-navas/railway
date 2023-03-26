@@ -144,7 +144,7 @@ const styles = {
           <b>All winners have secrets don't they ?</b><br />
           And these little secrets makes the difference between an aspirant and a winner. So the ima msn Kerala brings to u all thats required to secure a seat in medical Colleges across the state .
           <br />
-          Cognosco is a single day event encompassing sessions by previous year toppers sharing their little cheat codes to  victory ,Dr Arun B Nair's ace session on Psychological stress management and a mock neet examination to prep you up for your Big day. See you in medical&nbsp;College.</p>
+          Cognosco is a single day event encompassing sessions by previous year toppers sharing their little cheat codes to  victory ,Dr Arun B Nairs ace session on Psychological stress management and a mock neet examination to prep you up for your Big day. See you in medical&nbsp;College.</p>
         <img src={undraw_img} alt="undraw"/>
       </div>
     </div>
