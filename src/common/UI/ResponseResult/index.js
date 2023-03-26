@@ -2,63 +2,9 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-const SignIn = () => {
-  const [token, setToken] = useState("");
-
-  const [formData, setFormData] = useState({
-    username: "",
-    password: "",
-  });
-  const router = useRouter();
-
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-// use effect
-  useEffect(() => {
-    if (token) {
-      if (typeof window !== "undefined"){
-      localStorage.setItem("tokenid", token);
-      }
-    }
-  }, [token]);
-console.log(apiUrl)
-
-  const handleChange = (e) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      [e.target.name]: e.target.value,
-    }));
-  };
-  const handleSubmit = async (event) => {
+const SignIn = ({message}) => {
 
 
-    event.preventDefault();
-    try {
-      const params = new URLSearchParams();
-      params.append("username", formData.username);
-      params.append("password", formData.password);
-      const response = await fetch(apiUrl+ "login/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          accept: "application/json",
-        },
-        body: params.toString(),
-      });
-
-      const responseData = await response.json();
-      setToken(responseData.access_token)
-      console.log(responseData);
-      if (responseData.access_token) {
-        await router.push("/userdetails");
-      } else {
-
-        alert("username or password is incorrect");
-      }
-    } catch (error) {
-
-      console.log(error);
-    }
-  };
 
 
   return (
@@ -66,83 +12,30 @@ console.log(apiUrl)
       <div className="lg:w-1/2 xl:max-w-screen-sm">
         <div className="py-12 bg-indigo-100 lg:bg-white flex justify-center lg:justify-start lg:px-12">
           <div className="cursor-pointer flex items-center">
-            <div></div>
+            <Link href="/signin">
             <div className="text-5xl text-indigo-800 tracking-wide ml-2 font-bold">
               IMA MSN
             </div>
+            </Link>
           </div>
         </div>
         <div className="mt-10 px-12 sm:px-24 md:px-48 lg:px-12 lg:mt-16 xl:px-24 xl:max-w-2xl">
           <h2
-            className="text-center text-4xl text-indigo-900 font-display font-semibold lg:text-left xl:text-5xl
+            className="text-center text-3xl text-indigo-900 font-display font-semibold  xl:text-2xl
               xl:text-bold"
           >
-            Log in
+            Username & Password has been sent to your email
           </h2>
           <div className="mt-12">
-            <form onSubmit={handleSubmit}>
-              <div>
-                <div className="text-sm font-bold text-gray-700 tracking-wide">
-                  username
-                </div>
-                <input
-                  className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
-                  value={formData.username}
-                  name="username"
-                  onChange={handleChange}
-                  type="email"
-                  placeholder="Enter your username"
-                />
-              </div>
-              <div className="mt-8">
-                <div className="flex justify-between items-center">
-                  <div className="text-sm font-bold text-gray-700 tracking-wide">
-                    Password
-                  </div>
-                  <div>
-                    <a
-                      className="text-xs font-display font-semibold text-indigo-600 hover:text-indigo-800
-                                  cursor-pointer"
-                    >
-                      {/* Forgot Password? */}
-                    </a>
-                  </div>
-                </div>
-                <input
-                  className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
-                  value={formData.password}
-                  onChange={handleChange}
-                  name="password"
-                  type="password"
-                  placeholder="Enter your password"
-                />
-              </div>
-              <div className="mt-8">
-                <button
-                  className="bg-indigo-500 text-gray-100 p-4 w-full rounded-full tracking-wide
-                          font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-indigo-600
-                          shadow-lg"
-                >
-                  Log In
-                </button>
-              </div>
-            </form>
+
             <div className="flex gap-12 justify-center">
 
 
-            <div className="mt-12 text-sm font-display font-semibold text-gray-700 text-center">
-              Dont have an account ?{" "}
-              <Link href="/signup">
-              <div className="cursor-pointer text-indigo-600 hover:text-indigo-800">
-                Sign up
-              </div>
-              </Link>
-            </div>
-                        <div className="mt-12 text-sm font-display font-semibold text-gray-700 text-center">
-              Forgot Password ?{" "}
-              <Link href="/reset">
-              <div className="cursor-pointer text-indigo-600 hover:text-indigo-800">
-                Reset Password
+                        <div className=" text-sm font-display font-semibold text-gray-700 text-center">
+
+              <Link href="/signin">
+              <div className="cursor-pointer text-indigo-600 text-2xl hover:text-indigo-800">
+                Signin
               </div>
               </Link>
             </div>
@@ -152,7 +45,7 @@ console.log(apiUrl)
       </div>
       <div className="hidden lg:flex items-center justify-center bg-indigo-100 flex-1 h-screen">
         <div className="max-w-xs transform duration-200 hover:scale-110 cursor-pointer">
-          <Link href="/signup">
+          <Link href="/signin">
 
 
           <svg
