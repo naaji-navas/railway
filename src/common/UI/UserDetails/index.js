@@ -3,8 +3,6 @@ import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
 import process from "next/dist/build/webpack/loaders/resolve-url-loader/lib/postcss";
 import axios from "axios";
-import Link from "next/link";
-// import fs from "fs";
 
 
 const UserDetails = () => {
@@ -25,12 +23,11 @@ const UserDetails = () => {
         });
         const data = await res.json();
         setUser(data);
-        console.log(data);
         if (data.transac) {
           setPaid(data.transac.status === 1);
         }
       } catch (error) {
-        console.error(error);
+
       }
     };
 
@@ -61,7 +58,7 @@ const UserDetails = () => {
 // a signout function
   const signOut = () => {
     localStorage.removeItem("tokenid");
-    router.push("/signin").then(r => console.log(r));
+    router.push("/signin");
   }
   const makePayment = async () => {
     const res = await initializeRazorpay();
