@@ -2,6 +2,8 @@ import { Button } from "@mui/material";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import process from "next/dist/build/webpack/loaders/resolve-url-loader/lib/postcss";
+import axios from "axios";
+// import fs from "fs";
 
 
 const UserDetails = () => {
@@ -34,7 +36,11 @@ const UserDetails = () => {
       document.body.appendChild(script);
     });
   };
-
+// a signout function
+  const signOut = () => {
+    localStorage.removeItem("tokenid");
+    router.push("/signin").then(r => console.log(r));
+  }
   const makePayment = async () => {
     const res = await initializeRazorpay();
 
@@ -102,35 +108,54 @@ const UserDetails = () => {
     paymentObject.open();
   };
 
-  const handleDownloadPDF = async () => {
-    try {
-      const response = await fetch(
-        apiUrl+"pdf/generate/",
-        {
-          method: "GET",
-          headers: {
-            accept: "application/json",
-            Authorization: `Bearer ${message}`,
-          },
-        }
-      );
 
-      if (!response.ok) {
-        throw new Error('Failed to generate PDF');
+
+
+// a javascript function to download the pdf from an api response
+
+
+async function downloadPdf() {
+  try {
+    const response = await axios.get('https://ima-msn.up.railway.app/pdf/generate/', {
+      responseType: 'blob',
+      headers: {
+        accept: 'application/json',
+        Authorization: `Bearer ${message}`,
       }
-      const blob = await response.blob();
 
-      const url = window.URL.createObjectURL(new Blob([blob]));
-      const link = document.createElement("a");
-      link.href = url;
-      link.setAttribute("download", "file.pdf");
-      document.body.appendChild(link);
-      link.click();
-      link.parentNode.removeChild(link);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+    });
+
+    const url = window.URL.createObjectURL(new Blob([response.data]));
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', 'document.pdf');
+    document.body.appendChild(link);
+    link.click();
+    console.log('PDF downloaded successfully!');
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
    const getPaymentStatus = async (paymentId,signature) => {
   try {
@@ -156,30 +181,26 @@ const UserDetails = () => {
 };
 
   useEffect(() => {
-
-    const fetchUserDetails = async () => {
-      try {
-        const res = await fetch(apiUrl+"current_user/", {
-          headers: {
-            Authorization: `Bearer ${message}`,
-          },
-        });
-        const data = await res.json();
-        setUser(data);
-        setPaid(data.transac.status)
-        console.log(data.transac.status);
-
-        data.transac.status === 0 ? setPaid(false) : setPaid(true);
-      } catch (error) {
-        console.error(error);
+  const fetchUserDetails = async () => {
+    try {
+      const res = await fetch(apiUrl + "current_user/", {
+        headers: {
+          Authorization: `Bearer ${message}`,
+        },
+      });
+      const data = await res.json();
+      setUser(data);
+      console.log(data);
+      if (data.transac) {
+        setPaid(data.transac.status);
       }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-    };
-    fetchUserDetails().then(r => console.log(r));
-
-
-
-  }, [apiUrl, message]);
+  fetchUserDetails();
+}, [apiUrl, message]);
 
   return (
     <div className="bg-white rounded-lg shadow-lg p-6 max-w-[80%] align-middle justify-center mt-[10%] mx-auto text-ellipsis overflow-hidden">
@@ -210,13 +231,25 @@ const UserDetails = () => {
         ) : (
           <Button
             id="rzp-button1"
-            onClick={handleDownloadPDF}
+            onClick={downloadPdf}
             variant="contained"
           >
             Download PDF
           </Button>
         )}
+          <div>
+                <Button
+            onClick={()=>{
+            signOut()}
+            }
+            variant="contained"
+          >
+            Sign Out
+          </Button>
       </div>
+      </div>
+
+
     </div>
   );
 };
