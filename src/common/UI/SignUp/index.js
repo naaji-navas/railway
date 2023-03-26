@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import process from "next/dist/build/webpack/loaders/resolve-url-loader/lib/postcss";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL ;
@@ -33,7 +33,6 @@ const SignUp = () => {
     Kochi: 0,
     Trivandrum: 0,
   });
-  const [selectedLocation, setSelectedLocation] = useState("");
   const router = useRouter();
 
 
@@ -109,20 +108,28 @@ if (check() === false) {
         },
         body: JSON.stringify(formData),
       });
-      const data = await res.json();
-      if(data.access_token){
 
+      const data = await res.json();
+      if(data.detail=="User already exists"){
+        alert("User already exists");
+      }
+      console.log(data);
+      if(data.access_token){
         setToken(data.access_token);
       }
 
-   {
-    if (!data.access_token) {
-      alert("User Already Exists, Try Logging In");
-    } else {
 
+     // if data response is User already exists then alert the user
+    if (data.message == "User already exists") {
+      alert("User already exists");
+    }
+    else if (!data.access_token) {
+      console.log("Failed to register")
+      return;
+    } else {
       await router.push("/userdetails");
     }
-  }
+
 
     } catch (error) {
       console.log(error)
