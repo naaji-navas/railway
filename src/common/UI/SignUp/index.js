@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import process from "next/dist/build/webpack/loaders/resolve-url-loader/lib/postcss";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL ;
@@ -290,11 +290,12 @@ if (check() === false) {
           </div>
         </div>
       </div>
-      <div className="hidden lg:flex items-center justify-center bg-indigo-100 flex-1 h-screen">
-        <div className="max-w-xs transform duration-200 hover:scale-110 cursor-pointer"></div>
-      </div>
-      <div className="hidden lg:flex items-center justify-center bg-indigo-100 flex-1 h-screen">
+
+         <div className="hidden lg:flex items-center justify-center bg-indigo-100 flex-1 min-h-screen">
         <div className="max-w-xs transform duration-200 hover:scale-110 cursor-pointer">
+          <Link href="/signin">
+
+
           <svg
             className="w-5/6 mx-auto"
             xmlns="http://www.w3.org/2000/svg"
@@ -302,7 +303,7 @@ if (check() === false) {
             data-name="Layer 1"
             viewBox="0 0 528.71721 699.76785"
           >
-            <title>Login</title>
+
             <rect y="17.06342" width={444} height={657} fill="#535461" />
             <polygon
               points="323 691.063 0 674.063 0 17.063 323 0.063 323 691.063"
@@ -449,6 +450,7 @@ if (check() === false) {
               fill="#2f2e41"
             />
           </svg>
+            </Link>
         </div>
       </div>
     </div>

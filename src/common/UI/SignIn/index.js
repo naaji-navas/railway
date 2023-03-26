@@ -140,6 +140,9 @@ console.log(apiUrl)
       </div>
       <div className="hidden lg:flex items-center justify-center bg-indigo-100 flex-1 h-screen">
         <div className="max-w-xs transform duration-200 hover:scale-110 cursor-pointer">
+          <Link href="/signup">
+
+
           <svg
             className="w-5/6 mx-auto"
             xmlns="http://www.w3.org/2000/svg"
@@ -147,7 +150,7 @@ console.log(apiUrl)
             data-name="Layer 1"
             viewBox="0 0 528.71721 699.76785"
           >
-            <title>Login</title>
+
             <rect y="17.06342" width={444} height={657} fill="#535461" />
             <polygon
               points="323 691.063 0 674.063 0 17.063 323 0.063 323 691.063"
@@ -294,6 +297,7 @@ console.log(apiUrl)
               fill="#2f2e41"
             />
           </svg>
+            </Link>
         </div>
       </div>
     </div>
