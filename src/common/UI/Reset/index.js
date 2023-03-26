@@ -1,293 +1,97 @@
-import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
-import process from "next/dist/build/webpack/loaders/resolve-url-loader/lib/postcss";
+import { useEffect, useState } from "react";
+import Link from "next/link";
 
-const apiUrl = process.env.NEXT_PUBLIC_API_URL ;
-
-
-const SignUp = () => {
-
-    const [token, setToken] = useState("");
-  // use effect snippet
-  useEffect(() => {
-    if(token){
-       if (typeof window !== "undefined"){
-      localStorage.setItem("tokenid", token);
-    }
-    }
-
-  }, [token]);
+const Reset = () => {
+  const [token, setToken] = useState("");
 
   const [formData, setFormData] = useState({
-
-    name: "",
-    place: "",
-    phone_no: "",
-    alt_phone_no: "",
-    email_id: "",
-    alt_email_id: "",
-    pref_loc: "Kochi",
-  });
-  const [centreCount, setCentreCount] = useState({
-    Kochi: 0,
-    Trivandrum: 0,
+    username: "",
   });
   const router = useRouter();
 
-
-  const getCentreCount = async () => {
-    const res = await fetch(apiUrl+"centre_count/", {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-      },
-    });
-    const data = await res.json();
-
-    setCentreCount(data);
-
-
-  };
-
-// a funciton to check the alternate and primary phone number and email are different
-  const check = () => {
-    console.log(centreCount.kochi);
-    // check if all the fields are not filled
-    getCentreCount().then(r => console.log(r));
-
-    if (
-      formData.name == "" ||
-      formData.place == "" ||
-      formData.phone_no == "" ||
-      formData.email_id == ""
-    ) {
-      alert("please fill all the fields");
-      return false;
-    }
-    if (formData.phone_no == formData.alt_phone_no) {
-      alert("primary and alternate phone number cannot be same");
-      return false;
-    }
-    if (formData.email_id == formData.alt_email_id) {
-      alert("primary and alternate email cannot be same");
-      return false;
-    }
-    // check if the centre count Kochi is greater than 500 if so then alert the user
-    if (centreCount.kochi > 300 && formData.pref_loc == "Kochi") {
-      alert("Kochi centre is full");
-      return false;
-    }
-    if ( centreCount.tvm > 700 && formData.pref_loc == "Trivandrum") {
-      alert("Trivandrum centre is full");
-      return false;
-    }
-    return true;
-  }
-
-
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   const handleChange = (e) => {
     setFormData((prevData) => ({
       ...prevData,
       [e.target.name]: e.target.value,
     }));
-
-
   };
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-if (check() === false) {
-        return;
-      }
-      const res = await fetch(apiUrl+"register/", {
-
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await res.json();
-      if(data.detail=="User already exists"){
-        alert("User already exists");
-      }
+    const handleSubmit = (event) => {
+    event.preventDefault();
+    fetch(apiUrl+'reset_pass/', {
+      method: 'POST',
+      headers: {
+        'accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData.username)
+    })
+    .then(response => response.json())
+    .then(data => {
       console.log(data);
-      if(data.access_token){
-        setToken(data.access_token);
+      if (data.message === 'User Does not Exist') {
+        alert('User does not exist');
+      } else {
+        router.push('/responseresult').then(r => console.log(r));
       }
-
-
-     // if data responseresult is User already exists then alert the user
-    if (data.message == "User already exists") {
-      alert("User already exists");
-    }
-    else if (!data.access_token) {
-      console.log("Failed to register")
-
-    } else {
-      await router.push("/responseresult");
-    }
-
-
-    } catch (error) {
-      console.log(error)
-
-    }
+    })
+    .catch(error => console.error(error));
   };
+
+
   return (
-    <div className="lg:flex mb-10">
+    <div className="lg:flex">
       <div className="lg:w-1/2 xl:max-w-screen-sm">
         <div className="py-12 bg-indigo-100 lg:bg-white flex justify-center lg:justify-start lg:px-12">
           <div className="cursor-pointer flex items-center">
             <div></div>
-           <div className="text-5xl text-indigo-800 tracking-wide ml-2 font-bold">
+            <Link href="/signin">
+            <div className="text-5xl text-indigo-800 tracking-wide ml-2 font-bold">
               IMA MSN
             </div>
+            </Link>
           </div>
         </div>
-        <div className="mt-5 px-12 sm:px-24 md:px-48 lg:px-12 lg:mt-16 xl:px-24 xl:max-w-2xl">
+        <div className="mt-10 px-12 sm:px-24 md:px-48 lg:px-12 lg:mt-16 xl:px-24 xl:max-w-2xl">
           <h2
             className="text-center text-4xl text-indigo-900 font-display font-semibold lg:text-left xl:text-5xl
               xl:text-bold"
           >
-            SignUp
+            Reset Password
           </h2>
           <div className="mt-12">
             <form onSubmit={handleSubmit}>
               <div>
                 <div className="text-sm font-bold text-gray-700 tracking-wide">
-                  Name
+                  username
                 </div>
                 <input
                   className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
-                  name="name"
-                  required
-                  type="text"
-                  placeholder="Enter your Name"
-                  value={formData.name}
+                  value={formData.username}
+                  name="username"
                   onChange={handleChange}
+                  type="email"
+                  placeholder="Enter your username"
                 />
               </div>
 
               <div className="mt-8">
-                <div className="flex justify-between items-center">
-                  <div className="text-sm font-bold text-gray-700 tracking-wide">
-                    Place
-                  </div>
-                </div>
-                <input
-                required
-                  className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
-                  name="place"
-                  value={formData.place}
-                  onChange={handleChange}
-                  type
-                  placeholder="Enter your place"
-                />
-              </div>
-              <div className="mt-8">
-                <div className="flex justify-between items-center">
-                  <div className="text-sm font-bold text-gray-700 tracking-wide">
-                    Phone Number
-                  </div>
-                </div>
-                <input
-                  className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
-                  name="phone_no"
-                  required
-                  minLength={10}
-                  maxLength={10}
-                  value={formData.phone_no}
-                  onChange={handleChange}
-                  placeholder="Enter your Mobile Number"
-                />
-              </div>
-              <div className="mt-8">
-                <div className="flex justify-between items-center">
-                  <div className="text-sm font-bold text-gray-700 tracking-wide">
-                    Alternate Phone Number
-                  </div>
-                </div>
-                <input
-                  className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
-                  value={formData.alt_phone_no}
-                  name="alt_phone_no"
-                  required
-                  minLength={10}
-                  maxLength={10}
-                  onChange={handleChange}
-                  type
-                  placeholder="Enter your alternate phone number"
-                />
-              </div>
-              <div className="mt-8">
-                <div className="flex justify-between items-center">
-                  <div className="text-sm font-bold text-gray-700 tracking-wide">
-                    Email Id
-                  </div>
-                </div>
-                <input
-                  className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
-                  value={formData.email_id}
-                  name="email_id"
-                  onChange={handleChange}
-                  type="email"
-                  required
-                  placeholder="Enter your email id"
-                />
-              </div>
-              <div className="mt-8">
-                <div className="flex justify-between items-center">
-                  <div className="text-sm font-bold text-gray-700 tracking-wide">
-                    Alternate Email Id
-                  </div>
-                </div>
-                <input
-                  className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
-                  value={formData.alt_email_id}
-                  name="alt_email_id"
-                  onChange={handleChange}
-                  type="email"
-                  required
-                  placeholder="Enter your alternate email id"
-                />
-              </div>
-
-              <div className="mt-8">
-                <div className="flex justify-between items-center">
-                  <div className="text-sm font-bold text-gray-700 tracking-wide">
-                    Prefferred Location
-                  </div>
-                </div>
-                <div className="flex gap-2">
-                  <select
-                    id="city-select"
-                    name="pref_loc"
-                    required
-                    value={formData.pref_loc}
-                    onChange={handleChange}
-                  >
-                    <option value="Kochi">Kochi</option>
-                    <option value="Trivandrum">Thiruvananthapuram</option>
-                  </select>
-                </div>
-              </div>
-              <div className="mt-10">
                 <button
-
-                  onClick={handleSubmit}
                   className="bg-indigo-500 text-gray-100 p-4 w-full rounded-full tracking-wide
                           font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-indigo-600
                           shadow-lg"
                 >
-                Register
+                  Reset Password
                 </button>
               </div>
             </form>
-            <div className="mt-12 text-sm font-display font-semibold text-gray-700 text-center">
-              Already have an account? {/* Link to login page */}
+            <div className="flex gap-12 justify-center">
+
+
+              </div>
+             <div className="mt-12 text-sm font-display font-semibold text-gray-700 text-center">
+
               <Link href="/signin">
                 <div className="cursor-pointer text-indigo-600 hover:text-indigo-800">
                   Sign in
@@ -297,10 +101,9 @@ if (check() === false) {
           </div>
         </div>
       </div>
-
-         <div className="hidden lg:flex items-center justify-center bg-indigo-100 flex-1 min-h-screen">
+      <div className="hidden lg:flex items-center justify-center bg-indigo-100 flex-1 h-screen">
         <div className="max-w-xs transform duration-200 hover:scale-110 cursor-pointer">
-          <Link href="/signin">
+          <Link href="/signup">
 
 
           <svg
@@ -463,4 +266,4 @@ if (check() === false) {
     </div>
   );
 };
-export default SignUp;
+export default Reset;
