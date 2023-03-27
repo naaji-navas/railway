@@ -78,9 +78,9 @@ const Landing = () => {
                 <p className="mb-4 font-medium tracking-tight text-gray-400 xl:mb-6"></p>
                 <ul>
                   <span className="font-medium text-gray-500">
-                  A few, well kept,  little secrets makes the difference between an aspirant and a winner. IMA MSN Kerala brings to you, all that's required to secure a seat in Medical Colleges across the state.
+                  A few, well kept,  little secrets makes the difference between an aspirant and a winner. IMA MSN Kerala brings to you, all that&apos;s required to secure a seat in Medical Colleges across the state.
                   <br></br>
-Cognosco is a single day event, encompassing sessions by previous year toppers sharing their little cheat codes to victory ,Dr Arun B Nair's Ace session on Psychological stress management (Trivandrum)  and a mock neet examination to prep you up for your Big day.
+Cognosco is a single day event, encompassing sessions by previous year toppers sharing their little cheat codes to victory ,Dr Arun B Nair&apos;s Ace session on Psychological stress management (Trivandrum)  and a mock neet examination to prep you up for your Big day.
                   </span>
                 </ul>
               </div>
