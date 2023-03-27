@@ -11,16 +11,16 @@ import undraw_img from "../../../../public/assets/images/undraw_img.png";
 const Landing = () => {
   return (
     <div>
-      <section className="w-full px-8 text-gray-700 bg-white fixed rounded-[40px]">
+      <section className="w-full px-8 text-gray-700 bg-white fixed rounded-b-[40px]">
         <div className="container flex flex-col flex-wrap items-center justify-between py-5 mx-auto md:flex-row max-w-7xl">
           <div className="relative flex flex-col md:flex-row">
-            <a
+            <Link
               href="#_"
               className="flex items-center mb-5 gap-4 font-medium text-gray-900 lg:w-auto lg:items-center lg:justify-center md:mb-0"
             >
               <Image src={ima_msn} />
               <Image src={cognosco} />
-            </a>
+            </Link>
 
           </div>
           <div className="inline-flex items-center ml-5 space-x-6 lg:justify-end">
@@ -40,52 +40,34 @@ const Landing = () => {
         </div>
       </section>
       {/* Section 2 */}
-      <section
-        className="px-2 py-32  bg-white md:px-0 "
-        style={{
-          backgroundImage: `url(/assets/images/banner.png)`,
-          height: "60vh",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-        }}
-      >
-        <div className="container items-center max-w-6xl px-5 mx-auto xl:px-5">
-          <div className="flex flex-wrap items-center sm:-mx-3">
-            <div className="w-full md:w-1/2 md:px-3 mt-28">
-              <div className="w-full pb-9 space-y-10 justify-between sm:max-w-md lg:max-w-lg md:space-y-4 lg:space-y-8 xl:space-y-9 sm:pr-5 lg:pr-0 md:pb-0">
-                <h1 className="text-4xl  font-bold tracking-tight text-white sm:text-5xl md:text-2xl lg:text-3xl xl:text-5xl">
-                  <span className="block xl:inline">Cognosco </span>
-                </h1>
-
-                <div className="  flex flex-col sm:flex-row sm:space-x-4">
-                  <Link
-                    href="/signup"
-                    className="flex items-center w-full px-6 py-3 mb-3 text-lg text-white bg-black rounded-lg sm:mb-0 hover:bg-indigo-700 sm:w-auto"
-                  >
-                    Register
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-5 h-5 ml-1"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <line x1={5} y1={12} x2={19} y2={12} />
-                      <polyline points="12 5 19 12 12 19" />
-                    </svg>
-                  </Link>
-                </div>
-              </div>
-            </div>
-            <div className="w-full md:w-1/2"></div>
+<section className=" hidden md:block bg-white" style={{ backgroundImage: `url(/assets/images/banner.png)`, height: '60vh', backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}>
+  <div className="container max-w-6xl mx-auto px-5 xl:px-5  h-full flex flex-wrap items-end align-bottom text-bottom -mx-3">
+    <div className="w-full md:w-1/2 md:px-3">
+      <div className="max-w-lg lg:max-w-xl md:pb-0 pb-8 space-y-5 md:space-y-0 sm:max-w-md lg:max-w-lg md:space-y-4 lg:space-y-8 xl:space-y-9 pr-5">
+        <div className="flex flex-col mb-5  justify-end h-full">
+          <h1 className="text-5xl   font-bold tracking-tight text-white">
+            <span className="block xl:inline">Cognosco</span>
+          </h1>
+          <div className="flex flex-col sm:flex-row sm:space-x-4 mt-4">
+            <Link href="/signup" className="w-full sm:w-auto px-6 py-3 text-lg text-white bg-black rounded-lg hover:bg-indigo-700 flex items-center">
+              Register
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 ml-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </Link>
           </div>
         </div>
-      </section>
+      </div>
+    </div>
+    <div className="w-full md:w-1/2"></div>
+  </div>
+</section>
 
-      <section className="py-20 bg-gray-50">
+
+
+
+      <section className="py-20 bg-gray-50  ">
         <div className="container items-center max-w-6xl px-4 px-10 mx-auto sm:px-20 md:px-32 lg:px-16">
           <div className="flex flex-wrap items-center -mx-3">
             <div className="order-1 w-full px-3 lg:w-1/2 lg:order-0">
@@ -108,7 +90,7 @@ const Landing = () => {
                 </ul>
               </div>
             </div>
-            <div className="w-full px-3 mb-12 lg:w-1/2 order-0 lg:order-1 lg:mb-0">
+            <div className="w-full px-3 mb-12 mt-20 md:mt-0  lg:w-1/2 order-0 lg:order-1 lg:mb-0">
               <Image
                 className="mx-auto sm:max-w-sm lg:max-w-full"
                 src={undraw_img}
@@ -128,7 +110,7 @@ const Landing = () => {
           <div className="grid max-w-md mx-auto mt-6 overflow-hidden leading-7 text-gray-900 border border-b-4 border-gray-300 border-blue-600 rounded-xl md:max-w-lg lg:max-w-none sm:mt-10 lg:grid-cols-2">
             <div className="flex flex-col box-border gap-3 px-4 py-8 mb-6 text-center bg-white border-solid lg:mb-0 sm:px-4 sm:py-8 md:px-8 md:py-12 lg:px-10">
               <p>
-                Gmc Ernakulam&nbsp;<b>(300)</b> slots
+                Gmc Ernakulam&nbsp;<b>(250)</b> slots
               </p>
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3945.7498762846944!2d76.92607644996733!3d8.523647493842343!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05bbfd65530ccd%3A0xa0ceab851a9f2e90!2sGovernment%20Medical%20College%20Thiruvananthapuram!5e0!3m2!1sen!2sin!4v1679840329617!5m2!1sen!2sin"
@@ -142,7 +124,7 @@ const Landing = () => {
             </div>
             <div className="flex flex-col box-border gap-3 px-4 py-8 mb-6 text-center bg-white border-solid lg:mb-0 sm:px-4 sm:py-8 md:px-8 md:py-12 lg:px-10">
               <p className="font-medium">
-                Gmc Trivandrum <b>(700)</b> slots
+                Gmc Trivandrum <b>(500)</b> slots
               </p>
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3945.7498762846944!2d76.92607644996733!3d8.523647493842343!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05bbfd65530ccd%3A0xa0ceab851a9f2e90!2sGovernment%20Medical%20College%20Thiruvananthapuram!5e0!3m2!1sen!2sin!4v1679840329617!5m2!1sen!2sin"
