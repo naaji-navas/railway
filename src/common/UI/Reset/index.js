@@ -48,7 +48,7 @@ const Reset = () => {
             <div></div>
             <Link href="/signin">
             <div className="text-5xl text-indigo-800 tracking-wide ml-2 font-bold">
-              IMA MSN
+              Cognosco
             </div>
             </Link>
           </div>

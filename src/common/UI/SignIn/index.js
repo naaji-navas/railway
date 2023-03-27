@@ -68,7 +68,7 @@ console.log(apiUrl)
           <div className="cursor-pointer flex items-center">
             <div></div>
             <div className="text-5xl text-indigo-800 tracking-wide ml-2 font-bold">
-              IMA MSN
+              Cognosco
             </div>
           </div>
         </div>
