@@ -78,14 +78,9 @@ const Landing = () => {
                 <p className="mb-4 font-medium tracking-tight text-gray-400 xl:mb-6"></p>
                 <ul>
                   <span className="font-medium text-gray-500">
-                    These little secrets makes the difference between an
-                    aspirant and a winner. So the ima msn Kerala brings to u all
-                    thats required to secure a seat in medical Colleges across
-                    the state  Cognosco is a single day event encompassing
-                    sessions by previous year toppers sharing their little cheat
-                    codes to victory ,Dr Arun B Nairs ace session on
-                    Psychological stress management and a mock neet examination
-                    to prep you up for your Big day. See you in medical College.
+                  A few, well kept,  little secrets makes the difference between an aspirant and a winner. IMA MSN Kerala brings to you, all that's required to secure a seat in Medical Colleges across the state.
+                  <br></br>
+Cognosco is a single day event, encompassing sessions by previous year toppers sharing their little cheat codes to victory ,Dr Arun B Nair's Ace session on Psychological stress management (Trivandrum)  and a mock neet examination to prep you up for your Big day.
                   </span>
                 </ul>
               </div>
@@ -112,15 +107,13 @@ const Landing = () => {
               <p>
                 Gmc Ernakulam&nbsp;<b>(250)</b> slots
               </p>
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3945.7498762846944!2d76.92607644996733!3d8.523647493842343!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05bbfd65530ccd%3A0xa0ceab851a9f2e90!2sGovernment%20Medical%20College%20Thiruvananthapuram!5e0!3m2!1sen!2sin!4v1679840329617!5m2!1sen!2sin"
-                width={400}
-                height={400}
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.568938221612!2d76.35338145027391!3d10.05238429277994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080c058ff7a4cd%3A0xa9c697fee1e03c65!2sGovernment%20Medical%20College%20Ernakulam!5e0!3m2!1sen!2sin!4v1679924807855!5m2!1sen!2sin" 
+                 width={400}
+                 height={400}
+                 style={{ border: 0 }}
+                 allowFullScreen
+                 loading="lazy"
+                 referrerPolicy="no-referrer-when-downgrade"/>
             </div>
             <div className="flex flex-col box-border gap-3 px-4 py-8 mb-6 text-center bg-white border-solid lg:mb-0 sm:px-4 sm:py-8 md:px-8 md:py-12 lg:px-10">
               <p className="font-medium">
@@ -364,7 +357,7 @@ const Landing = () => {
             {/*</a>*/}
           </div>
           <p className="mt-8 text-base leading-6 text-center text-gray-400">
-            © 2021 Cognosco . All rights reserved.
+            © 2023 Cognosco . All rights reserved.
           </p>
         </div>
       </section>
