@@ -21,32 +21,7 @@ const Landing = () => {
               <Image src={ima_msn} />
               <Image src={cognosco} />
             </a>
-            {/*<nav className="flex flex-wrap items-center mb-5 text-base md:mb-0 md:pl-8 md:ml-8 md:border-l md:border-gray-200">*/}
-            {/*  <a*/}
-            {/*    href="#_"*/}
-            {/*    className="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900"*/}
-            {/*  >*/}
-            {/*    Home*/}
-            {/*  </a>*/}
-            {/*  <a*/}
-            {/*    href="#_"*/}
-            {/*    className="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900"*/}
-            {/*  >*/}
-            {/*    Features*/}
-            {/*  </a>*/}
-            {/*  <a*/}
-            {/*    href="#_"*/}
-            {/*    className="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900"*/}
-            {/*  >*/}
-            {/*    Pricing*/}
-            {/*  </a>*/}
-            {/*  <a*/}
-            {/*    href="#_"*/}
-            {/*    className="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900"*/}
-            {/*  >*/}
-            {/*    Blog*/}
-            {/*  </a>*/}
-            {/*</nav>*/}
+
           </div>
           <div className="inline-flex items-center ml-5 space-x-6 lg:justify-end">
             {/*<a*/}
@@ -74,7 +49,7 @@ const Landing = () => {
           backgroundSize: "cover",
         }}
       >
-        <div className="container items-center max-w-6xl px-8 mx-auto xl:px-5">
+        <div className="container items-center max-w-6xl px-5 mx-auto xl:px-5">
           <div className="flex flex-wrap items-center sm:-mx-3">
             <div className="w-full md:w-1/2 md:px-3 mt-28">
               <div className="w-full pb-9 space-y-10 justify-between sm:max-w-md lg:max-w-lg md:space-y-4 lg:space-y-8 xl:space-y-9 sm:pr-5 lg:pr-0 md:pb-0">
@@ -83,8 +58,8 @@ const Landing = () => {
                 </h1>
 
                 <div className="  flex flex-col sm:flex-row sm:space-x-4">
-                  <a
-                    href="#_"
+                  <Link
+                    href="/signup"
                     className="flex items-center w-full px-6 py-3 mb-3 text-lg text-white bg-black rounded-lg sm:mb-0 hover:bg-indigo-700 sm:w-auto"
                   >
                     Register
@@ -101,7 +76,7 @@ const Landing = () => {
                       <line x1={5} y1={12} x2={19} y2={12} />
                       <polyline points="12 5 19 12 12 19" />
                     </svg>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -121,10 +96,10 @@ const Landing = () => {
                 <p className="mb-4 font-medium tracking-tight text-gray-400 xl:mb-6"></p>
                 <ul>
                   <span className="font-medium text-gray-500">
-                    And these little secrets makes the difference between an
+                    These little secrets makes the difference between an
                     aspirant and a winner. So the ima msn Kerala brings to u all
                     thats required to secure a seat in medical Colleges across
-                    the state . Cognosco is a single day event encompassing
+                    the state  Cognosco is a single day event encompassing
                     sessions by previous year toppers sharing their little cheat
                     codes to victory ,Dr Arun B Nairs ace session on
                     Psychological stress management and a mock neet examination

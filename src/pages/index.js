@@ -1,10 +1,10 @@
 import React from "react";
-import SignUp from "@/common/UI/SignUp";
+import Landing from "@/pages/landing";
 
 const index = () => {
   return (
     <div>
-      <SignUp />
+      <Landing />
     </div>
   );
 };
