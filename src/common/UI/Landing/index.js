@@ -3,6 +3,10 @@ import Image from 'next/image'
 import ima_msn from '../../../../public/assets/images/ima_msn.png'
 import cognosco from '../../../../public/assets/images/cognosco.png'
 import undraw_img from '../../../../public/assets/images/undraw_img.png'
+import org_1 from '../../../../public/assets/images/org_1.png'
+import org_2 from '../../../../public/assets/images/org_2.png'
+import org_3 from '../../../../public/assets/images/org_3.png'
+import banner from '../../../../public/assets/images/banner.png'
 const Landing = () => {
 
 
@@ -43,7 +47,7 @@ const styles = {
   },
   banner: {
     width: '100%',
-    backgroundImage: "url('images/banner.png')",
+    backgroundImage: `url(${banner})`,
     height: '60vh',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
@@ -141,14 +145,14 @@ const styles = {
       <h1>About the Event</h1>
       <div>
         <p>
-          <b>All winners have secrets don't they ?</b><br />
+          <b>All winners have secrets dont they ?</b><br />
           And these little secrets makes the difference between an aspirant and a winner. So the ima msn Kerala brings to u all thats required to secure a seat in medical Colleges across the state .
           <br />
           Cognosco is a single day event encompassing sessions by previous year toppers sharing their little cheat codes to  victory ,Dr Arun B Nairs ace session on Psychological stress management and a mock neet examination to prep you up for your Big day. See you in medical&nbsp;College.</p>
         <img src={undraw_img} alt="undraw"/>
       </div>
     </div>
-    <div className={`${styles.map} common`}>
+    <div className={`${styles.map} ${styles.common}`}>
       <h1>Centres</h1>
       <div className={styles.mapContainer}>
         <div>
@@ -167,20 +171,20 @@ const styles = {
       <p>9.30 to 10 talk by psychiatrist</p>
       <p>10.30&nbsp;to&nbsp;1.30&nbsp;exam</p>
     </div>
-    <div className={`${styles.organisers} common`}>
+    <div className={`${styles.organisers} ${styles.common}`}>
       <h1>Centres</h1>
       <div className={styles.organisersContainer}>
         <div>
-          <img src="images/org_1.png" />
+          <Image src={org_1} alt="org1" />
           <p>Vishwanath Kannan</p>
         </div>
         <div>
-          <img src="images/org_2.png" />
-          <p>Athul s kumar</p>
+          <Image src={org_2} alt="org2" />
+          <p>Vishwanath Kannan</p>
         </div>
         <div>
-          <img src="images/org_3.png" />
-          <p>Justin Sylvester</p>
+          <Image src={org_3} alt="org3" />
+          <p>Vishwanath Kannan</p>
         </div>
       </div>
     </div>
