@@ -74,11 +74,11 @@ const SignUp = () => {
       return false;
     }
     // check if the centre count Kochi is greater than 500 if so then alert the user
-    if (centreCount.kochi > 300 && formData.pref_loc == "Kochi") {
+    if (centreCount.kochi > 250 && formData.pref_loc == "Kochi") {
       alert("Kochi centre is full");
       return false;
     }
-    if (centreCount.tvm > 700 && formData.pref_loc == "Trivandrum") {
+    if (centreCount.tvm > 500 && formData.pref_loc == "Trivandrum") {
       alert("Trivandrum centre is full");
       return false;
     }
@@ -140,11 +140,13 @@ const SignUp = () => {
       <div className="lg:w-1/2 xl:max-w-screen-sm">
         <div className="py-12 bg-indigo-100 lg:bg-white flex justify-center lg:justify-start lg:px-12">
           <div className="cursor-pointer flex items-center">
-            <div></div>
+            <Link href="/">
+
             <div className="text-5xl text-indigo-800 tracking-wide ml-2 font-bold">
               Cognosco
 
             </div>
+              </Link>
           </div>
         </div>
         <div className="mt-5 px-12 sm:px-24 md:px-48 lg:px-12 lg:mt-16 xl:px-24 xl:max-w-2xl">

@@ -3,6 +3,7 @@ import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
 import process from "next/dist/build/webpack/loaders/resolve-url-loader/lib/postcss";
 import axios from "axios";
+import Link from "next/link";
 
 
 const UserDetails = () => {
@@ -201,12 +202,13 @@ const UserDetails = () => {
 
   return (
     <div className="my-20-5  overflow-y-scroll">
-
+<Link href="/">
       <div className="flex md:flex-row flex-col justify-center items-center">
         <h1 className="text-3xl font-bold text-indigo-700 mb-8">
-          IMA MSN
+          Cognosco
         </h1>
       </div>
+  </Link>
       <div className="flex md:flex-row  flex-col justify-center gap-3 items-center ">
         {/* Program Details */}
         {paid ? (
