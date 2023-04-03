@@ -2,62 +2,41 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-const SignIn = () => {
+const Reset = () => {
   const [token, setToken] = useState("");
 
   const [formData, setFormData] = useState({
     username: "",
-    password: "",
   });
   const router = useRouter();
 
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-// use effect
-  useEffect(() => {
-    if (token) {
-      if (typeof window !== "undefined"){
-      localStorage.setItem("tokenid", token);
-      }
-    }
-  }, [token]);
-console.log(apiUrl)
-
   const handleChange = (e) => {
     setFormData((prevData) => ({
       ...prevData,
       [e.target.name]: e.target.value,
     }));
   };
-  const handleSubmit = async (event) => {
-
-
+    const handleSubmit = (event) => {
     event.preventDefault();
-    try {
-      const params = new URLSearchParams();
-      params.append("username", formData.username);
-      params.append("password", formData.password);
-      const response = await fetch(apiUrl+ "login/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          accept: "application/json",
-        },
-        body: params.toString(),
-      });
-
-      const responseData = await response.json();
-      setToken(responseData.access_token)
-      console.log(responseData);
-      if (responseData.access_token) {
-        await router.push("/userdetails");
+    fetch(apiUrl+'reset_pass/', {
+      method: 'POST',
+      headers: {
+        'accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData.username)
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      if (data.message === 'User Does not Exist') {
+        alert('User does not exist');
       } else {
-
-        alert("username or password is incorrect");
+        router.push('/responseresult').then(r => console.log(r));
       }
-    } catch (error) {
-
-      console.log(error);
-    }
+    })
+    .catch(error => console.error(error));
   };
 
 
@@ -65,7 +44,7 @@ console.log(apiUrl)
     <div className="lg:flex">
       <div className="lg:w-1/2 xl:max-w-screen-sm">
         <div className="py-12 bg-indigo-100 lg:bg-white flex justify-center lg:justify-start lg:px-12">
-          <div className="cursor-pointer flex items-center">
+       <div className="cursor-pointer flex items-center">
 
               <Link href="/">
 
@@ -81,7 +60,7 @@ console.log(apiUrl)
             className="text-center text-4xl text-indigo-900 font-display font-semibold lg:text-left xl:text-5xl
               xl:text-bold"
           >
-            Log in
+            Reset Password
           </h2>
           <div className="mt-12">
             <form onSubmit={handleSubmit}>
@@ -98,59 +77,29 @@ console.log(apiUrl)
                   placeholder="Enter your username"
                 />
               </div>
-              <div className="mt-8">
-                <div className="flex justify-between items-center">
-                  <div className="text-sm font-bold text-gray-700 tracking-wide">
-                    Password
-                  </div>
-                  <div>
-                    <a
-                      className="text-xs font-display font-semibold text-indigo-600 hover:text-indigo-800
-                                  cursor-pointer"
-                    >
-                      {/* Forgot Password? */}
-                    </a>
-                  </div>
-                </div>
-                <input
-                  className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
-                  value={formData.password}
-                  onChange={handleChange}
-                  name="password"
-                  type="password"
-                  placeholder="Enter your password"
-                />
-              </div>
+
               <div className="mt-8">
                 <button
                   className="bg-indigo-500 text-gray-100 p-4 w-full rounded-full tracking-wide
                           font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-indigo-600
                           shadow-lg"
                 >
-                  Log In
+                  Reset Password
                 </button>
               </div>
             </form>
             <div className="flex gap-12 justify-center">
 
 
-            <div className="mt-12 text-sm font-display font-semibold text-gray-700 text-center">
-              Dont have an account ?{" "}
-              <Link href="/signup">
-              <div className="cursor-pointer text-indigo-600 hover:text-indigo-800">
-                Sign up
               </div>
+             <div className="mt-12 text-sm font-display font-semibold text-gray-700 text-center">
+
+              <Link href="/signin">
+                <div className="cursor-pointer text-indigo-600 hover:text-indigo-800">
+                  Sign in
+                </div>
               </Link>
             </div>
-                        <div className="mt-12 text-sm font-display font-semibold text-gray-700 text-center">
-              Forgot Password ?{" "}
-              <Link href="/reset">
-              <div className="cursor-pointer text-indigo-600 hover:text-indigo-800">
-                Reset Password
-              </div>
-              </Link>
-            </div>
-              </div>
           </div>
         </div>
       </div>
@@ -319,4 +268,4 @@ console.log(apiUrl)
     </div>
   );
 };
-export default SignIn;
+export default Reset;
