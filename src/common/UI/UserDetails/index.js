@@ -6,15 +6,20 @@ import axios from "axios";
 import Link from "next/link";
 import qr_code from "../../../../public/assets/images/qr_code.jpg";
 import Image from "next/image";
-
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
 
 
 const UserDetails = () => {
+
   const [paid, setPaid] = useState(false);
   const [user, setUser] = useState({});
   const [message, setMessage] = useState("");
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-  
+  const [showModal, setShowModal] = useState(false);
+
   const router = useRouter();
 
   useEffect(() => {
@@ -44,6 +49,11 @@ const UserDetails = () => {
   }, [message]);
 
 
+// create a  modal to show the qr code
+
+
+
+
   const initializeRazorpay = () => {
     return new Promise((resolve) => {
       const script = document.createElement("script");
@@ -64,6 +74,8 @@ const UserDetails = () => {
     localStorage.removeItem("tokenid");
     router.push("/signin");
   }
+
+
   const makePayment = async () => {
     const res = await initializeRazorpay();
 
@@ -237,7 +249,7 @@ const UserDetails = () => {
     fetchUserDetails();
   }, [apiUrl, message]);
 
-  
+
   return (
     <div className="my-20-5  overflow-y-scroll">
 <Link href="/">
@@ -291,34 +303,12 @@ const UserDetails = () => {
             <div className="font-semibold">Payment Status:</div>
             <div>{!paid ? "Not Paid" : "Paid"}</div>
             {!paid ? (
-              <div className="ma" >
-                <h1 className="text-3xl font-semibold">Scan the QR Code Below and make payment of Rs. 590 (500+90 GST)</h1>
-
-                <Image
-                className="object-contain w-96"
-                src={qr_code}
-                alt="qr code for payment"
-              />
-
-                <form  onSubmit={handleUpload}>
-                  <input
-                  className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
-                  name="image"
-                  type="file"
-                  placeholder="Enter your password"
-                />
-                 <button
-                  className="bg-indigo-500 text-gray-100 p-4 w-full rounded-full tracking-wide
-                          font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-indigo-600
-                          shadow-lg"
-                >
-                  Upload
-                </button>
-            </form>
-              
-
-
-              </div>
+               <Button onClick={()=>{
+                 setShowModal(true)
+               }}
+               className="bg-indigo-600 text-white rounded-md px-4 py-2 hover:bg-indigo-500" variant="contained">
+                Pay with UPI
+              </Button>
             ) : (
               <Button onClick={downloadPdf} className="bg-indigo-600 text-white rounded-md px-4 py-2 hover:bg-indigo-500" variant="contained">
                 Download PDF
@@ -331,7 +321,67 @@ const UserDetails = () => {
             </div>
           </div>
         </div>
+        {showModal ? (
+          <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+            <div className="relative w-auto my-6 mx-auto max-w-3xl">
+              {/*content*/}
+              <div className="border-0 rounded-lg shadow-lg relative flex flex-col justify-center w-full bg-white outline-none focus:outline-none">
+                {/*header*/}
+                <div className="flex items-start justify-between p-5 border-b border-solid border-gray-300 gap-5 rounded-t">
+                  <h3 className="text-2xl font-semibold">Pay with UPI</h3>
+                  <button
+                    className=" ml-auto bg-transparent border-0 text-black  float-none text-2xl leading-none font-semibold outline-none focus:outline-none"
+                    onClick={() => setShowModal(false)}
+                  >
+                    <span className="bg-transparent text-red-800 opacity-2  h-6 w-6 text-2xl block outline-none focus:outline-none">
+                      ×
+                    </span>
+                  </button>
+                </div>
+                {/*body*/}
+                <div className="relative p-6  justify-center items-center">
+                  <div className="mx-5 flex flex-col justify-center align-middle items-center" >
+                <h1 className="font-semibold">Scan the QR Code Below and make payment of Rs. 590 (500+90 GST)</h1>
 
+                <Image
+                className="object-contain h-96 w-96"
+                src={qr_code}
+                alt="qr code for payment"
+              />
+                    <div className="flex justify-center">
+
+
+                <form  onSubmit={handleUpload}>
+                  <input
+                  className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
+                  name="image"
+                  type="file"
+                  accept="image/*"
+                  placeholder="add image"
+                />
+                 <button
+                  className="bg-indigo-500 text-gray-100 p-4 w-full rounded-full tracking-wide
+                          font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-indigo-600
+                          shadow-lg"
+                >
+                  Upload
+                </button>
+            </form>
+</div>
+
+
+              </div>
+                </div>
+                {/*footer*/}
+                <div className="flex items-center justify-end p-6 border-t border-solid border-gray-300 rounded-b">
+                  <Button onClick={() => setShowModal(false)} className="bg-red-600 text-white rounded-md px-4 py-2 hover:bg-red-500">
+                    Close
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : null}
         {paid ? (<div className="bg-white rounded-lg shadow-lg p-5 min-w-[40%] align-middle justify-center  mx-auto">
             <h1 className="text-2xl text-indigo-700 font-bold mb-4 text-center">
               Location Details
