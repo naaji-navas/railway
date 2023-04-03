@@ -4,6 +4,9 @@ import {useEffect, useState} from "react";
 import process from "next/dist/build/webpack/loaders/resolve-url-loader/lib/postcss";
 import axios from "axios";
 import Link from "next/link";
+import qr_code from "../../../../public/assets/images/qr_code.jpg";
+import Image from "next/image";
+
 
 
 const UserDetails = () => {
@@ -11,7 +14,7 @@ const UserDetails = () => {
   const [user, setUser] = useState({});
   const [message, setMessage] = useState("");
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-
+  
   const router = useRouter();
 
   useEffect(() => {
@@ -178,6 +181,40 @@ const UserDetails = () => {
     }
   };
 
+  const handleUpload = async (event) => {
+
+
+    event.preventDefault();
+
+    const fileInput = document.querySelector('input[type="file"]');
+    const file1 = fileInput.files[0];
+    if (file1) {
+      try {
+        var formData =new FormData();
+        console.log(file1)
+        formData.append("file", file1);
+        console.log(formData)
+        const response = await fetch(apiUrl+ "payment/upload_upi/", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${message}`,
+          },
+          body: formData,
+        });
+  
+  
+        const responseData = await response.json();
+        console.log(responseData);
+      } catch (error) {
+  
+        console.log(error);
+      }
+    }
+     else {
+    console.error('No file selected');
+    }
+    
+  }
   useEffect(() => {
     const fetchUserDetails = async () => {
       try {
@@ -200,6 +237,7 @@ const UserDetails = () => {
     fetchUserDetails();
   }, [apiUrl, message]);
 
+  
   return (
     <div className="my-20-5  overflow-y-scroll">
 <Link href="/">
@@ -253,9 +291,34 @@ const UserDetails = () => {
             <div className="font-semibold">Payment Status:</div>
             <div>{!paid ? "Not Paid" : "Paid"}</div>
             {!paid ? (
-              <Button onClick={makePayment} className="bg-indigo-600 text-white rounded-md px-4 py-2 hover:bg-indigo-500" variant="contained">
-                Pay with Razorpay
-              </Button>
+              <div className="ma" >
+                <h1 className="text-3xl font-semibold">Scan the QR Code Below and make payment of Rs. 590 (500+90 GST)</h1>
+
+                <Image
+                className="object-contain w-96"
+                src={qr_code}
+                alt="qr code for payment"
+              />
+
+                <form  onSubmit={handleUpload}>
+                  <input
+                  className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
+                  name="image"
+                  type="file"
+                  placeholder="Enter your password"
+                />
+                 <button
+                  className="bg-indigo-500 text-gray-100 p-4 w-full rounded-full tracking-wide
+                          font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-indigo-600
+                          shadow-lg"
+                >
+                  Upload
+                </button>
+            </form>
+              
+
+
+              </div>
             ) : (
               <Button onClick={downloadPdf} className="bg-indigo-600 text-white rounded-md px-4 py-2 hover:bg-indigo-500" variant="contained">
                 Download PDF
