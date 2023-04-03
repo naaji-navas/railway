@@ -12,6 +12,17 @@ const SignIn = () => {
   const router = useRouter();
 
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  // a funcion to add two numbers
+  // @param {number} a - first number
+  // @param {number} b - second number
+  // @returns {number} - sum of two numbers
+  const add = (a, b) => {
+    return a + b;
+
+  }
+
+
+
 // use effect
   useEffect(() => {
     if (token) {

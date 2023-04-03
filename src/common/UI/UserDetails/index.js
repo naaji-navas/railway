@@ -140,7 +140,6 @@ const UserDetails = () => {
           accept: 'application/json',
           Authorization: `Bearer ${message}`,
         }
-
       });
 
       const url = window.URL.createObjectURL(new Blob([response.data]));
@@ -279,8 +278,15 @@ const UserDetails = () => {
                   <iframe className="m-4" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62865.98242584101!2d76.28940321683658!3d10.006623109668615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080c058ff7a4cd%3A0xa9c697fee1e03c65!2sGovernment%20Medical%20College%20Ernakulam!5e0!3m2!1sen!2sin!4v1679807141846!5m2!1sen!2sin" width="90%" height="90%" style={{border: 0}} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
                 </div>
               ) : (<div className="flex justify-center items-center h-[400px] p-5">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62865.98242584101!2d76.28940321683658!3d10.006623109668615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080c058ff7a4cd%3A0xa9c697fee1e03c65!2sGovernment%20Medical%20College%20Ernakulam!5e0!3m2!1sen!2sin!4v1679807141846!5m2!1sen!2sin" width="90%" height="90%" style={{border: 0}} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
-              </div>)}
+    <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3945.7498762846944!2d76.92607644996733!3d8.523647493842343!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05bbfd65530ccd%3A0xa0ceab851a9f2e90!2sGovernment%20Medical%20College%20Thiruvananthapuram!5e0!3m2!1sen!2sin!4v1679840329617!5m2!1sen!2sin"
+                width={400}
+                height={400}
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />              </div>)}
             </div>
           </div>
         ) : null}

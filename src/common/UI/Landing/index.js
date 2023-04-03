@@ -21,7 +21,6 @@ const Landing = () => {
               <Image src={ima_msn} />
               <Image src={cognosco} />
             </Link>
-
           </div>
           <div className="inline-flex items-center ml-5 space-x-6 lg:justify-end">
             {/*<a*/}
@@ -40,32 +39,49 @@ const Landing = () => {
         </div>
       </section>
       {/* Section 2 */}
-<section className=" hidden md:block bg-white" style={{ backgroundImage: `url(/assets/images/banner.png)`, height: '60vh', backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}>
-  <div className="container max-w-6xl mx-auto px-5 xl:px-5  h-full flex flex-wrap items-end align-bottom text-bottom -mx-3">
-    <div className="w-full md:w-1/2 md:px-3">
-      <div className="max-w-lg lg:max-w-xl md:pb-0 pb-8 space-y-5 md:space-y-0 sm:max-w-md lg:max-w-lg md:space-y-4 lg:space-y-8 xl:space-y-9 pr-5">
-        <div className="flex flex-col mb-5  justify-end h-full">
-          <h1 className="text-5xl   font-bold tracking-tight text-white">
-            <span className="block xl:inline">Cognosco</span>
-          </h1>
-          <div className="flex flex-col sm:flex-row sm:space-x-4 mt-4">
-            <Link href="/signup" className="w-full sm:w-auto px-6 py-3 text-lg text-white bg-black rounded-lg hover:bg-indigo-700 flex items-center">
-              Register
-              <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 ml-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </Link>
+      <section
+        className=" hidden md:block bg-white"
+        style={{
+          backgroundImage: `url(/assets/images/banner.png)`,
+          height: "60vh",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+        }}
+      >
+        <div className="container max-w-6xl mx-auto px-5 xl:px-5  h-full flex flex-wrap items-end align-bottom text-bottom -mx-3">
+          <div className="w-full md:w-1/2 md:px-3">
+            <div className="max-w-lg  md:pb-0 pb-8 space-y-5 md:space-y-0 sm:max-w-md lg:max-w-lg md:space-y-4 lg:space-y-8 xl:space-y-9 pr-5">
+              <div className="flex flex-col mb-5  justify-end h-full">
+                <h1 className="text-5xl   font-bold tracking-tight text-white">
+                  <span className="block xl:inline">Cognosco</span>
+                </h1>
+                <div className="flex flex-col sm:flex-row sm:space-x-4 mt-4">
+                  <Link
+                    href="/signup"
+                    className="w-full sm:w-auto px-6 py-3 text-lg text-white bg-black rounded-lg hover:bg-indigo-700 flex items-center"
+                  >
+                    Register
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="w-5 h-5 ml-1"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </Link>
+                </div>
+              </div>
+            </div>
           </div>
+          <div className="w-full md:w-1/2"></div>
         </div>
-      </div>
-    </div>
-    <div className="w-full md:w-1/2"></div>
-  </div>
-</section>
-
-
-
+      </section>
 
       <section className="py-20 bg-gray-50  ">
         <div className="container items-center max-w-6xl px-4 px-10 mx-auto sm:px-20 md:px-32 lg:px-16">
@@ -81,13 +97,15 @@ const Landing = () => {
                     These little secrets makes the difference between an
                     aspirant and a winner. So the ima msn Kerala brings to u all
                     thats required to secure a seat in medical Colleges across
-                    the state  Cognosco is a single day event encompassing
+                    the state Cognosco is a single day event encompassing
                     sessions by previous year toppers sharing their little cheat
                     codes to victory ,Dr Arun B Nairs ace session on
                     Psychological stress management and a mock neet examination
                     to prep you up for your Big day. See you in medical College.
+
                   </span>
                 </ul>
+             
               </div>
             </div>
             <div className="w-full px-3 mb-12 mt-20 md:mt-0  lg:w-1/2 order-0 lg:order-1 lg:mb-0">
@@ -182,14 +200,13 @@ const Landing = () => {
               <div class="rounded overflow-hidden shadow-md bg-white">
                 <div class="absolute -mt-20 w-full flex justify-center">
                   <div class="h-32 w-32">
-                   <Image src ={org_1}/>
+                    <Image src={org_1} alt="organizer1" />
                   </div>
                 </div>
                 <div class="px-6 mt-16">
                   <div class="font-bold text-3xl text-center pb-1">
                     Vishwanath Kannan
                   </div>
-
                 </div>
               </div>
             </div>
@@ -198,17 +215,14 @@ const Landing = () => {
                 <div class="absolute -mt-20 w-full flex justify-center">
                   <div class="h-32 w-32">
                     <div className="h-32 w-32">
-                      <Image src={org_2}/>
+                      <Image src={org_2} alt="organizer1" />
                     </div>
                   </div>
                 </div>
                 <div class="px-6 mt-16">
                   <div class="font-bold text-3xl text-center pb-1">
                     Athul s kumar
-
-
                   </div>
-
                 </div>
               </div>
             </div>
@@ -217,19 +231,14 @@ const Landing = () => {
                 <div class="absolute -mt-20 w-full flex justify-center">
                   <div class="h-32 w-32">
                     <div className="h-32 w-32">
-                      <Image src={org_3}/>
+                      <Image src={org_3} alt="organizer1" />
                     </div>
                   </div>
                 </div>
                 <div class="px-6 mt-16">
                   <div class="font-bold text-3xl text-center pb-1">
                     Justin Sylvester
-
-
-
-
                   </div>
-
                 </div>
               </div>
             </div>
@@ -372,3 +381,6 @@ const Landing = () => {
   );
 };
 export default Landing;
+
+// India is my country, all indias are my brothers and sisters. I love my country and I am
+// proud of its rich and varied heritage . i shall always try to be worthy of it. I shall 
