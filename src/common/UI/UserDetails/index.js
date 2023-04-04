@@ -7,10 +7,11 @@ import Link from "next/link";
 import qr_code from "../../../../public/assets/images/qr_code.jpg";
 import Image from "next/image";
 import * as React from "react";
+import Loader from "@/common/UI/UserDetails/Loader";
 
 const UserDetails = () => {
   const [paid, setPaid] = useState(false);
-
+  const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState({});
   const [message, setMessage] = useState("");
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -182,6 +183,7 @@ const UserDetails = () => {
     const file1 = fileInput.files[0];
     if (file1) {
       try {
+        setIsLoading(true);
         var formData = new FormData();
         console.log(file1);
         formData.append("file", file1);
@@ -197,6 +199,7 @@ const UserDetails = () => {
         const responseData = await response.json();
         console.log(responseData);
         alert(responseData.msg);
+        setIsLoading(false);
         if (responseData.msg === "UPI img successfully uploaded") {
           setShowModal(false);
         }
@@ -226,7 +229,7 @@ const UserDetails = () => {
       }
     };
 
-    fetchUserDetails().then(r => console.log(r));
+    fetchUserDetails().then((r) => console.log(r));
   }, [apiUrl, message]);
 
   return (
@@ -323,6 +326,7 @@ const UserDetails = () => {
             </div>
           </div>
         </div>
+
         {showModal ? (
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
@@ -362,6 +366,7 @@ const UserDetails = () => {
                           accept="image/*"
                           placeholder="add image"
                         />
+                        {isLoading ? <Loader /> : null}
                         <button
                           className="bg-indigo-500 text-gray-100 p-4 w-full rounded-full tracking-wide
                           font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-indigo-600
