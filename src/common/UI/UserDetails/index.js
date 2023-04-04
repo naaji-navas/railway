@@ -34,7 +34,7 @@ const UserDetails = () => {
     };
 
     fetchUserDetails();
-  }, [apiUrl, message]);
+  }, [apiUrl]);
 
   useEffect(() => {
     const message = localStorage.getItem("tokenid");
@@ -43,91 +43,93 @@ const UserDetails = () => {
 
   // create a  modal to show the qr code
 
-  const initializeRazorpay = () => {
-    return new Promise((resolve) => {
-      const script = document.createElement("script");
-      script.src = "https://checkout.razorpay.com/v1/checkout.js";
-
-      script.onload = () => {
-        resolve(true);
-      };
-      script.onerror = () => {
-        resolve(false);
-      };
-
-      document.body.appendChild(script);
-    });
-  };
+  // const initializeRazorpay = () => {
+  //   return new Promise((resolve) => {
+  //     const script = document.createElement("script");
+  //     script.src = "https://checkout.razorpay.com/v1/checkout.js";
+  //
+  //     script.onload = () => {
+  //       resolve(true);
+  //     };
+  //     script.onerror = () => {
+  //       resolve(false);
+  //     };
+  //
+  //     document.body.appendChild(script);
+  //   });
+  // };
   // a signout function
   const signOut = () => {
     localStorage.removeItem("tokenid");
     router.push("/signin");
   };
 
-  const makePayment = async () => {
-    const res = await initializeRazorpay();
+  // const makePayment = async () => {
+  //   const res = await initializeRazorpay();
+  //
+  //   if (!res) {
+  //     alert("Razorpay SDK Failed to load");
+  //     return;
+  //   }
+  //
+  //   // Make API call to the serverless API
+  //   const response = await fetch(apiUrl + "payment/initiate/", {
+  //     method: "GET",
+  //     headers: {
+  //       accept: "application/json",
+  //       Authorization: `Bearer ${message}`,
+  //     },
+  //   });
+  //   const data = await response.json();
+  //
+  //   console.log(data);
+  //
+  //   var options = {
+  //     key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID, // Enter the Key ID generated from the Dashboard
+  //     name: "Manu Arora Pvt Ltd",
+  //     currency: data.currency,
+  //     amount: data.amount,
+  //     order_id: data.id,
+  //     description: "Thankyou for your test donation",
+  //     image: "https://manuarora.in/logo.png",
+  //     handler: function (response) {
+  //       if (response.razorpay_payment_id) {
+  //         alert("Payment Successful");
+  //
 
-    if (!res) {
-      alert("Razorpay SDK Failed to load");
-      return;
-    }
 
-    // Make API call to the serverless API
-    const response = await fetch(apiUrl + "payment/initiate/", {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        Authorization: `Bearer ${message}`,
-      },
-    });
-    const data = await response.json();
-
-    console.log(data);
-
-    var options = {
-      key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID, // Enter the Key ID generated from the Dashboard
-      name: "Manu Arora Pvt Ltd",
-      currency: data.currency,
-      amount: data.amount,
-      order_id: data.id,
-      description: "Thankyou for your test donation",
-      image: "https://manuarora.in/logo.png",
-      handler: function (response) {
-        if (response.razorpay_payment_id) {
-          alert("Payment Successful");
-
-          getPaymentStatus(
-            response.razorpay_payment_id,
-            response.razorpay_signature
-          );
-          setPaid(true);
-        } else {
-          alert("Payment Failed");
-        }
-
-        // alert(responseresult.razorpay_payment_id);
-        // alert(responseresult.razorpay_order_id);
-        // alert(responseresult.razorpay_signature);
-      },
-      prefill: {
-        name: "Manu Arora",
-        email: "manuarorawork@gmail.com",
-        contact: "9999999999",
-      },
-    };
-
-    const paymentObject = new window.Razorpay(options);
-    paymentObject.on("payment.failed", function (response) {
-      // alert(responseresult.error.code);
-      alert(response.error.description);
-      // alert(responseresult.error.source);
-      // alert(responseresult.error.step);
-      alert(response.error.reason);
-      // alert(responseresult.error.metadata.order_id);
-      // alert(responseresult.error.metadata.payment_id);
-    });
-    paymentObject.open();
-  };
+  //         getPaymentStatus(
+  //           response.razorpay_payment_id,
+  //           response.razorpay_signature
+  //         );
+  //         setPaid(true);
+  //       } else {
+  //         alert("Payment Failed");
+  //       }
+  //
+  //       // alert(responseresult.razorpay_payment_id);
+  //       // alert(responseresult.razorpay_order_id);
+  //       // alert(responseresult.razorpay_signature);
+  //     },
+  //     prefill: {
+  //       name: "Manu Arora",
+  //       email: "manuarorawork@gmail.com",
+  //       contact: "9999999999",
+  //     },
+  //   };
+  //
+  //   const paymentObject = new window.Razorpay(options);
+  //   paymentObject.on("payment.failed", function (response) {
+  //     // alert(responseresult.error.code);
+  //     alert(response.error.description);
+  //     // alert(responseresult.error.source);
+  //     // alert(responseresult.error.step);
+  //     alert(response.error.reason);
+  //     // alert(responseresult.error.metadata.order_id);
+  //     // alert(responseresult.error.metadata.payment_id);
+  //   });
+  //   paymentObject.open();
+  // };
 
   // a javascript function to download the pdf from an api responseresult
 
@@ -212,8 +214,8 @@ const UserDetails = () => {
         const data = await res.json();
         setUser(data);
         console.log(data);
-        if (data.transac) {
-          setPaid(data.transac.status === 1);
+        if (data.status) {
+          setPaid(data.status === 1);
         }
       } catch (error) {
         console.error(error);
