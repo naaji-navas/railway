@@ -208,7 +208,7 @@ const Landing = () => {
                 </div>
               </div>
             </div>
-            <div className="flex justify-between xl:justify-between gap-x-10 md:justify-around sm:justify-around lg:justify-around">
+            <div className="flex  flex-col md:flex-row xl:justify-between gap-x-10 md:justify-around sm:justify-around lg:justify-around">
               {TeamDetails.map((item, index) => {
                 return (
                   <div
