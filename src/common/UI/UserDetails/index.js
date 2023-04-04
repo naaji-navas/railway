@@ -338,8 +338,8 @@ const UserDetails = () => {
                 <div className="relative p-6  justify-center items-center">
                   <div className="mx-5 flex flex-col justify-center align-middle items-center">
                     <h1 className="font-semibold">
-                      Scan the QR Code Below and make payment of Rs. 590 (500+90
-                      GST)
+                      Scan the QR Code Below, Make a payment of Rs. 590(500+90
+                      GST) and upload the screenshot of payment.
                     </h1>
 
                     <Image
