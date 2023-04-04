@@ -10,6 +10,7 @@ import * as React from "react";
 
 const UserDetails = () => {
   const [paid, setPaid] = useState(false);
+
   const [user, setUser] = useState({});
   const [message, setMessage] = useState("");
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -27,8 +28,8 @@ const UserDetails = () => {
         });
         const data = await res.json();
         setUser(data);
-        if (data.transac) {
-          setPaid(data.transac.status === 1);
+        if (data.status) {
+          setPaid(data.status === 1);
         }
       } catch (error) {}
     };
@@ -96,7 +97,6 @@ const UserDetails = () => {
   //       if (response.razorpay_payment_id) {
   //         alert("Payment Successful");
   //
-
 
   //         getPaymentStatus(
   //           response.razorpay_payment_id,
@@ -196,6 +196,10 @@ const UserDetails = () => {
 
         const responseData = await response.json();
         console.log(responseData);
+        alert(responseData.msg);
+        if (responseData.msg === "UPI img successfully uploaded") {
+          setShowModal(false);
+        }
       } catch (error) {
         console.log(error);
       }
@@ -222,7 +226,7 @@ const UserDetails = () => {
       }
     };
 
-    fetchUserDetails();
+    fetchUserDetails().then(r => console.log(r));
   }, [apiUrl, message]);
 
   return (
@@ -287,7 +291,9 @@ const UserDetails = () => {
             <div className="font-semibold">Preferred Location:</div>
             <div>{user.pref_loc}</div>
             <div className="font-semibold">Payment Status:</div>
-            <div>{!paid ? "Not Paid" : "Paid"}</div>
+            <div>
+              {user.upi ? "Pending Verification" : paid ? "Paid" : "Not Paid"}
+            </div>
             {!paid ? (
               <Button
                 onClick={() => {
