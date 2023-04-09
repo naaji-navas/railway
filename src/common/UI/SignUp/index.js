@@ -57,31 +57,36 @@ const SignUp = () => {
     getCentreCount().then(r => console.log(r));
 
     if (
-      formData.name == "" ||
-      formData.place == "" ||
-      formData.phone_no == "" ||
-      formData.email_id == ""
+      formData.name === "" ||
+      formData.place === "" ||
+      formData.phone_no === "" ||
+      formData.email_id === ""
     ) {
       alert("please fill all the fields");
       return false;
     }
-    if (formData.phone_no == formData.alt_phone_no) {
+    if (formData.phone_no === formData.alt_phone_no) {
       alert("primary and alternate phone number cannot be same");
       return false;
     }
-    if (formData.email_id == formData.alt_email_id) {
+    if (formData.email_id === formData.alt_email_id) {
       alert("primary and alternate email cannot be same");
       return false;
     }
     // check if the centre count Kochi is greater than 500 if so then alert the user
-    if (centreCount.kochi > 250 && formData.pref_loc == "Kochi") {
+    if (centreCount.kochi > 250 && formData.pref_loc ==="Kochi") {
       alert("Kochi centre is full");
       return false;
     }
-    if (centreCount.tvm > 500 && formData.pref_loc == "Trivandrum") {
+    if (centreCount.tvm > 500 && formData.pref_loc === "Trivandrum") {
       alert("Trivandrum centre is full");
       return false;
     }
+    if (centreCount.kzh > 300 && formData.pref_loc === "Kozhikode") {
+      alert("Kozhikode centre is full");
+      return false;
+    }
+
     return true;
   }
 
@@ -273,6 +278,7 @@ const SignUp = () => {
                   >
                     <option value="Kochi">Kochi</option>
                     <option value="Trivandrum">Thiruvananthapuram</option>
+                    <option value="Kozhikode">Kozhikode</option>
                   </select>
                 </div>
               </div>

@@ -150,6 +150,7 @@ const Landing = () => {
           </div>
         </div>
       </section>
+
       <section className="event-schedule py-8 bg-purple-100 text-center">
         <div className="mx-auto max-w-4xl">
           <h2 className="text-3xl text-purple-800 font-bold mb-6 text-center">
@@ -238,8 +239,9 @@ const Landing = () => {
           </div>
         </div>
       </div>
-      {/* Section 6 */}
-      {/* Section 7 */}
+      <div className="fixed bottom-0 w-full bg-blue-500 py-4 text-center rounded-t-2xl">
+        <p className="text-white"><span className="font-medium">Event date has been updated</span> , Ernakulam 14 April. Trivandrum and kozhikode April 16 </p>
+      </div>
       <section className="bg-white">
         <div className="max-w-screen-xl px-4 py-8 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
           <div className="flex justify-center mt-8 space-x-6"></div>
