@@ -191,9 +191,11 @@ const UserDetails = () => {
         const response = await fetch(apiUrl + "payment/upload_upi/", {
           method: "POST",
           headers: {
+
             Authorization: `Bearer ${message}`,
           },
           body: formData,
+          mode:"no-cors"
         });
 
         const responseData = await response.json();
