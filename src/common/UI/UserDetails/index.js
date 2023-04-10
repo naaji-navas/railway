@@ -171,37 +171,37 @@ const UserDetails = () => {
     }
   };
 
-  const handleUpload = async (event) => {
-    event.preventDefault();
+const handleUpload = async (event) => {
+  event.preventDefault();
 
-    const fileInput = document.querySelector('input[type="file"]');
-    const file1 = fileInput.files[0];
-    if (file1) {
-      try {
-        setIsLoading(true);
-        const formData = new FormData();
-        formData.append("file", file1);
-        const response = await fetch(apiUrl + "payment/upload_upi/", {
-          method: "POST", headers: {
-            "Authorization": `Bearer ${message}`,
-          }, body: formData, mode: "no-cors",
-        });
+  const fileInput = document.querySelector('input[type="file"]');
+  const file1 = fileInput.files[0];
+  if (file1) {
+    try {
+      setIsLoading(true);
+      const formData = new FormData();
+      formData.append("file", file1);
+      const response = await fetch(apiUrl + "payment/upload_upi/", {
+        method: "POST", headers: {
+          "Authorization": `Bearer ${message}`,
+        }, body: formData,
+        mode: "cors",
+      });
 
-        const responseData = await response.json();
-        console.log(responseData);
-        alert(responseData.msg);
-        setIsLoading(false);
-        if (responseData.msg === "UPI img successfully uploaded") {
-          setShowModal(false);
-        }
-      } catch (error) {
-        console.log(error);
+      console.log(response);
+      const responseData = await response.json();
+      alert(responseData.msg);
+      setIsLoading(false);
+      if (responseData.msg === "UPI img successfully uploaded") {
+        setShowModal(false);
       }
-    } else {
-      console.error("No file selected");
+    } catch (error) {
+      console.log(error);
     }
-  };
-
+  } else {
+    console.error("No file selected");
+  }
+};
 
   useEffect(() => {
     const fetchUserDetails = async () => {
