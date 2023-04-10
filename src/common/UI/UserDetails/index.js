@@ -185,6 +185,7 @@ const handleUpload = async (event) => {
         method: "POST", headers: {
           "Authorization": `Bearer ${message}`,
         }, body: formData,
+        mode: "cors",
       });
 
       console.log(response);
