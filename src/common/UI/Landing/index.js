@@ -5,11 +5,10 @@ import cognosco from "../../../../public/assets/images/cognosco.png";
 import ima_msn from "../../../../public/assets/images/ima_msn.png";
 import Justin from "../../../../public/assets/images/Team/Justin.png";
 import undraw_img from "../../../../public/assets/images/undraw_img.png";
-import { TeamDetails } from "@/common/UI/Landing/team";
+import {TeamDetails} from "@/common/UI/Landing/team";
 
 const Landing = () => {
-  return (
-    <div>
+  return (<div>
       <section className="w-full px-8 text-gray-700 bg-white fixed rounded-b-[40px] shadow-blue-50 z-50">
         <div className="container flex flex-col flex-wrap items-center justify-between py-5 mx-auto md:flex-row max-w-7xl">
           <div className="relative flex flex-col md:flex-row">
@@ -17,8 +16,8 @@ const Landing = () => {
               href="#_"
               className="flex items-center mb-5 gap-4 font-medium text-gray-900 lg:w-auto lg:items-center lg:justify-center md:mb-0"
             >
-              <Image src={ima_msn} />
-              <Image src={cognosco} />
+              <Image src={ima_msn}/>
+              <Image src={cognosco}/>
             </Link>
           </div>
           <div className="inline-flex items-center ml-5 space-x-6 lg:justify-end">
@@ -96,7 +95,7 @@ const Landing = () => {
                     previous year toppers sharing their little cheat codes to
                     victory ,Dr Arun B Nair&apos;s Ace session on Psychological
                     stress management (Trivandrum) and a mock neet examination
-                    to prep you up for your Big day.
+                    to prep you up for your Big day.
                   </span>
                 </ul>
               </div>
@@ -111,6 +110,7 @@ const Landing = () => {
           </div>
         </div>
       </section>
+      {/*Centre Section*/}
       <section className="box-border py-8 leading-7 text-gray-900 bg-white border-0 border-gray-200 border-solid sm:py-12 md:py-16 lg:py-24">
         <div className="box-border max-w-6xl px-4 pb-12 mx-auto border-solid sm:px-6 md:px-6 lg:px-4">
           <div className="flex flex-col items-center leading-7 text-center text-gray-900">
@@ -118,7 +118,7 @@ const Landing = () => {
               Centres
             </h2>
           </div>
-          <div className="grid max-w-md mx-auto mt-6 overflow-hidden leading-7 text-gray-900 border border-b-4 border-gray-300 border-blue-600 rounded-xl md:max-w-lg lg:max-w-none sm:mt-10 lg:grid-cols-2">
+          <div className="grid max-w-md mx-auto mt-6 overflow-hidden leading-7 text-gray-900 border border-b-4 border-gray-300 border-blue-600 rounded-xl md:max-w-lg lg:max-w-none sm:mt-10 lg:grid-cols-3">
             <div className="flex flex-col box-border gap-3 px-4 py-8 mb-6 text-center bg-white border-solid lg:mb-0 sm:px-4 sm:py-8 md:px-8 md:py-12 lg:px-10">
               <p>
                 Gmc Ernakulam&nbsp;<b>(250)</b> slots
@@ -127,7 +127,7 @@ const Landing = () => {
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.568938221612!2d76.35338145027391!3d10.05238429277994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080c058ff7a4cd%3A0xa9c697fee1e03c65!2sGovernment%20Medical%20College%20Ernakulam!5e0!3m2!1sen!2sin!4v1679924807855!5m2!1sen!2sin"
                 width={400}
                 height={400}
-                style={{ border: 0 }}
+                style={{border: 0}}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
@@ -141,15 +141,23 @@ const Landing = () => {
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3945.7498762846944!2d76.92607644996733!3d8.523647493842343!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05bbfd65530ccd%3A0xa0ceab851a9f2e90!2sGovernment%20Medical%20College%20Thiruvananthapuram!5e0!3m2!1sen!2sin!4v1679840329617!5m2!1sen!2sin"
                 width={400}
                 height={400}
-                style={{ border: 0 }}
+                style={{border: 0}}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
             </div>
+            <div className="flex flex-col box-border gap-3 px-4 py-8 mb-6 text-center bg-white border-solid lg:mb-0 sm:px-4 sm:py-8 md:px-8 md:py-12 lg:px-10">
+              <p className="font-medium">
+                GMC Kozhikode <b>(300)</b> slots
+              </p>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3912.8530451652186!2d75.83500385028485!3d11.27221099194697!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba65c7619ac47c3%3A0x2749e5ee9d9f6e74!2sGovernment%20Medical%20College%2C%20Kozhikode!5e0!3m2!1sen!2sin!4v1681091937374!5m2!1sen!2sin" width={400}
+                      height={400} style={{border: 0}} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+            </div>
           </div>
         </div>
       </section>
+
       <section className="event-schedule py-8 bg-purple-100 text-center">
         <div className="mx-auto max-w-4xl">
           <h2 className="text-3xl text-purple-800 font-bold mb-6 text-center">
@@ -193,7 +201,7 @@ const Landing = () => {
               <div className="rounded overflow-hidden shadow-md bg-white">
                 <div className="absolute -mt-20 w-full flex justify-center">
                   <div className="h-32 w-32">
-                    <Image src={Justin} />
+                    <Image src={Justin}/>
                   </div>
                 </div>
                 <div className="px-6 mt-16">
@@ -202,7 +210,7 @@ const Landing = () => {
                   </div>
 
                   <p className="text-center text-gray-600 text-base pt-3 pb-5 font-normal">
-                    Organising Chair - Cognosco National <br /> Co-convener, IMA
+                    Organising Chair - Cognosco National <br/> Co-convener, IMA
                     MSN
                   </p>
                 </div>
@@ -210,15 +218,14 @@ const Landing = () => {
             </div>
             <div className="flex  flex-col md:flex-row xl:justify-between gap-x-10 md:justify-around sm:justify-around lg:justify-around">
               {TeamDetails.map((item, index) => {
-                return (
-                  <div
+                return (<div
                     key={index}
                     className="xl:w-1/3 sm:w-3/4 flex justify-between  md:w-2/5 relative mt-16 mb-32 sm:mb-24 xl:max-w-sm lg:w-2/5"
                   >
                     <div className="rounded overflow-hidden shadow-md bg-white">
                       <div className="absolute -mt-20 w-full flex justify-center">
                         <div className="h-32 w-32">
-                          <Image src={item.img} alt="teamImage" />
+                          <Image src={item.img} alt="teamImage"/>
                         </div>
                       </div>
                       <div className="px-6 mt-16">
@@ -231,15 +238,16 @@ const Landing = () => {
                         </p>
                       </div>
                     </div>
-                  </div>
-                );
+                  </div>);
               })}
             </div>
           </div>
         </div>
       </div>
-      {/* Section 6 */}
-      {/* Section 7 */}
+      <div className="fixed bottom-0 w-full bg-blue-500 py-4 text-center rounded-t-2xl">
+        <p className="text-white"><span className="font-medium">Event date has been updated</span> , Ernakulam 14 April.
+          Trivandrum and kozhikode April 16 </p>
+      </div>
       <section className="bg-white">
         <div className="max-w-screen-xl px-4 py-8 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
           <div className="flex justify-center mt-8 space-x-6"></div>
@@ -248,7 +256,6 @@ const Landing = () => {
           </p>
         </div>
       </section>
-    </div>
-  );
+    </div>);
 };
 export default Landing;
