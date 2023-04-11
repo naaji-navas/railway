@@ -9,7 +9,9 @@ import Image from "next/image";
 import * as React from "react";
 import Loader from "@/common/UI/UserDetails/Loader";
 
+
 const UserDetails = () => {
+  const [admin, setAdmin] = useState(false);
   const [paid, setPaid] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState({});
@@ -270,7 +272,7 @@ const handleUpload = async (event) => {
         </div>
       </div>) : null}
 
-      <div className="bg-white rounded-lg shadow-lg p-6   ">
+      <div className="bg-white rounded-lg shadow-lg p-6 max-w-[50%]   ">
         <h1 className="text-2xl font-bold text-indigo-700 mb-4">
           User Details
         </h1>
@@ -290,8 +292,8 @@ const handleUpload = async (event) => {
           <div className="font-semibold">Preferred Location:</div>
           <div>{user.pref_loc}</div>
           <div className="font-semibold">Payment Status:</div>
-          <div>
-            {user.upi ? "Payment is being processed by our team you will be notified when verification is complete via email" : paid ? "Paid" : "Not Paid"}
+          <div className="font-semibold">
+            {user.upi ? "Payment is being processed by our team. You will be notified when verification is complete via email" : paid ? "Paid" : "Not Paid"}
           </div>
           {!paid ? (<Button
             onClick={() => {
