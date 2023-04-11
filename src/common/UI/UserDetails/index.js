@@ -171,6 +171,9 @@ const UserDetails = () => {
     }
   };
 
+
+
+
 const handleUpload = async (event) => {
   event.preventDefault();
 
@@ -190,7 +193,10 @@ const handleUpload = async (event) => {
 
       console.log(response);
       const responseData = await response.json();
-      alert(responseData.msg);
+      if (responseData.msg === "UPI img successfully uploaded") {
+        alert("Payment is being processed by our team you will be notified when verification is complete via email")
+      }
+
       setIsLoading(false);
       if (responseData.msg === "UPI img successfully uploaded") {
         setShowModal(false);
@@ -285,7 +291,7 @@ const handleUpload = async (event) => {
           <div>{user.pref_loc}</div>
           <div className="font-semibold">Payment Status:</div>
           <div>
-            {user.upi ? "Pending Verification" : paid ? "Paid" : "Not Paid"}
+            {user.upi ? "Payment is being processed by our team you will be notified when verification is complete via email" : paid ? "Paid" : "Not Paid"}
           </div>
           {!paid ? (<Button
             onClick={() => {
