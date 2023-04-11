@@ -13,6 +13,7 @@ const SignIn = () => {
 
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   const adminPassword = process.env.NEXT_PUBLIC_ADMIN_PASSWORD;
+  const adminUsername = process.env.NEXT_PUBLIC_ADMIN_USERNAME;
   // use effect
   useEffect(() => {
     if (token) {
@@ -48,7 +49,7 @@ const handleSubmit = async (event) => {
     setToken(responseData.access_token);
     console.log(responseData);
     if (responseData.access_token) {
-      if (formData.username === "dev.gokulkrishna@gmail.com" && formData.password === adminPassword) {
+      if (formData.username === adminUsername && formData.password === adminPassword) {
         await router.push("/adminpanel");
       } else {
         await router.push("/userdetails");
