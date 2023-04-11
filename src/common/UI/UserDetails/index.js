@@ -11,13 +11,13 @@ import Loader from "@/common/UI/UserDetails/Loader";
 
 
 const UserDetails = () => {
-  const [admin, setAdmin] = useState(false);
   const [paid, setPaid] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState({});
   const [message, setMessage] = useState("");
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   const [showModal, setShowModal] = useState(false);
+  const [token, setToken] = useState("");
 
   const router = useRouter();
 
