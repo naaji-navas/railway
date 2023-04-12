@@ -8,7 +8,7 @@ import * as React from "react";
 
 const AdminPanel = () => {
   const router = useRouter();
-  const apiUrl = "https://ima-msn.up.railway.app/";
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
   const [activeTab, setActiveTab] = useState("registered");
   const [message, setMessage] = useState("");

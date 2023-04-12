@@ -151,7 +151,7 @@ const Landing = () => {
             </div>
             <div className="flex flex-col box-border gap-3 px-4 py-8 mb-6 text-center bg-white border-solid lg:mb-0 sm:px-4 sm:py-8 md:px-8 md:py-12 lg:px-10">
               <p className="font-medium">
-                GMC Kozhikode <b>(300)</b> slots
+                GMC Kozhikode <b>(200)</b> slots
               </p>
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3912.8530451652186!2d75.83500385028485!3d11.27221099194697!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba65c7619ac47c3%3A0x2749e5ee9d9f6e74!2sGovernment%20Medical%20College%2C%20Kozhikode!5e0!3m2!1sen!2sin!4v1681091937374!5m2!1sen!2sin"
@@ -258,13 +258,15 @@ const Landing = () => {
       <div className="fixed bottom-0 w-full bg-blue-500 py-4 text-center rounded-t-2xl">
         <p className="text-white">
           <span className="font-medium">Event date has been updated</span> ,
-          Ernakulam 14 April. Trivandrum and kozhikode April 16{" "}
+          Ernakulam 14 April. Trivandrum and kozhikode April 16{" "}<br></br>
+          For support contact cognoscohelp@gmail.com or +91 92077 88286
         </p>
       </div>
       <section className="bg-white">
         <div className="max-w-screen-xl px-4 py-8 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
           <div className="flex justify-center mt-8 space-x-6"></div>
           <p className="mt-8 text-base leading-6 text-center text-gray-400">
+            For support contact cognoscohelp@gmail.com or +91 92077 88286
             © 2023 Cognosco . All rights reserved.
           </p>
         </div>

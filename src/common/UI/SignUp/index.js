@@ -82,7 +82,7 @@ const SignUp = () => {
       alert("Trivandrum centre is full");
       return false;
     }
-    if (centreCount.kzh > 300 && formData.pref_loc === "Kozhikode") {
+    if (centreCount.kzh > 200 && formData.pref_loc === "Kozhikode") {
       alert("Kozhikode centre is full");
       return false;
     }
