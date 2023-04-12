@@ -22,7 +22,6 @@ const SignIn = () => {
       }
     }
   }, [token]);
-  console.log(apiUrl);
 
   const handleChange = (e) => {
     setFormData((prevData) => ({
