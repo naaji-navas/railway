@@ -33,9 +33,9 @@ const AdminPanel = () => {
         headers: {
           Authorization: `Bearer ${message}`,
           "Content-Type": "application/json",
-          accept: "application/json",
         },
         body: JSON.stringify(email),
+        cors:"cors"
       });
       const data = await response.json();
       if (response.ok) {
@@ -118,7 +118,8 @@ const AdminPanel = () => {
           Authorization: `Bearer ${message}`,
           "Content-Type": "application/json",
         },
-        body: userId,
+        body: JSON.stringify(userId),
+        cors:"cors",
       });
       const data = await response.json();
       if (response.ok && data.msg === "User successfully deleted") {
@@ -242,14 +243,12 @@ const AdminPanel = () => {
               className="mx-4 my-2 p-4 bg-white shadow-md rounded-lg"
             >
               <div className="text-lg font-semibold">{user.name}</div>
-              <div className="text-gray-600">{user.email}</div>
+              <div className="text-gray-600">{user.email_id}</div>
               <div className="mt-4 flex justify-between items-center">
                 <button
                   className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                   onClick={async () => {
-                    const userDetails = await getUserDetails(
-                      user.email
-                    );
+                    await getUserDetails(user.email_id);
                     setShowModal(true);
                   }}
                 >
@@ -259,7 +258,7 @@ const AdminPanel = () => {
                 <button
                   className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
                   onClick={async () => {
-                    await manualVerifyUser(user.email);
+                    await manualVerifyUser(user.email_id);
                   }}
                 >
                   Approve
