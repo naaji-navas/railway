@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { router } from "next/client";
+import {useRouter} from "next/router";
 import Image from "next/image";
 import qr_code from "../../../../public/assets/images/qr_code.jpg";
 import Loader from "@/common/UI/UserDetails/Loader";
@@ -7,6 +7,7 @@ import { Button } from "@mui/material";
 import * as React from "react";
 
 const AdminPanel = () => {
+  const router = useRouter();
   const apiUrl = "https://ima-msn.up.railway.app/";
 
   const [activeTab, setActiveTab] = useState("registered");
