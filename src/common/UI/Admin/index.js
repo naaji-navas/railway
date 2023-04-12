@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import {router} from "next/client";
+import { router } from "next/client";
 
 const AdminPanel = () => {
   const apiUrl = "https://ima-msn.up.railway.app/";
@@ -68,39 +68,30 @@ const AdminPanel = () => {
     fetchUsers().then((r) => console.log(r));
     fetchPendingUsers().then((r) => console.log(r));
     fetchPendingPaymentUsers().then((r) => console.log(r));
-  }, [apiUrl, message, activeTab, allUsers, pendingUsers, pendingPaymentUsers]);
+  }, [message,activeTab, allUsers, pendingUsers, pendingPaymentUsers]);
 
-const deleteUser = async (userId) => {
-  try {
-    const response = await fetch(apiUrl + "delete_user/", {
-      method: 'DELETE',
-      headers: {
-        Authorization: `Bearer ${message}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(userId),
-    });
-    const data = await response.json();
-    if (response.ok && data.msg === 'User successfully deleted') {
-      alert('User deleted successfully');
-      // Perform any additional actions needed after successful deletion
-    } else {
-      alert('Failed to delete user');
-      // Handle the error response as needed
+  const deleteUser = async (userId) => {
+    try {
+      const response = await fetch(apiUrl + "delete_user/", {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${message}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userId),
+      });
+      const data = await response.json();
+      if (response.ok && data.msg === "User successfully deleted") {
+        alert("User deleted successfully");
+        // Perform any additional actions needed after successful deletion
+      } else {
+        alert("Failed to delete user");
+        // Handle the error response as needed
+      }
+    } catch (error) {
+      console.error(error);
     }
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-
-  const tabClasses =
-    "block rounded-t-lg py-2 px-4 font-semibold cursor-pointer";
-  const activeTabClasses = "bg-indigo-800 text-white";
-  const inactiveTabClasses = "bg-gray-300 text-gray-600";
-
-  const listClasses = "bg-white divide-y divide-gray-200 overflow-y-scroll";
-  const listItemClasses = "px-4 py-2";
+  };
 
   return (
     <div className="bg-gray-100 min-h-screen flex flex-col">
@@ -120,7 +111,7 @@ const deleteUser = async (userId) => {
           <div
             className={`px-4 py-2 rounded cursor-pointer ${
               activeTab === "pending"
-                ? "bg-gray-900 text-white"
+                ? "bg-amber-300 text-white"
                 : "text-gray-900"
             }`}
             onClick={() => setActiveTab("pending")}
@@ -130,20 +121,19 @@ const deleteUser = async (userId) => {
           <div
             className={`px-4 py-2 rounded cursor-pointer ${
               activeTab === "Pending Payment"
-                ? "bg-gray-900 text-white"
+                ? "bg-red-700 text-white"
                 : "text-gray-900"
             }`}
             onClick={() => setActiveTab("Pending Payment")}
           >
             Pending Payment
           </div>
-                    <div
+          <div
             className="px-4 py-2 rounded cursor-pointer bg-red-700 text-white"
             onClick={() => {
-              localStorage.removeItem('tokenid');
-              router.push('/signin').then(r => console.log(r));
-            }
-            }
+              localStorage.removeItem("tokenid");
+              router.push("/signin").then((r) => console.log(r));
+            }}
           >
             Logout
           </div>
@@ -218,12 +208,11 @@ const deleteUser = async (userId) => {
               <div className="text-lg font-semibold">{user.name}</div>
               <div className="text-gray-600">{user.email_id}</div>
               <div className="text-gray-600">
-                Status:{" "}
-                {user.status === 1 ? "Verified" : "Pending Payment"}
+                Status: {user.status === 1 ? "Verified" : "Pending Payment"}
               </div>
               <div className="text-gray-600">Phone Number: {user.phone_no}</div>
               <div className="mt-4 flex justify-end">
-              <button
+                <button
                   className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
                   onClick={async () => {
                     await deleteUser(user.email_id);
