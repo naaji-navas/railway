@@ -273,7 +273,9 @@ const UserDetails = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Kochi WhatsApp Group
+                    <button className="bg-indigo-700 hover:bg-indigo-800 text-white font-bold py-2 px-4 rounded-full">
+                    Join our Whatsapp Group
+                  </button>
                 </a>
               ) : user.pref_loc === "Trivandrum" ? (
                 <a
@@ -354,7 +356,9 @@ const UserDetails = () => {
                 Sign Out
               </Button>
             </div>
+            
           </div>
+          <p> <br></br>For support contact cognoscohelp@gmail.com or +91 92077 88286</p>
         </div>
 
         {showModal ? (
@@ -427,7 +431,7 @@ const UserDetails = () => {
               Location Details
             </h1>
             <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
-              {user.pref_loc == "Kochi" ? (
+              {user.pref_loc === "Kochi" ? (
                 <div className="flex justify-center p-5 items-center h-[400px]">
                   <iframe
                     className="m-4"
@@ -455,7 +459,7 @@ const UserDetails = () => {
               ) : (
                 <div className="flex justify-center items-center h-[400px] p-5">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62865.98242584101!2d76.28940321683658!3d10.006623109668615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080c058ff7a4cd%3A0xa9c697fee1e03c65!2sGovernment%20Medical%20College%20Ernakulam!5e0!3m2!1sen!2sin!4v1679807141846!5m2!1sen!2sin"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3945.750962608799!2d76.92544956043203!3d8.523542241483558!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05bbfd65530ccd%3A0xa0ceab851a9f2e90!2sGovernment%20Medical%20College%20Thiruvananthapuram!5e0!3m2!1sen!2sin!4v1681332294059!5m2!1sen!2sin"
                     width="90%"
                     height="90%"
                     style={{ border: 0 }}
