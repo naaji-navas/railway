@@ -1,10 +1,10 @@
 import React from "react";
-import Admin from "@/common/UI/Admin";
+import AdminPage from "src/common/UI/AdminPage";
 
 const index = () => {
   return (
     <div>
-      <Admin />
+      <AdminPage />
     </div>
   );
 };
