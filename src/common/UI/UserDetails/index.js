@@ -171,37 +171,43 @@ const UserDetails = () => {
     }
   };
 
-  const handleUpload = async (event) => {
-    event.preventDefault();
 
-    const fileInput = document.querySelector('input[type="file"]');
-    const file1 = fileInput.files[0];
-    if (file1) {
-      try {
-        setIsLoading(true);
-        const formData = new FormData();
-        formData.append("file", file1);
-        const response = await fetch(apiUrl + "payment/upload_upi/", {
-          method: "POST", headers: {
-            "Authorization": `Bearer ${message}`,
-          }, body: formData, mode: "no-cors",
-        });
 
-        const responseData = await response.json();
-        console.log(responseData);
-        alert(responseData.msg);
-        setIsLoading(false);
-        if (responseData.msg === "UPI img successfully uploaded") {
-          setShowModal(false);
-        }
-      } catch (error) {
-        console.log(error);
+
+const handleUpload = async (event) => {
+  event.preventDefault();
+
+  const fileInput = document.querySelector('input[type="file"]');
+  const file1 = fileInput.files[0];
+  if (file1) {
+    try {
+      setIsLoading(true);
+      const formData = new FormData();
+      formData.append("file", file1);
+      const response = await fetch(apiUrl + "payment/upload_upi/", {
+        method: "POST", headers: {
+          "Authorization": `Bearer ${message}`,
+        }, body: formData,
+        mode: "cors",
+      });
+
+      console.log(response);
+      const responseData = await response.json();
+      if (responseData.msg === "UPI img successfully uploaded") {
+        alert("Payment is being processed by our team you will be notified when verification is complete via email")
       }
-    } else {
-      console.error("No file selected");
-    }
-  };
 
+      setIsLoading(false);
+      if (responseData.msg === "UPI img successfully uploaded") {
+        setShowModal(false);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  } else {
+    console.error("No file selected");
+  }
+};
 
   useEffect(() => {
     const fetchUserDetails = async () => {
@@ -285,7 +291,7 @@ const UserDetails = () => {
           <div>{user.pref_loc}</div>
           <div className="font-semibold">Payment Status:</div>
           <div>
-            {user.upi ? "Pending Verification" : paid ? "Paid" : "Not Paid"}
+            {user.upi ? "Payment is being processed by our team you will be notified when verification is complete via email" : paid ? "Paid" : "Not Paid"}
           </div>
           {!paid ? (<Button
             onClick={() => {

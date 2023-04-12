@@ -4,17 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-<<<<<<< HEAD
-    <list default="true" id="abc9ebff-d32e-4956-aa71-3a03e40e0ed4" name="Changes" comment="">
+    <list default="true" id="84a2e5ea-839e-4bee-8ccc-d29a09e5f53d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/UI/SignIn/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/UI/SignIn/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/UI/SignUp/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/UI/SignUp/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/UI/Landing/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/UI/Landing/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/UI/Reset/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/UI/Reset/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/UI/ResponseResult/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/UI/ResponseResult/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/common/UI/UserDetails/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/UI/UserDetails/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.js" afterDir="false" />
-=======
-    <list default="true" id="8bfd8f6d-b51c-4ff5-a5cd-e82f8e7489e2" name="Changes" comment="">
-
->>>>>>> 0997d9b1d6055ed2f1c90b3dbd0fcd78519e18fd
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,17 +17,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="resolve-builderror" />
-      </map>
-    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2NGd8NOqKsRoj2DbauA6uJR4C6O" />
+  <component name="ProjectId" id="2OFPZ0OCKySgltmhpoEPMUExnrv" />
   <component name="ProjectViewState">
+    <option name="autoscrollToSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
@@ -42,48 +34,39 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/PROJECTS/railwayapp/railway&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;user-details-uifixes&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.stylelint&quot;: &quot;&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\najid\\AppData\\Roaming\\npm\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.new.ui&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="8bfd8f6d-b51c-4ff5-a5cd-e82f8e7489e2" name="Changes" comment="" />
-      <created>1679294198132</created>
+      <changelist id="84a2e5ea-839e-4bee-8ccc-d29a09e5f53d" name="Changes" comment="" />
+      <created>1681153414820</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1679294198132</updated>
-      <workItem from="1679294199227" duration="2000" />
-      <workItem from="1679494928611" duration="174000" />
-      <workItem from="1679496272881" duration="621000" />
-      <workItem from="1679506667515" duration="4705000" />
-      <workItem from="1679555417083" duration="16856000" />
-      <workItem from="1679596098342" duration="550000" />
-      <workItem from="1679745517273" duration="5721000" />
+      <updated>1681153414820</updated>
+      <workItem from="1681153420857" duration="203000" />
+      <workItem from="1681153638392" duration="514000" />
+      <workItem from="1681154179384" duration="419000" />
+      <workItem from="1681188687821" duration="265000" />
+      <workItem from="1681189150607" duration="236000" />
+      <workItem from="1681191260635" duration="1271000" />
+      <workItem from="1681199307550" duration="332000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
 </project>
