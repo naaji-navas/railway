@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="84a2e5ea-839e-4bee-8ccc-d29a09e5f53d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/common/UI/SignIn/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/UI/SignIn/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/UI/AdminPage/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/UI/AdminPage/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +73,7 @@
       <workItem from="1681268585686" duration="1958000" />
       <workItem from="1681270588837" duration="5065000" />
       <workItem from="1681276770385" duration="1196000" />
-      <workItem from="1681281386098" duration="2191000" />
+      <workItem from="1681281386098" duration="2630000" />
     </task>
     <servers />
   </component>

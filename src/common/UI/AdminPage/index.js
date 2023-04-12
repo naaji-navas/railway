@@ -8,7 +8,7 @@ import * as React from "react";
 
 const AdminPanel = () => {
   const router = useRouter();
-  const apiUrl = "https://ima-msn.up.railway.app/";
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
   const [activeTab, setActiveTab] = useState("registered");
   const [message, setMessage] = useState("");
@@ -248,7 +248,7 @@ const AdminPanel = () => {
                   className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                   onClick={async () => {
                     const userDetails = await getUserDetails(
-                      "najidnavas2000@gmail.com"
+                      user.email,
                     );
                     setShowModal(true);
                   }}
