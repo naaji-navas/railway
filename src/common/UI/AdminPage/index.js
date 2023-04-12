@@ -248,7 +248,7 @@ const AdminPanel = () => {
                   className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                   onClick={async () => {
                     const userDetails = await getUserDetails(
-                      user.email,
+                      user.email
                     );
                     setShowModal(true);
                   }}
