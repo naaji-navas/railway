@@ -248,7 +248,7 @@ const AdminPanel = () => {
                   className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                   onClick={async () => {
                     const userDetails = await getUserDetails(
-                      "najidnavas2000@gmail.com"
+                      user.email,
                     );
                     setShowModal(true);
                   }}
@@ -259,7 +259,7 @@ const AdminPanel = () => {
                 <button
                   className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
                   onClick={async () => {
-                    await manualVerifyUser("rattankumarr@gmail.com");
+                    await manualVerifyUser(user.email);
                   }}
                 >
                   Approve

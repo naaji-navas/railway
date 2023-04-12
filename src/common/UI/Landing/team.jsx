@@ -5,16 +5,18 @@ import Jeevan from "../../../../public/assets/images/Team/Jeevan.jpg";
 
 const TeamDetails = [
 
+    {
+    name: "Athul S Kumar",
+    role: "Co-Convenor - " +
+      "IMA MSN Kerala",
+    img: Athul,
+  },
   {
     name: "Vishwanath Kannan",
     role: "Events comittee convenor - IMA MSN Kerala",
     img: Vishwanath,
   },
-  {
-    name: "Athul S Kumar",
-    role: "Events comittee convenor - IMA MSN Kerala",
-    img: Athul,
-  },
+
   {
     name: "Jeevan Jacob Paul",
     role: "State committee member - GMC Eranakulam",
