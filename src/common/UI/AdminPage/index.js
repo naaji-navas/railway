@@ -132,31 +132,34 @@ const AdminPanel = () => {
     }
   };
 
-const manualVerifyUser = async (userId) => {
-  try {
-    const response = await fetch(apiUrl + "payment/manual_verify/", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${message}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ userId: String(userId) }), // Convert userId to string
-    });
-    const data = await response.json();
-    console.log(data);
-    if (response.ok && data.msg === "verification successful") {
-      alert("Verification successful");
-      // Perform any additional actions needed after successful verification
-    } else {
+  const manualVerifyUser = async (userId) => {
+    try {
+      console.log(JSON.stringify({ userId: String(userId) }));
+      const response = await fetch(apiUrl + "payment/manual_verify/", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${message}`,
+          "Content-Type": "application/json",
+
+        },
+        body: JSON.stringify(userId),
+        cors:"cors"
+      });
+      const data = await response.json();
+      console.log(data);
+      if (response.ok && data.msg === "verification successful") {
+        alert("Verification successful");
+        // Perform any additional actions needed after successful verification
+      } else {
+        alert("Failed to verify user");
+        // Handle the error response as needed
+      }
+    } catch (error) {
+      console.error(error);
       alert("Failed to verify user");
       // Handle the error response as needed
     }
-  } catch (error) {
-    console.error(error);
-    alert("Failed to verify user");
-    // Handle the error response as needed
-  }
-};
+  };
 
   return (
     <div className="bg-gray-100 min-h-screen flex flex-col">
@@ -255,7 +258,7 @@ const manualVerifyUser = async (userId) => {
                 <button
                   className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
                   onClick={async () => {
-                    await manualVerifyUser(user.email);
+                    await manualVerifyUser("rattankumarr@gmail.com");
                   }}
                 >
                   Approve
