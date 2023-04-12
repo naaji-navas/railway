@@ -62,6 +62,7 @@ const AdminPanel = () => {
             Authorization: `Bearer ${message}`,
             "Content-Type": "application/json",
           },
+          mode: "cors",
         });
         const data = await response.json();
         setallUsers(data);
@@ -78,6 +79,7 @@ const AdminPanel = () => {
               Authorization: `Bearer ${message}`,
               "Content-Type": "application/json",
             },
+            mode: "cors",
           }
         );
         const data = await response.json();
@@ -93,6 +95,7 @@ const AdminPanel = () => {
             Authorization: `Bearer ${message}`,
             "Content-Type": "application/json",
           },
+          mode: "cors",g
         });
         const data = await response.json();
         setPendingPaymentUsers(data);
