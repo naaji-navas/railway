@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
 import Image from "next/image";
 import qr_code from "../../../../public/assets/images/qr_code.jpg";
 import Loader from "@/common/UI/UserDetails/Loader";
@@ -36,7 +36,7 @@ const AdminPanel = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(email),
-        cors:"cors"
+        cors: "cors",
       });
       const data = await response.json();
       if (response.ok) {
@@ -120,7 +120,7 @@ const AdminPanel = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(userId),
-        cors:"cors",
+        cors: "cors",
       });
       const data = await response.json();
       if (response.ok && data.msg === "User successfully deleted") {
@@ -144,10 +144,9 @@ const AdminPanel = () => {
         headers: {
           Authorization: `Bearer ${message}`,
           "Content-Type": "application/json",
-
         },
         body: JSON.stringify(userId),
-        cors:"cors"
+        cors: "cors",
       });
       const data = await response.json();
       console.log(data);
@@ -256,15 +255,24 @@ const AdminPanel = () => {
                 >
                   View UPI Image
                 </button>
-
-                <button
-                  className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-                  onClick={async () => {
-                    await manualVerifyUser(user.email_id);
-                  }}
-                >
-                  Approve
-                </button>
+                <div className="flex gap-3">
+                  <button
+                    className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                    onClick={async () => {
+                      await deleteUser(user.email_id);
+                    }}
+                  >
+                    Delete
+                  </button>
+                  <button
+                    className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+                    onClick={async () => {
+                      await manualVerifyUser(user.email_id);
+                    }}
+                  >
+                    Approve
+                  </button>
+                </div>
               </div>
             </div>
           ))}
