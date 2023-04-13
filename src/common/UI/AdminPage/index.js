@@ -152,6 +152,7 @@ const AdminPanel = () => {
       console.log(data);
       if (response.ok && data.msg === "verification successful") {
         alert("Verification successful");
+        setRefresh(!refresh);
         // Perform any additional actions needed after successful verification
       } else {
         alert("Failed to verify user");
@@ -276,6 +277,19 @@ const AdminPanel = () => {
               </div>
             </div>
           ))}
+        {activeTab === "pending" &&
+          pendingUsers.length ===0 ? (
+             <div className="mx-4 my-2 p-4 bg-white shadow-md rounded-lg">
+            <p className="text-lg font-semibold text-center">No Pending Verifications. </p>
+          </div>
+          ): null}
+         {activeTab === "Pending Payment" &&
+          pendingPaymentUsers.length ===0 ? (
+             <div className="mx-4 my-2 p-4 bg-white shadow-md rounded-lg">
+            <p className="text-lg font-semibold text-center">No Pending Payments. </p>
+          </div>
+          ): null}
+
         {activeTab === "Pending Payment" &&
           pendingPaymentUsers.length > 0 &&
           pendingPaymentUsers.map((user) => (
