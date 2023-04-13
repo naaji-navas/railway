@@ -5,9 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="84a2e5ea-839e-4bee-8ccc-d29a09e5f53d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/public/assets/images/qr_code2.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/UI/AdminPage/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/UI/AdminPage/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/common/UI/UserDetails/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/UI/UserDetails/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,6 +54,11 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\PROJECTS\railwayapp\railway\public\assets\images" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -74,7 +76,7 @@
       <workItem from="1681199307550" duration="332000" />
       <workItem from="1681363796289" duration="10790000" />
       <workItem from="1681384104372" duration="217000" />
-      <workItem from="1681384334508" duration="3017000" />
+      <workItem from="1681384334508" duration="3320000" />
     </task>
     <servers />
   </component>

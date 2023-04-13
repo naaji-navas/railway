@@ -177,7 +177,7 @@ const AdminPanel = () => {
       onClick={() => setShowModal(false)}
     >
       <div className="py-4 px-6 flex flex-col  items-center justify-between fixed z-50 bg-white min-w-full shadow-md md:flex-row md:justify-between md:items-center">
-        <h1 className="text-3xl font-semibold">COGNOSCO ADMIN PANEL</h1>
+        <h1 className="text-3xl font-semibold text-center">COGNOSCO ADMIN PANEL</h1>
         <div className="flex flex-col md:flex-row md:items-center gap-1 md:gap-4">
           <div
             className={`px-4 py-2 rounded cursor-pointer ${

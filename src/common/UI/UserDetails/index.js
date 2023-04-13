@@ -47,7 +47,7 @@ const UserDetails = () => {
     };
 
     fetchUserDetails();
-  }, [apiUrl, isLoading,isUploading]);
+  }, [apiUrl, isLoading, isUploading]);
 
   useEffect(() => {
     const message = localStorage.getItem("tokenid");
@@ -249,13 +249,16 @@ const UserDetails = () => {
   }, [apiUrl, message]);
 
   return (
-    <div className="my-20-5  overflow-y-scroll">
+    <div className="my-20-5  overflow-y-scroll " >
       <Link href="/">
         <div className="flex md:flex-row flex-col justify-center items-center">
           <h1 className="text-3xl font-bold text-indigo-700 mb-8">Cognosco</h1>
         </div>
       </Link>
-      <div className="flex md:flex-row  flex-col justify-center gap-3 items-center ">
+      <div
+        className="flex md:flex-row  flex-col justify-center gap-3 items-center  "
+
+      >
         {/* Program Details */}
         {paid ? (
           <div className="bg-white rounded-lg  shadow-lg p-6 max-w-3xl mx-auto ">
@@ -367,31 +370,37 @@ const UserDetails = () => {
             </button>
           </div>
 
-    <p className="flex gap-2 flex-col justify-center text-base leading-6 text-center text-gray-400">
-      <div>
-
-      For support contact{" "}
-      <a className="text-blue-600" href="mailto:cognoscohelp@gmail.com">
-        cognoscohelp@gmail.com
-      </a>{" "}
-      or{" "}
-      <a className="text-blue-600" href="tel:+919207788286">
-        +919207788286
-      </a>
-      </div>
-
-      <div>
-        WhatsApp:{" "}
-        <a href="https://wa.me/+919447155311" className="text-blue-600" target="_blank">
-          +919447155311
-        </a>{" "}
-        or{" "}
-        <a href="http://wa.me/+919847823893" className="text-blue-600" target="_blank">
-          +919847823893
-        </a>
-      </div>
-      © 2023 Cognosco. All rights reserved.
-    </p>
+          <p className="flex gap-2 flex-col justify-center text-base leading-6 text-center text-gray-400">
+            <div>
+              For support contact{" "}
+              <a className="text-blue-600" href="mailto:cognoscohelp@gmail.com">
+                cognoscohelp@gmail.com
+              </a>{" "}
+              or{" "}
+              <a className="text-blue-600" href="tel:+919207788286">
+                +919207788286
+              </a>
+            </div>
+            <div>
+              WhatsApp:{" "}
+              <a
+                href="https://wa.me/+919447155311"
+                className="text-blue-600"
+                target="_blank"
+              >
+                +919447155311
+              </a>{" "}
+              or{" "}
+              <a
+                href="http://wa.me/+919847823893"
+                className="text-blue-600"
+                target="_blank"
+              >
+                +919847823893
+              </a>
+            </div>
+            © 2023 Cognosco. All rights reserved.
+          </p>
         </div>
 
         {showModal ? (
