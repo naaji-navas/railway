@@ -246,6 +246,7 @@ const AdminPanel = () => {
             >
               <div className="text-lg font-semibold">{user.name}</div>
               <div className="text-gray-600">{user.email_id}</div>
+              <div className="text-gray-600">{user.phone_no}</div>
               <div className="mt-4 flex justify-between items-center">
                 <button
                   className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
