@@ -177,7 +177,9 @@ const AdminPanel = () => {
       onClick={() => setShowModal(false)}
     >
       <div className="py-4 px-6 flex flex-col  items-center justify-between fixed z-50 bg-white min-w-full shadow-md md:flex-row md:justify-between md:items-center">
-        <h1 className="text-3xl font-semibold text-center">COGNOSCO ADMIN PANEL</h1>
+        <h1 className="text-3xl font-semibold text-center">
+          COGNOSCO ADMIN PANEL
+        </h1>
         <div className="flex flex-col md:flex-row md:items-center gap-1 md:gap-4">
           <div
             className={`px-4 py-2 rounded cursor-pointer ${
@@ -207,8 +209,8 @@ const AdminPanel = () => {
             }`}
             onClick={() => setActiveTab("verified")}
           >
-            Verified Users ({allUsers
-            .filter((user) => user.status === 1).length})
+            Verified Users (
+            {allUsers.filter((user) => user.status === 1).length})
           </div>
           <div
             className={`px-4 py-2 rounded cursor-pointer ${
@@ -309,7 +311,7 @@ const AdminPanel = () => {
               <div className="text-lg font-semibold">{user.name}</div>
               <div className="text-gray-600">{user.email_id}</div>
               <div className="text-gray-600">{user.phone_no}</div>
-              <div className="mt-4 flex justify-between items-center">
+              <div className="mt-4 flex gap-4 justify-end items-center">
                 <button
                   className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                   onClick={async () => {
@@ -319,24 +321,22 @@ const AdminPanel = () => {
                 >
                   View UPI Image
                 </button>
-                <div className="flex gap-3">
-                  <button
-                    className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-                    onClick={async () => {
-                      await deleteUser(user.email_id);
-                    }}
-                  >
-                    Delete
-                  </button>
-                  <button
-                    className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-                    onClick={async () => {
-                      await manualVerifyUser(user.email_id);
-                    }}
-                  >
-                    Approve
-                  </button>
-                </div>
+                <button
+                  className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+                  onClick={async () => {
+                    await manualVerifyUser(user.email_id);
+                  }}
+                >
+                  Approve
+                </button>
+                <button
+                  className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                  onClick={async () => {
+                    await deleteUser(user.email_id);
+                  }}
+                >
+                  Delete
+                </button>
               </div>
             </div>
           ))}
