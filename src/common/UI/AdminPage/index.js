@@ -187,7 +187,7 @@ const AdminPanel = () => {
             }`}
             onClick={() => setActiveTab("registered")}
           >
-            Registered Users
+            Registered Users ({allUsers.length})
           </div>
           <div
             className={`px-4 py-2 rounded cursor-pointer ${
@@ -197,7 +197,7 @@ const AdminPanel = () => {
             }`}
             onClick={() => setActiveTab("pending")}
           >
-            Pending Verification
+            Pending Verification ({pendingUsers.length})
           </div>
           <div
             className={`px-4 py-2 rounded cursor-pointer ${
@@ -207,7 +207,8 @@ const AdminPanel = () => {
             }`}
             onClick={() => setActiveTab("verified")}
           >
-            Verified Users
+            Verified Users ({allUsers
+            .filter((user) => user.status === 1).length})
           </div>
           <div
             className={`px-4 py-2 rounded cursor-pointer ${
@@ -217,7 +218,7 @@ const AdminPanel = () => {
             }`}
             onClick={() => setActiveTab("Pending Payment")}
           >
-            Pending Payment
+            Pending Payment ({pendingPaymentUsers.length})
           </div>
           <div
             className="px-4 py-2 rounded cursor-pointer bg-red-700 text-white"
