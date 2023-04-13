@@ -11,6 +11,7 @@ import Loader from "@/common/UI/UserDetails/Loader";
 
 const UserDetails = () => {
   const [paid, setPaid] = useState(false);
+
   const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState({});
   const [message, setMessage] = useState("");
@@ -29,7 +30,14 @@ const UserDetails = () => {
           },
         });
         const data = await res.json();
+        if (data.detail === "Could not validate credentials") {
+          setIsLoading(true);
+        } else {
+          setIsLoading(false);
+        }
+
         setUser(data);
+
         if (data.status) {
           setPaid(data.status === 1);
         }
@@ -37,7 +45,7 @@ const UserDetails = () => {
     };
 
     fetchUserDetails();
-  }, [apiUrl]);
+  }, [apiUrl, isLoading]);
 
   useEffect(() => {
     const message = localStorage.getItem("tokenid");
@@ -191,7 +199,6 @@ const UserDetails = () => {
           method: "POST",
           headers: {
             Authorization: `Bearer ${message}`,
-
           },
           body: formData,
           mode: "cors",
@@ -274,7 +281,7 @@ const UserDetails = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                    <button className="bg-indigo-700 hover:bg-indigo-800 text-white font-bold py-2 px-4 rounded-full">
+                  <button className="bg-indigo-700 hover:bg-indigo-800 text-white font-bold py-2 px-4 rounded-full">
                     Join our Whatsapp Group
                   </button>
                 </a>
@@ -303,25 +310,26 @@ const UserDetails = () => {
           </div>
         ) : null}
 
-        <div className="bg-white rounded-lg shadow-lg p-6 max-w-[50%]   ">
+        <div className="bg-white rounded-lg shadow-lg p-6  md:max-w-[50%]">
           <h1 className="text-2xl font-bold text-indigo-700 mb-4">
             User Details
           </h1>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {isLoading ? <Loader /> : null}
+          <div className="grid grid-cols-2 justify-center align-middle md:grid-cols-2 gap-4">
             <div className="font-semibold">Name:</div>
-            <div>{user.name}</div>
+            <div className="truncate">{user.name}</div>
             <div className="font-semibold">Place:</div>
-            <div>{user.place}</div>
+            <div className="truncate">{user.place}</div>
             <div className="font-semibold">Phone Number:</div>
-            <div>{user.phone_no}</div>
+            <div className="truncate">{user.phone_no}</div>
             <div className="font-semibold">Alternate Phone Number:</div>
-            <div>{user.alt_phone_no}</div>
+            <div className="truncate">{user.alt_phone_no}</div>
             <div className="font-semibold">Email:</div>
-            <div>{user.email_id}</div>
+            <div className="truncate">{user.email_id}</div>
             <div className="font-semibold">Alternate Email:</div>
-            <div>{user.alt_email_id}</div>
+            <div className="truncate">{user.alt_email_id}</div>
             <div className="font-semibold">Preferred Location:</div>
-            <div>{user.pref_loc}</div>
+            <div className="truncate">{user.pref_loc}</div>
             <div className="font-semibold">Payment Status:</div>
             <div className="font-semibold">
               {user.upi
@@ -330,36 +338,43 @@ const UserDetails = () => {
                 ? "Paid"
                 : "Not Paid"}
             </div>
+          </div>
+          <div className="grid grid-cols-1 mb-3 items-center justify-center gap-2 mt-8 pt-5">
             {!paid ? (
-              <Button
+              <button
                 onClick={() => {
                   setShowModal(true);
                 }}
-                className="bg-indigo-600 text-white rounded-md px-4 py-2 hover:bg-indigo-500"
-                variant="contained"
+                className="bg-indigo-600 text-white rounded-md px-4 py-2 hover:bg-indigo-500 w-full md:w-auto"
               >
                 Pay with UPI
-              </Button>
+              </button>
             ) : (
-              <Button
+              <button
                 onClick={downloadPdf}
-                className="bg-indigo-600 text-white rounded-md px-4 py-2 hover:bg-indigo-500"
-                variant="contained"
+                className="bg-indigo-600 text-white rounded-md px-4 py-2 hover:bg-indigo-500 w-full md:w-auto"
               >
                 Download PDF
-              </Button>
+              </button>
             )}
-            <div className="text-center sm:text-right">
-              <Button
-                onClick={() => signOut()}
-                className="bg-red-600 text-white rounded-md px-4 py-2 hover:bg-red-500 "
-              >
-                Sign Out
-              </Button>
-            </div>
-            
+            <button
+              onClick={() => signOut()}
+              className="bg-red-600 text-white rounded-md px-4 py-2 hover:bg-red-500 mt-4 w-full md:w-auto"
+            >
+              Sign Out
+            </button>
           </div>
-          <p> <br></br>For support contact <a className="text-blue-600" href="mailto:cognoscohelp@gmail.com">cognoscohelp@gmail.com</a>  or <a className="text-blue-600" href="tel:+919207788286" >+919207788286</a></p>
+
+          <p className="text-gray-400 text-sm text-center">
+            For support contact{" "}
+            <a className="text-blue-600" href="mailto:cognoscohelp@gmail.com">
+              cognoscohelp@gmail.com
+            </a>{" "}
+            or{" "}
+            <a className="text-blue-600" href="tel:+919207788286">
+              +919207788286
+            </a>
+          </p>
         </div>
 
         {showModal ? (
