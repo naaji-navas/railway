@@ -13,6 +13,7 @@ const UserDetails = () => {
   const [paid, setPaid] = useState(false);
 
   const [isLoading, setIsLoading] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
   const [user, setUser] = useState({});
   const [message, setMessage] = useState("");
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -45,7 +46,7 @@ const UserDetails = () => {
     };
 
     fetchUserDetails();
-  }, [apiUrl, isLoading]);
+  }, [apiUrl, isLoading,isUploading]);
 
   useEffect(() => {
     const message = localStorage.getItem("tokenid");
@@ -192,7 +193,7 @@ const UserDetails = () => {
     const file1 = fileInput.files[0];
     if (file1) {
       try {
-        setIsLoading(true);
+        setIsUploading(true);
         const formData = new FormData();
         formData.append("file", file1);
         const response = await fetch(apiUrl + "payment/upload_upi/", {
@@ -212,7 +213,7 @@ const UserDetails = () => {
           );
         }
 
-        setIsLoading(false);
+        setIsUploading(false);
         if (responseData.msg === "UPI img successfully uploaded") {
           setShowModal(false);
         }
@@ -416,7 +417,7 @@ const UserDetails = () => {
                           accept="image/*"
                           placeholder="add image"
                         />
-                        {isLoading ? <Loader /> : null}
+                        {isUploading ? <Loader /> : null}
                         <button
                           className="bg-indigo-500 text-gray-100 p-4 w-full rounded-full tracking-wide
                           font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-indigo-600
