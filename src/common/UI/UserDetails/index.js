@@ -430,7 +430,7 @@ const UserDetails = () => {
 
                     <Image
                       className="object-contain h-96 w-96"
-                      src={qr_code2}
+                      src={qr_code}
                       alt="qr code for payment"
                     />
                     <div className="flex justify-center">
