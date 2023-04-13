@@ -333,10 +333,10 @@ const UserDetails = () => {
             <div className="truncate">{user.pref_loc}</div>
             <div className="font-semibold">Payment Status:</div>
             <div className="font-semibold">
-              {user.upi
-                ? "Payment is being processed by our team. You will be notified when verification is complete via email"
-                : paid
+              {paid
                 ? "Paid"
+                : user.upi
+                ? "Payment is being processed by our team. You will be notified when verification is complete via email"
                 : "Not Paid"}
             </div>
           </div>
