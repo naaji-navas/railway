@@ -334,7 +334,7 @@ const UserDetails = () => {
             <div className="font-semibold">Payment Status:</div>
             <div className="font-semibold">
               {paid
-                ? "Paid"
+                ? "Payment Verified"
                 : user.upi
                 ? "Payment is being processed by our team. You will be notified when verification is complete via email"
                 : "Not Paid"}
