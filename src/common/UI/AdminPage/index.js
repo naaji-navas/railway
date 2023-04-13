@@ -42,7 +42,7 @@ const AdminPanel = () => {
       if (response.ok) {
         setUpiBase64(data.upi);
         setUserDetails(data);
-        console.log(upiBase64);
+
       } else {
         alert("Failed to get user details");
         // Handle the error response as needed
@@ -144,7 +144,7 @@ const deleteUser = async (userId) => {
 
   const manualVerifyUser = async (userId) => {
     try {
-      console.log(JSON.stringify({ userId: String(userId) }));
+
       const response = await fetch(apiUrl + "payment/manual_verify/", {
         method: "POST",
         headers: {
@@ -155,7 +155,7 @@ const deleteUser = async (userId) => {
         cors: "cors",
       });
       const data = await response.json();
-      console.log(data);
+
       if (response.ok && data.msg === "verification successful") {
         alert("Verification successful");
         setRefresh(!refresh);
@@ -227,32 +227,35 @@ const deleteUser = async (userId) => {
   </div>
 </div>
       <div className="flex-grow pt-5  flex flex-col relative md:top-16 top-72 overflow-y-auto">
-        {activeTab === "registered" &&
-          allUsers.length > 0 &&
-          allUsers.map((user) => (
+  {activeTab === "registered" &&
+    allUsers.length > 0 &&
+    allUsers
+        .sort((a, b) => b.status - a.status)
+        .map((user) => (
             <div
-              key={user.id}
-              className="mx-4 my-2 p-4 bg-white shadow-md rounded-lg"
+                key={user.id}
+                className="mx-4 my-2 p-4 bg-white shadow-md rounded-lg"
             >
-              <div className="text-lg font-semibold">{user.name}</div>
-              <div className="text-gray-600">{user.email_id}</div>
-              <div className="text-gray-600">
-                Status:{" "}
-                {user.status === 1 ? "Verified" : "Pending Verification"}
-              </div>
-              <div className="text-gray-600">Phone Number: {user.phone_no}</div>
-              <div className="mt-4 flex justify-end">
-                <button
-                  className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-                  onClick={async () => {
-                    await deleteUser(user.email_id);
-                  }}
-                >
-                  Delete
-                </button>
-              </div>
+                <div className="text-lg font-semibold">{user.name}</div>
+                <div className="text-gray-600">{user.email_id}</div>
+                <div className="text-gray-600">
+                    Status:{" "}
+                    {user.status === 1 ? "Verified" : "Pending Verification"}
+                </div>
+                <div className="text-gray-600">Phone Number: {user.phone_no}</div>
+                <div className="mt-4 flex justify-end">
+                    <button
+                        className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                        onClick={async () => {
+                            await deleteUser(user.email_id);
+                        }}
+                    >
+                        Delete
+                    </button>
+                </div>
             </div>
-          ))}
+        ))}
+
         {activeTab === "verified" &&
           allUsers.length > 0 &&
           allUsers
@@ -402,8 +405,8 @@ const deleteUser = async (userId) => {
 
                     <Image
                       src={`data:image/png;base64, ${upiBase64}`}
-                      width={300}
-                      height={300}
+                      width={220}
+                      height={220}
                       className="sm:max-w-xs sm:max-h-full sm:mr-4"
                       alt="qr code for payment"
                     />

@@ -300,7 +300,7 @@ useEffect(() => {
               <p className="flex gap-2 flex-col justify-center text-base leading-6 text-center">
       <div>
 
-      For support contact
+      For support contact {" "}
       <a className="text-black" href="mailto:cognoscohelp@gmail.com">
         cognoscohelp@gmail.com
       </a>{" "}
@@ -331,7 +331,7 @@ useEffect(() => {
     <p className="flex gap-2 flex-col justify-center text-base leading-6 text-center text-gray-400">
       <div>
 
-      For support contact
+      For support contact{" "}
       <a className="text-blue-600" href="mailto:cognoscohelp@gmail.com">
         cognoscohelp@gmail.com
       </a>{" "}

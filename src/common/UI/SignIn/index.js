@@ -46,7 +46,6 @@ const handleSubmit = async (event) => {
 
     const responseData = await response.json();
     setToken(responseData.access_token);
-    console.log(token);
     if (responseData.access_token) {
       if (formData.username === adminUsername && formData.password === adminPassword) {
         await router.push("/adminpanel");

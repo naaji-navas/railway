@@ -52,7 +52,6 @@ const SignUp = () => {
 
 // a funciton to check the alternate and primary phone number and email are different
   const check = () => {
-    console.log(centreCount.kochi);
     // check if all the fields are not filled
     getCentreCount().then(r => console.log(r));
 
@@ -118,7 +117,6 @@ const SignUp = () => {
       if (data.detail == "User already exists") {
         alert("User already exists");
       }
-      console.log(data);
       if (data.access_token) {
         setToken(data.access_token);
       }
@@ -128,7 +126,7 @@ const SignUp = () => {
       if (data.message == "User already exists") {
         alert("User already exists");
       } else if (!data.access_token) {
-        console.log("Failed to register")
+        alert("Failed to register")
 
       } else {
         await router.push("/responseresult");
