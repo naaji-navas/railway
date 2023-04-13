@@ -366,16 +366,31 @@ const UserDetails = () => {
             </button>
           </div>
 
-          <p className="text-gray-400 text-sm text-center">
-            For support contact{" "}
-            <a className="text-blue-600" href="mailto:cognoscohelp@gmail.com">
-              cognoscohelp@gmail.com
-            </a>{" "}
-            or{" "}
-            <a className="text-blue-600" href="tel:+919207788286">
-              +919207788286
-            </a>
-          </p>
+    <p className="flex gap-2 flex-col justify-center text-base leading-6 text-center text-gray-400">
+      <div>
+
+      For support contact{" "}
+      <a className="text-blue-600" href="mailto:cognoscohelp@gmail.com">
+        cognoscohelp@gmail.com
+      </a>{" "}
+      or{" "}
+      <a className="text-blue-600" href="tel:+919207788286">
+        +919207788286
+      </a>
+      </div>
+
+      <div>
+        WhatsApp:{" "}
+        <a href="https://wa.me/+919447155311" className="text-blue-600" target="_blank">
+          +919447155311
+        </a>{" "}
+        or{" "}
+        <a href="http://wa.me/+919847823893" className="text-blue-600" target="_blank">
+          +919847823893
+        </a>
+      </div>
+      © 2023 Cognosco. All rights reserved.
+    </p>
         </div>
 
         {showModal ? (
