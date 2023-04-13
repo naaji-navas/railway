@@ -191,6 +191,7 @@ const UserDetails = () => {
           method: "POST",
           headers: {
             Authorization: `Bearer ${message}`,
+
           },
           body: formData,
           mode: "cors",
@@ -358,7 +359,7 @@ const UserDetails = () => {
             </div>
             
           </div>
-          <p> <br></br>For support contact cognoscohelp@gmail.com or +91 92077 88286</p>
+          <p> <br></br>For support contact <a className="text-blue-600" href="mailto:cognoscohelp@gmail.com">cognoscohelp@gmail.com</a>  or <a className="text-blue-600" href="tel:+919207788286" >+919207788286</a></p>
         </div>
 
         {showModal ? (

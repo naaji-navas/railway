@@ -12,6 +12,7 @@ const AdminPanel = () => {
 
   const [activeTab, setActiveTab] = useState("registered");
   const [message, setMessage] = useState("");
+  const [refresh, setRefresh] = useState(false);
   const [upiBase64, setUpiBase64] = useState("");
   const [userDetails, setUserDetails] = useState("");
   const [showModal, setShowModal] = useState(false);
@@ -103,7 +104,7 @@ const AdminPanel = () => {
     fetchUsers().then((r) => console.log(r));
     fetchPendingUsers().then((r) => console.log(r));
     fetchPendingPaymentUsers().then((r) => console.log(r));
-  }, [message, activeTab]);
+  }, [message, activeTab, refresh]);
 
   const signOut = () => {
     localStorage.removeItem("tokenid");
@@ -123,6 +124,7 @@ const AdminPanel = () => {
       });
       const data = await response.json();
       if (response.ok && data.msg === "User successfully deleted") {
+        setRefresh(!refresh);
         alert("User deleted successfully");
         // Perform any additional actions needed after successful deletion
       } else {
