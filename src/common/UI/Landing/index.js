@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import cognosco from "../../../../public/assets/images/cognosco.png";
 import ima_msn from "../../../../public/assets/images/ima_msn.png";
 import Justin from "../../../../public/assets/images/Team/Justin.png";
@@ -8,6 +8,38 @@ import undraw_img from "../../../../public/assets/images/undraw_img.png";
 import { TeamDetails } from "@/common/UI/Landing/team";
 
 const Landing = () => {
+    const [showElement, setShowElement] = useState(true);
+
+useEffect(() => {
+  let prevScrollPosition = window.pageYOffset;
+  let show = true;
+
+  const handleScroll = () => {
+    const scrollPosition = window.pageYOffset;
+
+    if (scrollPosition > prevScrollPosition) {
+      // Scrolling down
+      if (show) {
+        setShowElement(false);
+        show = false;
+      }
+    } else {
+      // Scrolling up
+      if (!show) {
+        setShowElement(true);
+        show = true;
+      }
+    }
+
+    prevScrollPosition = scrollPosition;
+  };
+
+  window.addEventListener("scroll", handleScroll);
+
+  return () => {
+    window.removeEventListener("scroll", handleScroll);
+  };
+}, []);
   return (
     <div>
       <section className="w-full px-8 text-gray-700 bg-white fixed rounded-b-[40px] shadow-blue-50 z-50">
@@ -261,22 +293,68 @@ const Landing = () => {
           </div>
         </div>
       </div>
-      <div className="fixed bottom-0 w-full bg-blue-500 py-4 text-center rounded-t-2xl">
+      {showElement?( <div className="fixed bottom-0  w-full bg-blue-500 py-4 text-center rounded-t-2xl">
         <p className="text-white">
           <span className="font-medium">Event date has been updated</span> ,
-          Ernakulam 14 April. Trivandrum and kozhikode April 16{" "}<br></br>
-          For support contact cognoscohelp@gmail.com or +91 92077 88286
-        </p>
+          Ernakulam 14 April. Trivandrum and kozhikode April 16 <br></br>
+              <p className="flex gap-2 flex-col justify-center text-base leading-6 text-center">
+      <div>
+
+      For support contact
+      <a className="text-black" href="mailto:cognoscohelp@gmail.com">
+        cognoscohelp@gmail.com
+      </a>{" "}
+      or{" "}
+      <a className="text-black" href="tel:+919207788286">
+        +919207788286
+      </a>
       </div>
-      <section className="bg-white">
-        <div className="max-w-screen-xl px-4 py-8 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
-          <div className="flex justify-center mt-8 space-x-6"></div>
-          <p className="mt-8 text-base leading-6 text-center text-gray-400">
-            For support contact cognoscohelp@gmail.com or +91 92077 88286
-            © 2023 Cognosco . All rights reserved.
-          </p>
-        </div>
-      </section>
+
+      <div>
+        WhatsApp:{" "}
+        <a href="https://wa.me/+919447155311" className="text-black" target="_blank">
+          +919447155311
+        </a>{" "}
+        or{" "}
+        <a href="http://wa.me/+919847823893" className="text-black" target="_blank">
+          +919847823893
+        </a>
+      </div>
+    </p>
+
+        </p>
+      </div>):null}
+
+<section className="bg-white">
+  <div className="max-w-screen-xl px-4 py-5 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
+    <div className="justify-center space-x-6"></div>
+    <p className="flex gap-2 flex-col justify-center text-base leading-6 text-center text-gray-400">
+      <div>
+
+      For support contact
+      <a className="text-blue-600" href="mailto:cognoscohelp@gmail.com">
+        cognoscohelp@gmail.com
+      </a>{" "}
+      or{" "}
+      <a className="text-blue-600" href="tel:+919207788286">
+        +919207788286
+      </a>
+      </div>
+
+      <div>
+        WhatsApp:{" "}
+        <a href="https://wa.me/+919447155311" className="text-blue-600" target="_blank">
+          +919447155311
+        </a>{" "}
+        or{" "}
+        <a href="http://wa.me/+919847823893" className="text-blue-600" target="_blank">
+          +919847823893
+        </a>
+      </div>
+      © 2023 Cognosco. All rights reserved.
+    </p>
+  </div>
+</section>
     </div>
   );
 };

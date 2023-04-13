@@ -1,0 +1,35 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"84a2e5ea-839e-4bee-8ccc-d29a09e5f53d\" name=\"Changes\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/common/UI/Landing/index.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/common/UI/Landing/index.js\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/common/UI/Reset/index.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/common/UI/Reset/index.js\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/common/UI/ResponseResult/index.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/common/UI/ResponseResult/index.js\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/common/UI/UserDetails/index.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/common/UI/UserDetails/index.js\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2OFPZ0OCKySgltmhpoEPMUExnrv\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"autoscrollToSource\" value=\"true\" />\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n    <option name=\"showMembers\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;user-details-uifixes&quot;,\r\n    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.stylelint&quot;: &quot;&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\r\n    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\\\Users\\\\najid\\\\AppData\\\\Roaming\\\\npm\\\\node_modules\\\\prettier&quot;,\r\n    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.new.ui&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"84a2e5ea-839e-4bee-8ccc-d29a09e5f53d\" name=\"Changes\" comment=\"\" />\r\n      <created>1681153414820</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1681153414820</updated>\r\n      <workItem from=\"1681153420857\" duration=\"203000\" />\r\n      <workItem from=\"1681153638392\" duration=\"514000\" />\r\n      <workItem from=\"1681154179384\" duration=\"419000\" />\r\n      <workItem from=\"1681188687821\" duration=\"265000\" />\r\n      <workItem from=\"1681189150607\" duration=\"236000\" />\r\n      <workItem from=\"1681191260635\" duration=\"1271000\" />\r\n      <workItem from=\"1681199307550\" duration=\"332000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 29285015e0db90b067403ae79e36d05a41267a77)
++++ b/.idea/workspace.xml	(date 1681311447458)
+@@ -4,13 +4,7 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="84a2e5ea-839e-4bee-8ccc-d29a09e5f53d" name="Changes" comment="">
+-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/common/UI/Landing/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/UI/Landing/index.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/common/UI/Reset/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/UI/Reset/index.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/common/UI/ResponseResult/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/UI/ResponseResult/index.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/common/UI/UserDetails/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/UI/UserDetails/index.js" afterDir="false" />
+-    </list>
++    <list default="true" id="84a2e5ea-839e-4bee-8ccc-d29a09e5f53d" name="Changes" comment="" />
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -23,6 +17,9 @@
+     <option name="stateVersion" value="1" />
+   </component>
+   <component name="ProjectId" id="2OFPZ0OCKySgltmhpoEPMUExnrv" />
++  <component name="ProjectLevelVcsManager">
++    <ConfirmationsSetting value="2" id="Add" />
++  </component>
+   <component name="ProjectViewState">
+     <option name="autoscrollToSource" value="true" />
+     <option name="hideEmptyMiddlePackages" value="true" />
