@@ -5,8 +5,8 @@ import process from "next/dist/build/webpack/loaders/resolve-url-loader/lib/post
 import axios from "axios";
 import Link from "next/link";
 import qr_code from "../../../../public/assets/images/qr_code.jpg";
-import qr_code2 from "../../../../public/assets/images/qr_code2.jpg";
-//import qr_code2 from "../../../../public/assets/images/qr_code.jpg";
+//import qr_code2 from "../../../../public/assets/images/qr_code2.jpg";
+import qr_code2 from "../../../../public/assets/images/qr_code.jpg";
 import Image from "next/image";
 import * as React from "react";
 import Loader from "@/common/UI/UserDetails/Loader";

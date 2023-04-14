@@ -380,7 +380,7 @@ const AdminPanel = () => {
                 Status: {user.status === 1 ? "Verified" : "Pending Payment"}
               </div>
               <div className="text-gray-600">Phone Number: {user.phone_no}</div>
-              <div className="mt-4 flex justify-end">
+              <div className="mt-4 flex gap-4 justify-end items-center">
                 <button
                   className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
                   onClick={async () => {
@@ -389,6 +389,17 @@ const AdminPanel = () => {
                 >
                   Delete
                 </button>
+                {user.status==0 ? (
+                        <button
+                        className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+                        onClick={async () => {
+                          await manualVerifyUser(user.email_id);
+                        }}
+                        >
+                        Approve
+                        </button>
+
+                  ):[]}
               </div>
             </div>
           ))}
