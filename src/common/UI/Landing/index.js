@@ -54,7 +54,7 @@ useEffect(() => {
             </Link>
           </div>
           <div className="inline-flex items-center ml-5 space-x-6 lg:justify-end">
-            <Link
+            {/* <Link
               href="/signup"
               className="inline-flex items-center justify-center px-4 py-2 text-base font-medium leading-6 text-white whitespace-no-wrap bg-black border border-transparent rounded-md shadow-sm hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600"
             >
@@ -65,7 +65,7 @@ useEffect(() => {
               className="inline-flex items-center justify-center px-4 py-2 text-base font-medium leading-6 text-white whitespace-no-wrap bg-black border border-transparent rounded-md shadow-sm hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600"
             >
               Login
-            </Link>
+            </Link> */}
           </div>
         </div>
       </section>
@@ -88,7 +88,7 @@ useEffect(() => {
                   <span className="block xl:inline">Cognosco</span>
                 </h1>
                 <div className="flex flex-col sm:flex-row sm:space-x-4 mt-4">
-                  <Link
+                  {/* <Link
                     href="/signup"
                     className="w-full sm:w-auto px-6 py-3 text-lg text-white bg-black rounded-lg hover:bg-indigo-700 flex items-center"
                   >
@@ -106,7 +106,7 @@ useEffect(() => {
                       <line x1="5" y1="12" x2="19" y2="12"></line>
                       <polyline points="12 5 19 12 12 19"></polyline>
                     </svg>
-                  </Link>
+                  </Link> */}
                 </div>
               </div>
             </div>
@@ -295,12 +295,12 @@ useEffect(() => {
       </div>
       {showElement?( <div className="fixed bottom-0  w-full bg-blue-500 py-4 text-center rounded-t-2xl">
         <p className="text-white">
-          <span className="font-medium">Event date has been updated</span> ,
-          Ernakulam 14 April. Trivandrum and kozhikode April 16 <br></br>
+          <span className="font-medium">Event has concluded and registrations have been stopped</span> ,
+          Results will be published soon<br></br>
               <p className="flex gap-2 flex-col justify-center text-base leading-6 text-center">
       <div>
 
-      For support contact {" "}
+      For further enquiries contact {" "}
       <a className="text-black" href="mailto:cognoscohelp@gmail.com">
         cognoscohelp@gmail.com
       </a>{" "}
@@ -310,7 +310,7 @@ useEffect(() => {
       </a>
       </div>
 
-      <div>
+      {/* <div>
         WhatsApp:{" "}
         <a href="https://wa.me/+919447155311" className="text-black" target="_blank">
           +919447155311
@@ -319,7 +319,7 @@ useEffect(() => {
         <a href="http://wa.me/+919847823893" className="text-black" target="_blank">
           +919847823893
         </a>
-      </div>
+      </div> */}
     </p>
 
         </p>
