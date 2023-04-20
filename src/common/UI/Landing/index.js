@@ -60,12 +60,19 @@ const Landing = () => {
             >
               Register
             </Link>
+
             <Link
               href="/signin"
               className="inline-flex items-center justify-center px-4 py-2 text-base font-medium leading-6 text-white whitespace-no-wrap bg-black border border-transparent rounded-md shadow-sm hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600"
             >
               Login
             </Link> */}
+            <Link
+              href="/assets/ans-key.pdf"
+              className="inline-flex items-center justify-center px-4 py-2 text-base font-medium leading-6 text-white whitespace-no-wrap bg-green-500 border border-transparent rounded-md shadow-sm hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600"
+            >
+              Answer Key
+            </Link>
           </div>
         </div>
       </section>
@@ -341,21 +348,7 @@ const Landing = () => {
                   +919207788286
                 </a>
               </div>
-              <div className="text-white">
-                Note: The 61st qn has been cancelled for ernakulam centre . For
-                the rest of the centres it has been replaced.
-              </div>
 
-              <div>
-                <Link
-                  className="text-pink-700 font-bold"
-                  href="/assets/ans-key.pdf"
-                  target="_blank"
-                >
-                  Click here
-                </Link>{" "}
-                to download Answer key.
-              </div>
               {/* <div>
         WhatsApp:{" "}
         <a href="https://wa.me/+919447155311" className="text-black" target="_blank">
