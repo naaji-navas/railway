@@ -5,6 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="84a2e5ea-839e-4bee-8ccc-d29a09e5f53d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/public/assets/images/bell.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/common/UI/Landing/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/UI/Landing/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,7 +42,7 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "final-result",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "D:/PROJECTS/railwayapp/railway/public/assets",
+    "last_opened_file_path": "D:/PROJECTS/railwayapp/railway/public/assets/images",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.stylelint": "true",
     "node.js.detected.package.tslint": "true",
@@ -56,7 +58,10 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\PROJECTS\railwayapp\railway\public\assets\images" />
       <recent name="D:\PROJECTS\railwayapp\railway\public\assets" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\PROJECTS\railwayapp\railway\public\assets\images" />
     </key>
   </component>
@@ -79,7 +84,7 @@
       <workItem from="1681384104372" duration="217000" />
       <workItem from="1681384334508" duration="5570000" />
       <workItem from="1681445439083" duration="172000" />
-      <workItem from="1681975831304" duration="1891000" />
+      <workItem from="1681975831304" duration="3701000" />
     </task>
     <servers />
   </component>

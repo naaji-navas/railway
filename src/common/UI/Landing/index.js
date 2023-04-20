@@ -3,6 +3,8 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import cognosco from "../../../../public/assets/images/cognosco.png";
 import ima_msn from "../../../../public/assets/images/ima_msn.png";
+import bell from "../../../../public/assets/images/bell.gif";
+
 import Justin from "../../../../public/assets/images/Team/Justin.png";
 import undraw_img from "../../../../public/assets/images/undraw_img.png";
 import { TeamDetails } from "@/common/UI/Landing/team";
@@ -68,6 +70,7 @@ const Landing = () => {
               Login
             </Link> */}
             <Link
+              target="_blank"
               href="/assets/ans-key.pdf"
               className="inline-flex items-center justify-center px-4 py-2 text-base font-medium leading-6 text-white whitespace-no-wrap bg-green-500 border border-transparent rounded-md shadow-sm hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600"
             >
@@ -157,36 +160,43 @@ const Landing = () => {
           </div>
         </div>
       </section>
-      <section className="event-schedule py-8 bg-purple-100 text-center">
-        <div className="mx-auto max-w-4xl">
-          <h2 className="text-3xl text-purple-800 font-bold mb-6 text-center">
-            Notifications
-          </h2>
-          <div className="schedule-item ">
-            <div className="text-xl  text-center mb-2">
-              <ul className="list-disc">
-                <li>
-                  The Answer Key has been published . {" "}
-                  <Link
-                    className="text-pink-700 font-normal"
-                    href="/assets/ans-key.pdf"
-                    target="_blank"
-                  >
-                    Click here
-                  </Link>{" "}
-                  to download Answer key.
-                </li>
-                <li>
-                  <div >
-                    Note: The 61st qn has been cancelled for ernakulam centre .
-                    For the rest of the centres it has been replaced.
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+<section className="bg-purple-100 py-8 text-center relative">
+  <div className="mx-auto max-w-4xl">
+    <h2 className="mb-6 text-3xl font-bold text-purple-800 flex items-center justify-center">
+      <Image src={bell} alt="" className="w-8 h-8 mr-2 animate-blink rounded-3xl bg-inherit"  />
+      Notifications
+    </h2>
+    <div className="bg-white p-6 rounded-lg shadow-lg relative">
+      <ul className="list-disc text-left">
+        <li className="mb-4">
+          <span className="text-xl font-medium mr-2">New:</span> The Answer Key has been published.
+          <a
+            className="text-pink-700 font-normal hover:underline"
+            href="/assets/ans-key.pdf"
+            target="_blank"
+          >
+            Download Answer Key
+          </a>
+        </li>
+        <li className="mb-4">
+          <span className="text-xl font-medium mr-2">Update:</span> The 61st question has been cancelled for the Ernakulam center. For the rest of the centers, it has been replaced.
+        </li>
+      </ul>
+    </div>
+  </div>
+  <style>
+    {`
+      @keyframes blink {
+        from, to { opacity: 1; }
+        50% { opacity: 0; }
+      }
+      .animate-blink {
+        animation: blink 1s infinite;
+      }
+      .fill-current { fill: currentColor; }
+    `}
+  </style>
+</section>
       {/*Centre Section*/}
       <section className="box-border py-8 leading-7 text-gray-900 bg-white border-0 border-gray-200 border-solid sm:py-12 md:py-16 lg:py-24">
         <div className="box-border max-w-6xl px-4 pb-12 mx-auto border-solid sm:px-6 md:px-6 lg:px-4">
