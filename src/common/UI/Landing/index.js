@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import cognosco from "../../../../public/assets/images/cognosco.png";
 import ima_msn from "../../../../public/assets/images/ima_msn.png";
 import Justin from "../../../../public/assets/images/Team/Justin.png";
@@ -8,38 +8,38 @@ import undraw_img from "../../../../public/assets/images/undraw_img.png";
 import { TeamDetails } from "@/common/UI/Landing/team";
 
 const Landing = () => {
-    const [showElement, setShowElement] = useState(true);
+  const [showElement, setShowElement] = useState(true);
 
-useEffect(() => {
-  let prevScrollPosition = window.pageYOffset;
-  let show = true;
+  useEffect(() => {
+    let prevScrollPosition = window.pageYOffset;
+    let show = true;
 
-  const handleScroll = () => {
-    const scrollPosition = window.pageYOffset;
+    const handleScroll = () => {
+      const scrollPosition = window.pageYOffset;
 
-    if (scrollPosition > prevScrollPosition) {
-      // Scrolling down
-      if (show) {
-        setShowElement(false);
-        show = false;
+      if (scrollPosition > prevScrollPosition) {
+        // Scrolling down
+        if (show) {
+          setShowElement(false);
+          show = false;
+        }
+      } else {
+        // Scrolling up
+        if (!show) {
+          setShowElement(true);
+          show = true;
+        }
       }
-    } else {
-      // Scrolling up
-      if (!show) {
-        setShowElement(true);
-        show = true;
-      }
-    }
 
-    prevScrollPosition = scrollPosition;
-  };
+      prevScrollPosition = scrollPosition;
+    };
 
-  window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
-  return () => {
-    window.removeEventListener("scroll", handleScroll);
-  };
-}, []);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
     <div>
       <section className="w-full px-8 text-gray-700 bg-white fixed rounded-b-[40px] shadow-blue-50 z-50">
@@ -146,6 +146,36 @@ useEffect(() => {
                 src={undraw_img}
                 alt="feature image"
               />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="event-schedule py-8 bg-purple-100 text-center">
+        <div className="mx-auto max-w-4xl">
+          <h2 className="text-3xl text-purple-800 font-bold mb-6 text-center">
+            Notifications
+          </h2>
+          <div className="schedule-item ">
+            <div className="text-xl  text-center mb-2">
+              <ul className="list-disc">
+                <li>
+                  The Answer Key has been published . {" "}
+                  <Link
+                    className="text-pink-700 font-normal"
+                    href="/assets/ans-key.pdf"
+                    target="_blank"
+                  >
+                    Click here
+                  </Link>{" "}
+                  to download Answer key.
+                </li>
+                <li>
+                  <div >
+                    Note: The 61st qn has been cancelled for ernakulam centre .
+                    For the rest of the centres it has been replaced.
+                  </div>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -293,34 +323,40 @@ useEffect(() => {
           </div>
         </div>
       </div>
-      {showElement?( <div className="fixed bottom-0  w-full bg-blue-500 py-4 text-center rounded-t-2xl">
-        <p className="text-white">
-          <span className="font-medium">Event has concluded and registrations have been stopped</span> ,
-          Results will be published soon<br></br>
-              <p className="flex gap-2 flex-col justify-center text-base leading-6 text-center">
-      <div>
+      {showElement ? (
+        <div className="fixed bottom-0  w-full bg-blue-500 py-4 text-center rounded-t-2xl">
+          <p className="text-white">
+            <span className="font-medium">
+              Event has concluded and registrations have been stopped
+            </span>{" "}
+            , Results will be published soon<br></br>
+            <p className="flex gap-2 flex-col justify-center text-base leading-6 text-center">
+              <div>
+                For further enquiries contact{" "}
+                <a className="text-black" href="mailto:cognoscohelp@gmail.com">
+                  cognoscohelp@gmail.com
+                </a>{" "}
+                or{" "}
+                <a className="text-black" href="tel:+919207788286">
+                  +919207788286
+                </a>
+              </div>
+              <div className="text-white">
+                Note: The 61st qn has been cancelled for ernakulam centre . For
+                the rest of the centres it has been replaced.
+              </div>
 
-      For further enquiries contact {" "}
-      <a className="text-black" href="mailto:cognoscohelp@gmail.com">
-        cognoscohelp@gmail.com
-      </a>{" "}
-      or{" "}
-      <a className="text-black" href="tel:+919207788286">
-        +919207788286
-      </a>
-      </div>
-                <div className="text-white">
-                  Note: The 61st qn has been cancelled for ernakulam centre .{" "} For the rest of the centres  it has been replaced.
-                  </div>
-
-                <div>
-
-                  <Link className="text-pink-700 font-bold" href="/assets/ans-key.pdf" target="_blank">
-                    Click here
-                  </Link>
-                  {" "}to download Answer key.
-                </div>
-      {/* <div>
+              <div>
+                <Link
+                  className="text-pink-700 font-bold"
+                  href="/assets/ans-key.pdf"
+                  target="_blank"
+                >
+                  Click here
+                </Link>{" "}
+                to download Answer key.
+              </div>
+              {/* <div>
         WhatsApp:{" "}
         <a href="https://wa.me/+919447155311" className="text-black" target="_blank">
           +919447155311
@@ -330,41 +366,47 @@ useEffect(() => {
           +919847823893
         </a>
       </div> */}
-    </p>
+            </p>
+          </p>
+        </div>
+      ) : null}
 
-        </p>
-      </div>):null}
-
-<section className="bg-white">
-  <div className="max-w-screen-xl px-4 py-5 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
-    <div className="justify-center space-x-6"></div>
-    <p className="flex gap-2 flex-col justify-center text-base leading-6 text-center text-gray-400">
-      <div>
-
-      For support contact{" "}
-      <a className="text-blue-600" href="mailto:cognoscohelp@gmail.com">
-        cognoscohelp@gmail.com
-      </a>{" "}
-      or{" "}
-      <a className="text-blue-600" href="tel:+919207788286">
-        +919207788286
-      </a>
-      </div>
-
-      <div>
-        WhatsApp:{" "}
-        <a href="https://wa.me/+919447155311" className="text-blue-600" target="_blank">
-          +919447155311
-        </a>{" "}
-        or{" "}
-        <a href="http://wa.me/+919847823893" className="text-blue-600" target="_blank">
-          +919847823893
-        </a>
-      </div>
-      © 2023 Cognosco. All rights reserved.
-    </p>
-  </div>
-</section>
+      <section className="bg-white">
+        <div className="max-w-screen-xl px-4 py-5 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
+          <div className="justify-center space-x-6"></div>
+          <p className="flex gap-2 flex-col justify-center text-base leading-6 text-center text-gray-400">
+            <div>
+              For support contact{" "}
+              <a className="text-blue-600" href="mailto:cognoscohelp@gmail.com">
+                cognoscohelp@gmail.com
+              </a>{" "}
+              or{" "}
+              <a className="text-blue-600" href="tel:+919207788286">
+                +919207788286
+              </a>
+            </div>
+            <div>
+              WhatsApp:{" "}
+              <a
+                href="https://wa.me/+919447155311"
+                className="text-blue-600"
+                target="_blank"
+              >
+                +919447155311
+              </a>{" "}
+              or{" "}
+              <a
+                href="http://wa.me/+919847823893"
+                className="text-blue-600"
+                target="_blank"
+              >
+                +919847823893
+              </a>
+            </div>
+            © 2023 Cognosco. All rights reserved.
+          </p>
+        </div>
+      </section>
     </div>
   );
 };
