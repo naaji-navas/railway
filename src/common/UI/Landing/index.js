@@ -309,7 +309,17 @@ useEffect(() => {
         +919207788286
       </a>
       </div>
+                <div className="text-white">
+                  Note: The 61st qn has been cancelled for ernakulam centre .{" "} For the rest of the centres  it has been replaced.
+                  </div>
 
+                <div>
+
+                  <Link className="text-pink-700 font-bold" href="/assets/ans-key.pdf" target="_blank">
+                    Click here
+                  </Link>
+                  {" "}to download Answer key.
+                </div>
       {/* <div>
         WhatsApp:{" "}
         <a href="https://wa.me/+919447155311" className="text-black" target="_blank">
