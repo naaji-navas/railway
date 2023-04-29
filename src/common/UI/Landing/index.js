@@ -71,6 +71,13 @@ const Landing = () => {
             </Link> */}
             <Link
               target="_blank"
+              href="/assets/top-10.pdf"
+              className="inline-flex items-center justify-center px-4 py-2 text-base font-medium leading-6 text-white whitespace-no-wrap bg-blue-500 border border-transparent rounded-md shadow-sm hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600"
+            >
+             View Rank List
+            </Link>
+            <Link
+              target="_blank"
               href="/assets/ans-key.pdf"
               className="inline-flex items-center justify-center px-4 py-2 text-base font-medium leading-6 text-white whitespace-no-wrap bg-green-500 border border-transparent rounded-md shadow-sm hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600"
             >
@@ -344,9 +351,8 @@ const Landing = () => {
         <div className="fixed bottom-0  w-full bg-blue-500 py-4 text-center rounded-t-2xl">
           <p className="text-white">
             <span className="font-medium">
-              Event has concluded and registrations have been stopped
-            </span>{" "}
-            , Results will be published soon<br></br>
+              Rank List has been Published
+            </span>
             <p className="flex gap-2 flex-col justify-center text-base leading-6 text-center">
               <div>
                 For further enquiries contact{" "}
