@@ -138,41 +138,6 @@ const Landing = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-gray-50  ">
-        <div className="container items-center max-w-6xl px-4 px-10 mx-auto sm:px-20 md:px-32 lg:px-16">
-          <div className="flex flex-wrap items-center -mx-3">
-            <div className="order-1 w-full px-3 lg:w-1/2 lg:order-0">
-              <div className="w-full lg:max-w-md">
-                <h2 className="mb-4 text-3xl font-bold leading-tight tracking-tight sm:text-4xl font-heading">
-                  About the Event
-                </h2>
-                <p className="mb-4 font-medium tracking-tight text-gray-400 xl:mb-6"></p>
-                <ul>
-                  <span className="font-medium text-gray-500">
-                    A few, well kept, little secrets makes the difference
-                    between an aspirant and a winner. IMA MSN Kerala brings to
-                    you, all that&apos;s required to secure a seat in Medical
-                    Colleges across the state.
-                    <br></br>
-                    Cognosco is a single day event, encompassing sessions by
-                    previous year toppers sharing their little cheat codes to
-                    victory ,Dr Arun B Nair&apos;s Ace session on Psychological
-                    stress management (Trivandrum) and a mock neet examination
-                    to prep you up for your Big day.
-                  </span>
-                </ul>
-              </div>
-            </div>
-            <div className="w-full px-3 mb-12 mt-20 md:mt-0  lg:w-1/2 order-0 lg:order-1 lg:mb-0">
-              <Image
-                className="mx-auto sm:max-w-sm lg:max-w-full"
-                src={undraw_img}
-                alt="feature image"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
 <section className="bg-purple-100 py-8 text-center relative">
   <div className="mx-auto max-w-4xl">
     <h2 className="mb-6 text-3xl font-bold text-purple-800 flex items-center justify-center">
@@ -210,6 +175,42 @@ const Landing = () => {
     `}
   </style>
 </section>
+            <section className="py-20 bg-gray-50  ">
+        <div className="container items-center max-w-6xl px-4 px-10 mx-auto sm:px-20 md:px-32 lg:px-16">
+          <div className="flex flex-wrap items-center -mx-3">
+            <div className="order-1 w-full px-3 lg:w-1/2 lg:order-0">
+              <div className="w-full lg:max-w-md">
+                <h2 className="mb-4 text-3xl font-bold leading-tight tracking-tight sm:text-4xl font-heading">
+                  About the Event
+                </h2>
+                <p className="mb-4 font-medium tracking-tight text-gray-400 xl:mb-6"></p>
+                <ul>
+                  <span className="font-medium text-gray-500">
+                    A few, well kept, little secrets makes the difference
+                    between an aspirant and a winner. IMA MSN Kerala brings to
+                    you, all that&apos;s required to secure a seat in Medical
+                    Colleges across the state.
+                    <br></br>
+                    Cognosco is a single day event, encompassing sessions by
+                    previous year toppers sharing their little cheat codes to
+                    victory ,Dr Arun B Nair&apos;s Ace session on Psychological
+                    stress management (Trivandrum) and a mock neet examination
+                    to prep you up for your Big day.
+                  </span>
+                </ul>
+              </div>
+            </div>
+            <div className="w-full px-3 mb-12 mt-20 md:mt-0  lg:w-1/2 order-0 lg:order-1 lg:mb-0">
+              <Image
+                className="mx-auto sm:max-w-sm lg:max-w-full"
+                src={undraw_img}
+                alt="feature image"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/*Centre Section*/}
       <section className="box-border py-8 leading-7 text-gray-900 bg-white border-0 border-gray-200 border-solid sm:py-12 md:py-16 lg:py-24">
         <div className="box-border max-w-6xl px-4 pb-12 mx-auto border-solid sm:px-6 md:px-6 lg:px-4">
